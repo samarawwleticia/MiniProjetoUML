@@ -1,6 +1,6 @@
 package sistema;
 
-public class UtilidadesDomesticas {
+public class UtilidadesDomesticas extends Produto {
 	
 	private String material;
 	private String marca;
