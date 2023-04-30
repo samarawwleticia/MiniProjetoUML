@@ -2,10 +2,10 @@ package sistema;
 
 public abstract class Produto {
 	
-	private String nome;
-	private String descricao;
-	private double preco;
-	private int quantidade;
+	protected String nome;
+	protected String descricao;
+	protected double preco;
+	protected int quantidade;
 	
 	public String getnome() {
 		return nome;
