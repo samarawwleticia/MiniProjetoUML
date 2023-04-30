@@ -1,6 +1,6 @@
 package sistema;
 
-public class Produto {
+public abstract class Produto {
 	
 	private String nome;
 	private double preco;
@@ -48,7 +48,10 @@ public class Produto {
 		
 	}
 	
-	public void Entrada_Saida(int quantidade) {
-		this.quantidade = quantidade;
+	public void setEntrada(int quantidade) {
+		this.quantidade += quantidade;
+	}
+	public void setSaida(int quantidade) {
+		this.quantidade -= quantidade;
 	}
 }
