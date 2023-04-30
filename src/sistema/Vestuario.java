@@ -1,6 +1,6 @@
 package sistema;
 
-public class UtilidadesDomesticas {
+public class Vestuario {
 	
 	private int tamanho;
 	private String genero;
