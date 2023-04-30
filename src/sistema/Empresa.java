@@ -33,7 +33,14 @@ public class Empresa {
 	}
 	
 	public void listarItens() {
-		
+		// o nome diz tudo
 	}
 	
+	public void pesquisarItem() {
+		// pesquisa geral
+	}
+	
+	public void pesquisarItemNaFilial() {
+		// pesquisa específica na filial
+	}
 } // Fim da classe Empresa
