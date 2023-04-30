@@ -3,9 +3,9 @@ package sistema;
 public abstract class Produto {
 	
 	private String nome;
+	private String descricao;
 	private double preco;
 	private int quantidade;
-	private String descricao; 
 	
 	public String getnome() {
 		return nome;

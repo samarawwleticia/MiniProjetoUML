@@ -43,4 +43,5 @@ public class Empresa {
 	public void pesquisarItemNaFilial() {
 		// pesquisa específica na filial
 	}
+	
 } // Fim da classe Empresa
