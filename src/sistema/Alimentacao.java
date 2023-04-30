@@ -8,7 +8,7 @@ public class Alimentacao extends Produto{
 	public double getPeso() {
 		return peso;
 	}
-	public void setpeso(double peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 	

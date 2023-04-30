@@ -7,35 +7,35 @@ public abstract class Produto {
 	protected double preco;
 	protected int quantidade;
 	
-	public String getnome() {
+	public String getNome() {
 		return nome;
 	}
 	
-	public void setnome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	public double getpreco() {
+	public double getPreco() {
 		return preco;
 	}
 	
-	public void setpreco(double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 	
-	public int getquantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 	
-	public void setquantidade(int quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 	
-	public String getdescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
 	
-	public void setdescricao(String descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	

@@ -7,18 +7,18 @@ public class Vestuario extends Produto{
 	
 	
 
-	public String getgenero() {
+	public String getGenero() {
 		return genero;
 	}
-	public void setgenero(String genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	
-	public int gettamanho() {
+	public int getTamanho() {
 		return tamanho;
 	}
 	
-	public void settamanho(int tamanho) {
+	public void setTamanho(int tamanho) {
 		this.tamanho = tamanho;
 	}
 }
