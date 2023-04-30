@@ -19,8 +19,17 @@ public class Filial {
 		this.nomeCidade = nomeCidade;
 	}
 	
+	public void adcItem() {
+		// add contrutor objeto produto
+	}
 	
+	public void excluirItem() {
+		// add destrutor item
+	}
 	
+	public void listarItens() {
+		
+	}
 	
 	
 } // Fim da classe Filial
