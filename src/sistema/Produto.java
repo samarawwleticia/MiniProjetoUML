@@ -3,10 +3,11 @@ package sistema;
 public abstract class Produto {
 	
 	protected String nome;
-	protected String descricao;
 	protected double preco;
 	protected int quantidade;
+	protected String descricao;
 	
+		
 	public String getNome() {
 		return nome;
 	}
