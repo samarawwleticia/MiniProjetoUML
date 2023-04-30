@@ -6,7 +6,10 @@ public class Empresa {
 		
 		String nome;
 		int CNPJ;
-		aaaaaaaa
+	
+		
+		
+		
 		
 
 	}
