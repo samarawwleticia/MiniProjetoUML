@@ -3,7 +3,7 @@ package sistema;
 public class Filial {
 	
 	// Atributos
-	String nomeCidade;
+	private String nomeCidade;
 	
 	// Construtor
 	Filial(String nomeCidade){
@@ -11,8 +11,13 @@ public class Filial {
 	}
 	
 	// Métodos
+	public String getNomeCidade() {
+		return nomeCidade;
+	}
 	
-	
+	public void setNomeCidade(String nomeCidade) {
+		this.nomeCidade = nomeCidade;
+	}
 	
 	
 	
