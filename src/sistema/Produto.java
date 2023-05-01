@@ -50,10 +50,20 @@ public abstract class Produto {
 	}
 	
 	public void setEntrada(int quantidade) {
-		this.quantidade += quantidade;
+		
+		if (quantidade >= 1) {
+			this.quantidade += quantidade;			
+		} else {
+			System.out.println("Você não pode comprar zero ou menos itens!");
+		}
+		
 	}
 	public void setSaida(int quantidade) {
-		this.quantidade -= quantidade;
+		if (this.quantidade >= quantidade) {
+			this.quantidade -= quantidade;
+		} else {
+			System.out.println("Você não pode vender mais produtos do que possui!");
+		}
 	}
 	
 	@Override

@@ -16,10 +16,11 @@ public class Principal {
 		System.out.print(p3.toString());
 		
 		p3.setEntrada(5);
+		p3.setEntrada(-3);
 		
 		System.out.println(p3.getQuantidade());
 		
-		p3.setSaida(30);
+		p3.setSaida(3);
 		
 		System.out.println(p3.getQuantidade());
 		//System.out.println(p1.getPeso());
