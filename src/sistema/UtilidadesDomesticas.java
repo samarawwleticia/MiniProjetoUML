@@ -7,29 +7,40 @@ public class UtilidadesDomesticas extends Produto {
 	private String caracteristicas;
 	
 	
-	public void getMaterial(String material) {
-		this.material = material;
-	}
+	UtilidadesDomesticas(String nome, double preco, int qtd, String descricao, String material, String marca, String caracteristicas){
+		setNome(nome);
+		setPreco(preco);
+		setQuantidade(qtd);
+		setDescricao(descricao);
+		setMaterial(material);
+		setMarca(marca);
+		setCaracteristicas(caracteristicas);
+		
+		}
 	
-	public String setMaterial () {
+	public String getMaterial() {
 		return material;
 	}
 	
-	public void getMarca(String marca) {
-		this.marca = marca;
+	public void setMaterial (String material) {
+		this.material = material;
 	}
-
-	public String setMarca(){
+	
+	public String getMarca() {
 		return marca;
 	}
 
+	public void setMarca(String marca){
+		this.marca = marca;
+	}
+
 	
-	public void getCaracteristicas(String caracteristicas) {
-		this.caracteristicas = caracteristicas;
+	public String getCaracteristicas() {
+		return caracteristicas;
 	}
 	
-	public String setCaracteristicas() {
-		return caracteristicas;
+	public void setCaracteristicas(String caracteristicas) {
+		this.caracteristicas = caracteristicas;
 	}
 		
 	
