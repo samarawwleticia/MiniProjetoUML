@@ -4,8 +4,14 @@ public class Filial {
 	
 	// Atributos
 	private String nomeCidade;
+	private Empresa empresa;
 	
 	// Construtor
+	Filial(String nomeCidade, Empresa empresa){
+		this.nomeCidade = nomeCidade;
+		this.empresa = empresa;
+	}
+	
 	Filial(String nomeCidade){
 		this.nomeCidade = nomeCidade;
 	}
@@ -17,6 +23,14 @@ public class Filial {
 	
 	public void setNomeCidade(String nomeCidade) {
 		this.nomeCidade = nomeCidade;
+	}
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 	
 	public void adcItem() {
@@ -31,5 +45,8 @@ public class Filial {
 		
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Localização: " + nomeCidade + ", " + empresa.toString();
+	}
 } // Fim da classe Filial

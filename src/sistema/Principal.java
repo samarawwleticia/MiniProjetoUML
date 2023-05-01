@@ -4,7 +4,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 	
-		
+		//Testes dos produtos
 		Produto p1 = new Alimentacao("Melão", 3.45, 43, true);
 		Alimentacao p2 = new Alimentacao("Costela", 14.23, 21, false);
 		Alimentacao p3 = new Alimentacao("Leite", 5.5, 17, false);
@@ -22,12 +22,18 @@ public class Principal {
 		p3.setSaida(30);
 		
 		System.out.println(p3.getQuantidade());
-
-		System.out.println(p3.toString());
 		//System.out.println(p1.getPeso());
 		
 		//Produto p3 = new Alimentacao("sds", 2.4, 23, "dhfhdfuhd");
 		
+		// Testes da empresa e filiais
+		
+		Empresa e1 = new Empresa("Comercio de aço ltda", "1111151411/00001");
+		
+		Filial f1 = e1.gerarFilial("Taguatinga");
+		
+		System.out.println(e1.toString());
+		System.out.println(f1.toString());
 		
 	}
 }

@@ -13,15 +13,15 @@ public class Empresa {
 	}
 	
 	// Métodos
-	public String obterNome(Empresa empresa) {
+	public String getNome() {
 		return this.razaoSocial;
 	}
-	public String obterCnpj(Empresa empresa) {
+	public String getCnpj() {
 		return this.cnpj;
 	}
 	
-	public void gerarFilial(String nomeCidade) {
-		// adicionar o construtor de uma filial qnd existir filial
+	public Filial gerarFilial(String nomeCidade) {
+		return new Filial(nomeCidade, new Empresa(this.razaoSocial, this.cnpj));
 	}
 	
 	public void excluirFilial() {
@@ -40,8 +40,13 @@ public class Empresa {
 		// pesquisa geral
 	}
 	
-	public void pesquisarItemNaFilial() {
-		// pesquisa específica na filial
+	public void pesquisarItem(Filial filial) {
+		// pesquisa dentro de uma filial
+	}
+	
+	@Override
+	public String toString() {
+		return "Razão Social: " + razaoSocial + ", CNPJ: " + cnpj;
 	}
 	
 } // Fim da classe Empresa
