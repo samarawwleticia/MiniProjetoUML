@@ -27,7 +27,11 @@ public class Alimentacao extends Produto{
 		return peso;
 	}
 	public void setPeso(double peso) {
-		this.peso = peso;
+		if(peso >= 0.01) {
+			this.peso = peso;
+		} else {
+			System.out.println("O produto não pode pesar menos de uma grama.");
+		}
 	}
 	
 	public boolean getVegetariano() {

@@ -27,7 +27,11 @@ public class Vestuario extends Produto{
 	}
 	
 	public void setTamanho(int tamanho) {
-		this.tamanho = tamanho;
+		if (tamanho >= 1) {
+			this.tamanho = tamanho;
+		} else {
+			System.out.println("Não existe tamanho menor que um.");
+		}
 	}
 	
 	

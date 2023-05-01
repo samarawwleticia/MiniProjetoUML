@@ -2,6 +2,8 @@ package sistema;
 
 public abstract class Produto {
 	
+	// construtor, verificação e reuso de codigo
+	
 	protected String nome;
 	protected double preco;
 	protected int quantidade;
@@ -21,7 +23,9 @@ public abstract class Produto {
 	}
 	
 	public void setPreco(double preco) {
-		this.preco = preco;
+		if(preco >= 0.01) {
+			this.preco = preco;
+		}
 	}
 	
 	public int getQuantidade() {
@@ -29,7 +33,9 @@ public abstract class Produto {
 	}
 	
 	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+		if(quantidade >= 0) {
+			this.quantidade = quantidade;
+		}
 	}
 	
 	public String getDescricao() {
@@ -46,7 +52,6 @@ public abstract class Produto {
 		this.descricao = descricao;
 		this.quantidade = quantidade;
 		this.preco = preco; 
-		
 	}
 	
 	public void setEntrada(int quantidade) {
@@ -59,6 +64,7 @@ public abstract class Produto {
 		
 	}
 	public void setSaida(int quantidade) {
+		
 		if (this.quantidade >= quantidade) {
 			this.quantidade -= quantidade;
 		} else {
@@ -69,7 +75,7 @@ public abstract class Produto {
 	@Override
 	public String toString() {
 		return "Nome: " + nome + ", Quantidade: " 
-		+ quantidade + ", Preço: " + preco + "; \n";
+		+ quantidade + ", Preço: R$" + preco + "; \n";
 	}
 	
 } // Fim da classe Produto
