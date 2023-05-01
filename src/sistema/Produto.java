@@ -48,10 +48,10 @@ public abstract class Produto {
 	
 	public void editarCaracteristica(String nome, String descricao, int quantidade, double preco) {
 		
-		this.nome = nome;
-		this.descricao = descricao;
-		this.quantidade = quantidade;
-		this.preco = preco; 
+		setNome(nome);
+		setDescricao(descricao);
+		setQuantidade(quantidade);
+		setPreco(preco); 
 	}
 	
 	public void setEntrada(int quantidade) {
