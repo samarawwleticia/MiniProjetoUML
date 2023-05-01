@@ -5,20 +5,34 @@ public class Vestuario extends Produto{
 	private int tamanho;
 	private String genero;
 	
-	
+	Vestuario(String nome, double preco, int qtd, 
+			String descricao, int tamanho, String genero) {
+		setNome(nome);
+		setPreco(preco);
+		setQuantidade(qtd);
+		setDescricao(descricao);
+		setTamanho(tamanho);
+		setGenero(genero);
+	}
 
-	public String getgenero() {
+	public String getGenero() {
 		return genero;
 	}
-	public void setgenero(String genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 	
-	public int gettamanho() {
+	public int getTamanho() {
 		return tamanho;
 	}
 	
-	public void settamanho(int tamanho) {
-		this.tamanho = tamanho;
+	public void setTamanho(int tamanho) {
+		if (tamanho >= 1) {
+			this.tamanho = tamanho;
+		} else {
+			System.out.println("Não existe tamanho menor que um.");
+		}
 	}
-}
+	
+	
+} // Fim da classe Vestuario
