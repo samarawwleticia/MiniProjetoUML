@@ -12,10 +12,6 @@ public class Filial {
 		this.empresa = empresa;
 	}
 	
-	Filial(String nomeCidade){
-		this.nomeCidade = nomeCidade;
-	}
-	
 	// Métodos
 	public String getNomeCidade() {
 		return nomeCidade;
@@ -34,19 +30,20 @@ public class Filial {
 	}
 	
 	public void adcItem() {
-		// add contrutor objeto produto
+		// Método para criar um item
 	}
 	
 	public void excluirItem() {
-		// add destrutor item
+		// Método para excluir um item
 	}
 	
 	public void listarItens() {
-		
+		// O nome diz tudo
 	}
 	
 	@Override
 	public String toString() {
 		return "Localização: " + nomeCidade + ", " + empresa.getsetRazaoSocial();
 	}
+	
 } // Fim da classe Filial

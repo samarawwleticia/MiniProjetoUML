@@ -34,23 +34,23 @@ public class Empresa {
 	}
 	
 	public void excluirFilial() {
-		// fazer algo pra destruir filiais qnd possível
+		// Método para destruir uma filial
 	}
 	
 	public void transferirItens() {
-		// ainda n tenho ideia de como farei isso
+		// Método para transeferir os itensde uma filial para outra
 	}
 	
 	public void listarItens() {
-		// o nome diz tudo
+		// Método para listar todos os itens disponíveis na empresa
 	}
 	
 	public void pesquisarItem() {
-		// pesquisa geral
+		// Método para fazer uma pesquisa geral
 	}
 	
 	public void pesquisarItem(Filial filial) {
-		// pesquisa dentro de uma filial
+		// Método para fazer uma pesquisa dentro de uma filial
 	}
 	
 	@Override

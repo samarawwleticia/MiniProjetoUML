@@ -2,7 +2,6 @@ package sistema;
 
 public abstract class Produto {
 	
-	// construtor, verificação e reuso de codigo
 	
 	protected String nome;
 	protected double preco;
