@@ -7,6 +7,7 @@ public abstract class Produto {
 	protected String nome;
 	protected double preco;
 	protected int quantidade;
+	protected Filial filial;
 	protected String descricao;
 	
 		
@@ -38,6 +39,14 @@ public abstract class Produto {
 		}
 	}
 	
+	public Filial getFilial() {
+		return filial;
+	}
+	
+	public void setFilial(Filial filial) {
+			this.filial = filial;
+	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -46,11 +55,12 @@ public abstract class Produto {
 		this.descricao = descricao;
 	}
 	
-	public void editarCaracteristica(String nome, String descricao, int quantidade, double preco) {
+	public void editarCaracteristica(String nome, String descricao, int quantidade, Filial filial, double preco) {
 		
 		setNome(nome);
 		setDescricao(descricao);
 		setQuantidade(quantidade);
+		setFilial(filial);
 		setPreco(preco); 
 	}
 	

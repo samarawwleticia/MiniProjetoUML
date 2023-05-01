@@ -47,6 +47,6 @@ public class Filial {
 	
 	@Override
 	public String toString() {
-		return "Localização: " + nomeCidade + ", " + empresa.toString();
+		return "Localização: " + nomeCidade + ", " + empresa.getsetRazaoSocial();
 	}
 } // Fim da classe Filial
