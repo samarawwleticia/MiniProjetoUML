@@ -13,11 +13,20 @@ public class Empresa {
 	}
 	
 	// Métodos
-	public String getNome() {
+	public String getsetRazaoSocial() {
 		return this.razaoSocial;
 	}
+	
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+	
 	public String getCnpj() {
 		return this.cnpj;
+	}
+	
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 	
 	public Filial gerarFilial(String nomeCidade) {
