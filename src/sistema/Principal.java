@@ -9,13 +9,22 @@ public class Principal {
 		Alimentacao p2 = new Alimentacao("Costela", 14.23, 21, false);
 		Alimentacao p3 = new Alimentacao("Leite", 5.5, 17, false);
 		
-		System.out.println(p1.getNome());
-		System.out.println(p2.getNome());
-		System.out.println(p3.getNome());
+		System.out.printf("%s %8s %n", "Nome", "Quantidade" );
 		
-		//System.out.println(p1.getPeso());
-		System.out.println(p2.getPeso());
+		System.out.println(p1.toString());
+		System.out.print(p2.toString());
+		System.out.print(p3.toString());
+		
+		p3.setEntrada(5);
+		
 		System.out.println(p3.getQuantidade());
+		
+		p3.setSaida(30);
+		
+		System.out.println(p3.getQuantidade());
+
+		System.out.println(p3.toString());
+		//System.out.println(p1.getPeso());
 		
 		//Produto p3 = new Alimentacao("sds", 2.4, 23, "dhfhdfuhd");
 		

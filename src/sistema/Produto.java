@@ -55,4 +55,11 @@ public abstract class Produto {
 	public void setSaida(int quantidade) {
 		this.quantidade -= quantidade;
 	}
-}
+	
+	@Override
+	public String toString() {
+		return "Nome: " + nome + ", Quantidade: " 
+		+ quantidade + ", Preço: " + preco + "; \n";
+	}
+	
+} // Fim da classe Produto
