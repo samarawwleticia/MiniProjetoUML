@@ -74,10 +74,10 @@ public abstract class Produto {
 	}
 	public void setSaida(int quantidade) {
 		
-		if (this.quantidade >= quantidade) {
+		if (this.quantidade >= quantidade && quantidade >= 1) {
 			this.quantidade -= quantidade;
 		} else {
-			System.out.println("Você não pode vender mais produtos do que possui!");
+			System.out.println("Quantidade inválida.");
 		}
 	}
 	
