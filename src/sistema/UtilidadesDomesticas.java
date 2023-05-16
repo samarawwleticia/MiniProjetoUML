@@ -17,7 +17,6 @@ public class UtilidadesDomesticas extends Produto {
 		setMaterial(material);
 		setMarca(marca);
 		setCaracteristicas(caracteristicas);
-		
 		}
 	
 	public String getMaterial() {
