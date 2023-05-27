@@ -37,10 +37,6 @@ public class Empresa {
 		// Método para destruir uma filial
 	}
 	
-	public void transferirItens() {
-		// Método para transeferir os itensde uma filial para outra
-	}
-	
 	public void listarItens() {
 		// Método para listar todos os itens disponíveis na empresa
 	}
