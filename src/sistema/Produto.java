@@ -67,8 +67,6 @@ public abstract class Produto {
 		
 		if (quantidade >= 1) {
 			this.quantidade += quantidade;			
-		} else {
-			System.out.println("Você não pode comprar zero ou menos itens!");
 		}
 		
 	}
@@ -76,9 +74,16 @@ public abstract class Produto {
 		
 		if (this.quantidade >= quantidade && quantidade >= 1) {
 			this.quantidade -= quantidade;
-		} else {
-			System.out.println("Quantidade inválida.");
 		}
+	}
+	
+	public boolean equals(Produto produto) {
+		if (nome == produto.nome && filial == produto.filial) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 	
 	@Override
