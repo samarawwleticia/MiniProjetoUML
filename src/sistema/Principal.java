@@ -29,6 +29,7 @@ public class Principal {
 		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
 		e1.buscarFilial("Riacho Fundo").adcItem(new Alimentacao("Leite condensado", 5, 1, "blablabla", 7, false));
 		
-		
+		e1.buscarFilial("Riacho Fundo").listarItens();
+		e1.listarItensGeral();	
 	}
 }
