@@ -6,12 +6,11 @@ public class Alimentacao extends Produto{
 	private boolean vegetariano;
 	
 	
-	Alimentacao(String nome, double preco, int qtd, Filial filial,
+	Alimentacao(String nome, double preco, int qtd,
 			String descricao, double peso, boolean vegetariano) {
 		setNome(nome);
 		setPreco(preco);
 		setQuantidade(qtd);
-		setFilial(filial);
 		setDescricao(descricao);
 		setPeso(peso);
 		setVegetariano(vegetariano);

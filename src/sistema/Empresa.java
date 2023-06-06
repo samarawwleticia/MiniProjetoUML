@@ -2,13 +2,10 @@ package sistema;
 
 public class Empresa {
 	
-	//setFlial n sei como fazer
-	//buscarItemGeral ta incompleto
-	
 	// Atributos
 	private String razaoSocial;
 	private String cnpj;
-	private Filial[] filial = new Filial[25];
+	private Filial[] filial = new Filial[26];
 	
 	// Construtor
 	Empresa(String razaoSocial, String cnpj){
@@ -37,7 +34,11 @@ public class Empresa {
 		return filial;
 	}
 	
-	public void setFilial(Filial filial) {
+	public void setFilial(Filial[] filial) {
+		this.filial = filial;
+	}
+	
+	public void adcFilial(Filial filial) {
 		for (int i = 0; i < this.filial.length - 1; i++) {
 			if (this.filial[i] == null) {
 				this.filial[i] = filial;
@@ -46,10 +47,6 @@ public class Empresa {
 					break;
 			}
 		}
-	}
-	
-	public Filial gerarFilial(String nomeCidade) {
-		return new Filial(nomeCidade, new Empresa(this.razaoSocial, this.cnpj));
 	}
 	
 	public void excluirFilial(Filial fil) {
@@ -78,10 +75,41 @@ public class Empresa {
 		}
 	}
 	
-	//public Produto buscarItemGeral(String chave) {
-		// Método para fazer uma pesquisa geral
-		//return;
-	//}
+	public Filial buscarFilial(String nomeFilial) {
+		Filial fil = null;
+		for(Filial f: filial) {
+			if (f == null) {
+				break;
+			} else if (f.getNomeCidade() == nomeFilial) {
+				fil = f;
+				break;
+			}
+		}
+		return fil;
+	}
+	
+	public Produto buscarItemGeral(String chave) { 
+		Produto p = null;
+		
+		for (int i = 0; i < filial.length; i++) {
+			
+			if(filial[i] == null) {
+				break;
+			}
+			
+			Produto[] produto = filial[i].getProduto();
+			
+			for(int c = 0; i < filial[i].getProduto().length; c++) {
+				if(produto[c] == null) {
+					break;
+				} else if(produto[c].nome == chave) {
+					p = produto[c];
+					break;
+				}
+			}
+		}
+		return p;
+	}
 	
 	@Override
 	public String toString() {

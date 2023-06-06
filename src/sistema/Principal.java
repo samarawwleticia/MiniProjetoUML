@@ -6,31 +6,28 @@ public class Principal {
 			
 		Empresa e1 = new Empresa("Comercio geral ltda", "12.345.678/0001-23");
 		
+		/* Forma antiga de declarar as coisas:
 		Filial f1 = e1.gerarFilial("Taguatinga");
-		
-		// Ordem dos argumentos para construtores de produtos:
-		// Nome, preco, qtd, filial, descricao, *itens especificos*.
-		
 		Alimentacao p1 = new Alimentacao("Leite", 5.5, 17, f1, "Leite UHT integral", 1, false);
+		*/
 		
-		System.out.println(e1.toString());
-		System.out.println(f1.toString());
-		System.out.println(p1.toString());
+		// Forma nova:
 		
-		p1.setEntrada(5);
-		System.out.println(p1.getQuantidade());
-		p1.setSaida(-3);
-		System.out.println(p1.getQuantidade());
+		e1.adcFilial(new Filial("Taguatinga", e1));
+		e1.adcFilial(new Filial("Riacho Fundo", e1));
+		e1.adcFilial(new Filial("Gama", e1));
 		
-		Alimentacao[] a1 = new Alimentacao[3];
+		e1.buscarFilial("Taguatinga").adcItem(new Alimentacao("melancia", 20.5, 10, "blablabla", 7, true ));
+		e1.buscarFilial("Taguatinga").adcItem(new Alimentacao("melancia", 20.5, 10, "blablabla", 7, true ));
+		e1.buscarFilial("Taguatinga").adcItem(new Vestuario("calça", 100, 7, "sarja", 42, "unissex" ));
 		
-		a1[0] = new Alimentacao("Abobora", 4.7, 9, f1, "Alimento organico", 1.4, true);
-		a1[1] = new Alimentacao("pao", 6.4, 28, f1, "paozinho de forma", 4.2, false);
-		a1[2] = new Alimentacao("Frango", 25.56, 34, f1, "franguinho na panela", 3, false);
+		e1.buscarFilial("Gama").adcItem(new Alimentacao("melancia", 20.5, 10,  "blablabla", 7, true ));
+		e1.buscarFilial("Gama").adcItem(new UtilidadesDomesticas("colher", 2.45, 100, "blablabla", "madeira","7", "true" ));
+		e1.buscarFilial("Gama").adcItem(new UtilidadesDomesticas("Vassoura", 15, 3, "blablabla", "aço","7", "true" ));
 		
-		for (int i = 0; i < a1.length; i++) {
-			System.out.println(a1[i]);
-		}
+		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("blusa", 60, 10, "preta basica", 7, "helicoptero" ));
+		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
+		e1.buscarFilial("Riacho Fundo").adcItem(new Alimentacao("Leite condensado", 5, 1, "blablabla", 7, false));
 		
 		
 	}

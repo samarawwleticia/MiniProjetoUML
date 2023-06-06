@@ -2,8 +2,6 @@ package sistema;
 
 public class Filial {
 	
-	//buscarItem ta incompleto
-	
 	// Atributos
 	private String nomeCidade;
 	private Empresa empresa;
@@ -70,6 +68,19 @@ public class Filial {
 		}
 	}
 	
+	public Produto buscarItem(String chave) {
+		Produto p = null;
+		for(Produto item: produto) {
+			if (item == null) {
+				break;
+			} else if(item.nome == chave) {
+				p = item;
+				break;
+			}
+		}
+		return p;
+	}
+	
 	public void listarItens() {
 		for(Produto n: produto) {
 			if (n == null) {
@@ -79,11 +90,6 @@ public class Filial {
 			}
 		}
 	}
-	
-	//public Produto buscarItem(String chave) {
-		// Método para fazer uma pesquisa geral
-		//return ;
-	//}
 	
 	@Override
 	public String toString() {
