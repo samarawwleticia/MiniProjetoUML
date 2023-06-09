@@ -6,4 +6,5 @@
  *
  */
 module MiniProjetoUML {
+	requires java.desktop;
 }
