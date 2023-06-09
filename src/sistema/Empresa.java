@@ -5,6 +5,7 @@ public class Empresa {
 	// Atributos
 	private String razaoSocial;
 	private String cnpj;
+	private Filial[] filial = new Filial[26];
 	
 	// Construtor
 	Empresa(String razaoSocial, String cnpj){
@@ -29,28 +30,85 @@ public class Empresa {
 		this.cnpj = cnpj;
 	}
 	
-	public Filial gerarFilial(String nomeCidade) {
-		return new Filial(nomeCidade, new Empresa(this.razaoSocial, this.cnpj));
+	public Filial[] getFilial() {
+		return filial;
 	}
 	
-	public void excluirFilial() {
-		// Método para destruir uma filial
+	public void setFilial(Filial[] filial) {
+		this.filial = filial;
 	}
 	
-	public void transferirItens() {
-		// Método para transeferir os itensde uma filial para outra
+	public void adcFilial(Filial filial) {
+		for (int i = 0; i < this.filial.length - 1; i++) {
+			if (this.filial[i] == null) {
+				this.filial[i] = filial;
+				break;
+			} else if (this.filial[i].equals(filial)) {
+					break;
+			}
+		}
 	}
 	
-	public void listarItens() {
-		// Método para listar todos os itens disponíveis na empresa
+	public void excluirFilial(Filial fil) {
+		for (int i = 0; i < filial.length - 1; i++) { 
+			if(filial[i] == null) {
+				break;
+			} else if(filial[i].equals(fil)) {
+					for(int c = i; c < filial.length - 1; c++) {
+						if(filial[c] == null) {
+							break;
+						} else {
+							filial[c] = filial[c+1]; 
+						}
+					}
+			}
+		}
 	}
 	
-	public void pesquisarItem() {
-		// Método para fazer uma pesquisa geral
+	public void listarItensGeral() {
+		for (int i = 0; i < filial.length; i++) {
+			if (filial[i] == null) {
+				break;
+			} else {
+				filial[i].listarItens();
+			}
+		}
 	}
 	
-	public void pesquisarItem(Filial filial) {
-		// Método para fazer uma pesquisa dentro de uma filial
+	public Filial buscarFilial(String nomeFilial) {
+		Filial fil = null;
+		for(Filial f: filial) {
+			if (f == null) {
+				break;
+			} else if (f.getNomeCidade() == nomeFilial) {
+				fil = f;
+				break;
+			}
+		}
+		return fil;
+	}
+	
+	public Produto buscarItemGeral(String chave) { 
+		Produto p = null;
+		
+		for (int i = 0; i < filial.length; i++) {
+			
+			if(filial[i] == null) {
+				break;
+			}
+			
+			Produto[] produto = filial[i].getProduto();
+			
+			for(int c = 0; i < filial[i].getProduto().length; c++) {
+				if(produto[c] == null) {
+					break;
+				} else if(produto[c].nome == chave) {
+					p = produto[c];
+					break;
+				}
+			}
+		}
+		return p;
 	}
 	
 	@Override

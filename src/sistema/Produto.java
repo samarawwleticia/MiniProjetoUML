@@ -67,17 +67,21 @@ public abstract class Produto {
 		
 		if (quantidade >= 1) {
 			this.quantidade += quantidade;			
-		} else {
-			System.out.println("Você não pode comprar zero ou menos itens!");
 		}
 		
 	}
 	public void setSaida(int quantidade) {
 		
-		if (this.quantidade >= quantidade) {
+		if (this.quantidade >= quantidade && quantidade >= 1) {
 			this.quantidade -= quantidade;
+		}
+	}
+	
+	public boolean equals(Produto produto) {
+		if (nome == produto.nome && filial == produto.filial) {
+			return true;
 		} else {
-			System.out.println("Você não pode vender mais produtos do que possui!");
+			return false;
 		}
 	}
 	
