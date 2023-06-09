@@ -1,7 +1,9 @@
 package view;
 
+import sistema.*; // importar as classes e os métodos de sistema pra usar aqui
+
 import javax.swing.*;
-import java.awt.*;
+//import java.awt.*;
 
 public class InterfaceMenu {
 	
@@ -9,17 +11,18 @@ public class InterfaceMenu {
 		
 		//Vou agrupar os elementos parecidos 
 		
+		Empresa e1 = new Empresa("hdbvhdfbvhdfb", "1234567890");
+		e1.adcFilial(new Filial("Gama", e1));
+		e1.buscarFilial("Gama").adcItem(new Alimentacao("melancia", 20.5, 10,  "blablabla", 7, true ));
+		e1.buscarFilial("Gama").adcItem(new UtilidadesDomesticas("colher", 2.45, 100, "blablabla", "madeira","7", "true" ));
+		e1.buscarFilial("Gama").adcItem(new UtilidadesDomesticas("Vassoura", 15, 3, "blablabla", "aço","7", "true" ));
+		
 		JFrame f = new JFrame();
 		JButton b = new JButton("Cadastrar nova Filial");
-		JButton b2 = new JButton("Cadastrar novo Produto");
+		JButton b2 = new JButton("Cadastrar novo Produto"); 
 		
-		String[] nomes = { "Ana", "Beatriz", "Carlos", // Um vetor pra testar o container   
-				"Daniel", "Elaine",  "Fernando", 
-				"Gabriela", "Marcio", "Nair", 
-				"Osvaldo", "Pedro", "Rita" }; 
-		
-		JList<String> jlst = new JList<String>(nomes); // Cria um objeto que é uma lista 
-		JScrollPane jsp = new JScrollPane(jlst);       // Cria o container "rolável"
+		JList<String> jlst = new JList<String>(e1.buscarFilial("Gama").obterNomes()); // Cria um objeto que é uma lista e recebe o vetor anterior, infelizmente é obrigatório 
+		JScrollPane jsp = new JScrollPane(jlst);       // Cria o container "rolável" com a lista anterior dentro
 		
 		
 		b.setBounds(200,100,200, 80);

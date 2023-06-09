@@ -8,7 +8,7 @@ public class Empresa {
 	private Filial[] filial = new Filial[26];
 	
 	// Construtor
-	Empresa(String razaoSocial, String cnpj){
+	public Empresa(String razaoSocial, String cnpj){
 		this.razaoSocial = razaoSocial;
 		this.cnpj = cnpj;
 	}

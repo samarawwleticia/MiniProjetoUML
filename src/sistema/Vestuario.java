@@ -5,7 +5,7 @@ public class Vestuario extends Produto{
 	private int tamanho;
 	private String genero;
 	
-	Vestuario(String nome, double preco, int qtd, 
+	public Vestuario(String nome, double preco, int qtd, 
 			String descricao, int tamanho, String genero) {
 		setNome(nome);
 		setPreco(preco);

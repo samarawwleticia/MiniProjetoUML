@@ -27,9 +27,20 @@ public class Principal {
 		
 		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("blusa", 60, 10, "preta basica", 7, "helicoptero" ));
 		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
-		e1.buscarFilial("Riacho Fundo").adcItem(new Alimentacao("Leite condensado", 5, 1, "blablabla", 7, false));
+		e1.buscarFilial("Riacho Fundo").adcItem(new Alimentacao("Leite", 5, 1, "blablabla", 7, false));
 		
 		e1.buscarFilial("Riacho Fundo").listarItens();
 		e1.listarItensGeral();	
+		
+		String[] string = e1.buscarFilial("Riacho Fundo").obterNomes();
+		
+		for(String s: string) { // Imprime os valores, é só pra testar se o método de pegar os nomes deu certo.
+			if(s == null){
+				break;
+			} else {
+				System.out.println(s);
+			}
+		}
+		
 	}
 }

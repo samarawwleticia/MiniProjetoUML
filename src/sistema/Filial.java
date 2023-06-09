@@ -5,10 +5,10 @@ public class Filial {
 	// Atributos
 	private String nomeCidade;
 	private Empresa empresa;
-	private Produto[] produto = new Produto[100];
+	private Produto[] produto = new Produto[101];
 	
 	// Construtor
-	Filial(String nomeCidade, Empresa empresa){
+	public Filial(String nomeCidade, Empresa empresa){
 		this.nomeCidade = nomeCidade;
 		this.empresa = empresa;
 	}
@@ -79,6 +79,18 @@ public class Filial {
 			}
 		}
 		return p;
+	}
+	
+	public String[] obterNomes() {
+		String[] nomes = new String[101];
+		for(int i = 0; i < produto.length; i++) {
+			if (produto[i] == null) {
+				break;
+			} else {
+				nomes[i] = produto[i].getNome();
+			}
+		}
+		return nomes;
 	}
 	
 	public void listarItens() {
