@@ -3,9 +3,6 @@ package sistema;
 public class Principal {
 
 	public static void main(String[] args) {
-		
-		
-		
 		Empresa e1 = new Empresa("Comercio geral ltda", "12.345.678/0001-23");
 		
 		Filial f1 = e1.gerarFilial("Taguatinga");
