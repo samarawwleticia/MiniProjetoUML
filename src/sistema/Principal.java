@@ -1,5 +1,7 @@
 package sistema;
 
+import javax.swing.JOptionPane;
+
 public class Principal {
 
 	public static void main(String[] args) {
@@ -12,7 +14,6 @@ public class Principal {
 		*/
 		
 		// Forma nova:
-		
 		e1.adcFilial(new Filial("Taguatinga", e1));
 		e1.adcFilial(new Filial("Riacho Fundo", e1));
 		e1.adcFilial(new Filial("Gama", e1));
@@ -29,7 +30,12 @@ public class Principal {
 		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
 		e1.buscarFilial("Riacho Fundo").adcItem(new Alimentacao("Leite condensado", 5, 1, "blablabla", 7, false));
 		
-		e1.buscarFilial("Riacho Fundo").listarItens();
-		e1.listarItensGeral();	
+		//e1.buscarFilial("Riacho Fundo").listarItens();
+		//e1.listarItensGeral();
+		
+		
+		
+		
+		
 	}
 }
