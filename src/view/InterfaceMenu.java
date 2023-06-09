@@ -10,12 +10,14 @@ public class InterfaceMenu {
 	public static void main(String[] args) {
 		
 		//Vou agrupar os elementos parecidos 
+		//N sei pq mas estou começando a ficar com medo desse código, tenho a impressão de que ele ainda vai me apunhalar pelas costas
 		
 		Empresa e1 = new Empresa("hdbvhdfbvhdfb", "1234567890");
 		e1.adcFilial(new Filial("Gama", e1));
 		e1.buscarFilial("Gama").adcItem(new Alimentacao("melancia", 20.5, 10,  "blablabla", 7, true ));
 		e1.buscarFilial("Gama").adcItem(new UtilidadesDomesticas("colher", 2.45, 100, "blablabla", "madeira","7", "true" ));
 		e1.buscarFilial("Gama").adcItem(new UtilidadesDomesticas("Vassoura", 15, 3, "blablabla", "aço","7", "true" ));
+		 
 		
 		JFrame f = new JFrame();
 		JButton b = new JButton("Cadastrar nova Filial");
