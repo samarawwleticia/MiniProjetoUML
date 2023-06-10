@@ -83,14 +83,20 @@ public class Filial {
 	
 	public String[] obterNomes() {
 		String[] nomes = new String[101];
-		for(int i = 0; i < produto.length; i++) {
+		int i;
+		for(i = 0; i < produto.length; i++) {
 			if (produto[i] == null) {
 				break;
 			} else {
 				nomes[i] = produto[i].getNome();
 			}
 		}
-		return nomes;
+		String[] listaNomes = new String[i];
+		for(int c = 0; c < i; c++) {
+			listaNomes[c] = nomes[c];
+		}
+		
+		return listaNomes;
 	}
 	
 	public void listarItens() {

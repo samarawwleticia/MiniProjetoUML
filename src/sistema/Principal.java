@@ -18,7 +18,7 @@ public class Principal {
 		
 		p1.setEntrada(5);
 		p1.setEntrada(-3);
-		*/
+		
 		
 		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("blusa", 60, 10, "preta basica", 7, "helicoptero" ));
 		e1.buscarFilial("Riacho Fundo").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
@@ -26,15 +26,20 @@ public class Principal {
 		
 		e1.buscarFilial("Riacho Fundo").listarItens();
 		e1.listarItensGeral();	
+		*/
 		
-		String[] string = e1.buscarFilial("Riacho Fundo").obterNomes();
+		e1.adcFilial(new Filial("lugar1", e1));
+		e1.adcFilial(new Filial("lugar3", e1));
+		e1.adcFilial(new Filial("lugar2", e1));
+		
+		String[] string = e1.obterNomes();
 		
 		for(String s: string) { // Imprime os valores, é só pra testar se o método de pegar os nomes deu certo.
-			if(s == null){
-				break;
-			} else {
+			//if(s == null){
+				//break;
+			//} else {
 				System.out.println(s);
-			}
+			//}
 		}
 		
 

@@ -111,6 +111,23 @@ public class Empresa {
 		return p;
 	}
 	
+	public String[] obterNomes() {
+		String[] nomes = new String[26];
+		int i;
+		for(i = 0; i < filial.length; i++) {
+			if (filial[i] == null) {
+				break;
+			} else {
+				nomes[i] = filial[i].getNomeCidade();
+			}
+		}
+		String[] listaNomes = new String[i];
+		for(int c = 0; c < i; c++) {
+			listaNomes[c] = nomes[c];
+		}
+		return listaNomes;
+	}
+	
 	@Override
 	public String toString() {
 		return "Razão Social: " + razaoSocial + ", CNPJ: " + cnpj;
