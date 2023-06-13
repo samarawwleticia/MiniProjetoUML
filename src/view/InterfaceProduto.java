@@ -8,32 +8,34 @@ public class InterfaceProduto {
 	
 		public static void main(String[] args) {
 		
-		//tem q usar jtable ou jlist 
+		JFrame telaInterfaceProduto = new JFrame("Produtos");
 		JLabel label = new JLabel("Produtos");
-		JFrame telaInterfaceProduto = new JFrame();
-		JButton botaoCadastrar = new JButton("Cadastrar Produto");
+		JTextField entradaPesquisa = new JTextField();
+		JButton botaoPesquisar = new JButton("Pesquisar");
 		String[] cabecalho = {"Produto", "Quantidade", "Filial"};
 		String[][] listaProdutos = {
-				{"Melancia", "10", "Taguatinga"}, {"Blusa", "15", "Gama"}, {"Colher", "100", "Riacho Fundo"},
-		};
+				{"Melancia", "10", "Taguatinga"}, {"Blusa", "15", "Gama"}, {"Colher", "100", "Riacho Fundo"} };
 		JTable tabelaProdutos = new JTable(listaProdutos, cabecalho);
 		JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
+		JButton botaoCadastrar = new JButton("Cadastrar Produto");
 		
-		label.setBounds(260,100,200,80);
-		label.setFont(new Font("Arial", Font.BOLD, 20));
-		painelProdutos.setBounds(200, 200, 400, 300);
-		botaoCadastrar.setBounds(200,550,200,80);
-		botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
-		telaInterfaceProduto.setBounds(0, 0,  800, 700); // (0, 0,  1920, 1080) pra ficar quase em tela cheia em um monitor full hd
+		telaInterfaceProduto.setBounds(0, 0,  600, 600); 
 		telaInterfaceProduto.setLayout(null);
 		telaInterfaceProduto.setVisible(true);
 		
+		label.setBounds(250, 10, 200, 80);
+		label.setFont(new Font("Arial", Font.BOLD, 20));
+		entradaPesquisa.setBounds(100, 70, 300, 20);
+		botaoPesquisar.setBounds(400, 70, 100, 20);
+		painelProdutos.setBounds(100, 100, 400, 300);
+		botaoCadastrar.setBounds(200,425,200,80);
+		botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
+		
+		telaInterfaceProduto.add(botaoPesquisar);
 		telaInterfaceProduto.add(botaoCadastrar);
+		telaInterfaceProduto.add(entradaPesquisa);
 		telaInterfaceProduto.add(label);
-		//telaInterfaceProduto.add(tabelaProdutos);
 		telaInterfaceProduto.add(painelProdutos);
 		
-		
-
 		}//Fim do método main (Não esquecer de apagar o método)
 }//Fim da classe InterfaceProdut
