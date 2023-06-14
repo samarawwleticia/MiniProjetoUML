@@ -27,8 +27,8 @@ public class InterfaceCadastroProduto {
 		JTextField preco = new JTextField();
 		JTextField quantidade = new JTextField();
 		JTextField filial = new JTextField();
-		JTextPane descricao = new JTextPane();
-		//JScrollPane areaTexto = new JScrollPane(descricao);
+		JTextArea descricao = new JTextArea();
+		JScrollPane areaTexto = new JScrollPane(descricao);
 		JButton salvarProduto = new JButton("Salvar");
 		JButton excluirProduto = new JButton("Excluir");
 		
@@ -48,9 +48,8 @@ public class InterfaceCadastroProduto {
 		labelFilial.setBounds(150, 220, 70, 20);
 		filial.setBounds(230, 220, 220, 20);
 		labelDescricao.setBounds(150, 250, 70, 20);
-		descricao.setBounds(230, 250, 220, 80);
-		//areaTexto.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		
+		areaTexto.setBounds(230, 250, 220, 80);
+		descricao.setLineWrap(true);
 		salvarProduto.setBounds(170,425,120,80);
 		excluirProduto.setBounds(310,425,120,80);
 		
@@ -66,7 +65,7 @@ public class InterfaceCadastroProduto {
 		telaCadastroProduto.add(preco);
 		telaCadastroProduto.add(quantidade);
 		telaCadastroProduto.add(filial);
-		telaCadastroProduto.add(descricao);
+		telaCadastroProduto.add(areaTexto);
 		telaCadastroProduto.add(titulo);
 		telaCadastroProduto.add(excluirProduto);
 		telaCadastroProduto.add(salvarProduto);
