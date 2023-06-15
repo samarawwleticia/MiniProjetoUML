@@ -3,10 +3,11 @@ package view;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.*;
 
-public class InterfaceProduto {
+public class InterfaceProduto implements ActionListener{
 	
-		public static void main(String[] args) {
+		InterfaceProduto() {
 		
 		JFrame telaInterfaceProduto = new JFrame("Produtos");
 		JLabel label = new JLabel("Produtos");
@@ -38,4 +39,9 @@ public class InterfaceProduto {
 		telaInterfaceProduto.add(painelProdutos);
 		
 		}//Fim do método main (Não esquecer de apagar o método)
+		
+		public void actionPerformed(ActionEvent evento) {
+			
+		}
+		
 }//Fim da classe InterfaceProdut
