@@ -8,29 +8,30 @@ import javax.swing.JButton;
 
 public class InterfaceCadastroProduto {
 	
-	public static void main(String[] args) {
-		//--------------------------------------------------------------------
-		String[] listaTeste = {"Escolha uma opção", "Alimentação", "Utilidades Domésticas", "Vestuário"};
+	//--------------------------------------------------------------------
+	String[] listaTeste = {"Escolha uma opção", "Alimentação", "Utilidades Domésticas", "Vestuário"};
 		
-		//--------------------------------------------------------------------
-		JFrame telaCadastroProduto = new JFrame("Cadastro de Produto");
-		JLabel titulo = new JLabel("Cadastro de Produto");
-		JLabel labelCategoria = new JLabel("Categoria:");
-		JLabel labelNome = new JLabel("Nome:");
-		JLabel labelPreco = new JLabel("Preço");
-		JLabel labelQuantidade = new JLabel("Quantidade:");
-		JLabel labelFilial = new JLabel("Filial:");
-		JLabel labelDescricao = new JLabel("Descrição:");
+	//--------------------------------------------------------------------
+	JFrame telaCadastroProduto = new JFrame("Cadastro de Produto");
+	JLabel titulo = new JLabel("Cadastro de Produto");
+	JLabel labelCategoria = new JLabel("Categoria:");
+	JLabel labelNome = new JLabel("Nome:");
+	JLabel labelPreco = new JLabel("Preço");
+	JLabel labelQuantidade = new JLabel("Quantidade:");
+	JLabel labelFilial = new JLabel("Filial:");
+	JLabel labelDescricao = new JLabel("Descrição:");
+	
+	JComboBox dropdownCategoria = new JComboBox(listaTeste); 
+	JTextField nome = new JTextField();
+	JTextField preco = new JTextField();
+	JTextField quantidade = new JTextField();
+	JTextField filial = new JTextField();
+	JTextArea descricao = new JTextArea();
+	JScrollPane areaTexto = new JScrollPane(descricao);
+	JButton salvarProduto = new JButton("Salvar");
+	JButton excluirProduto = new JButton("Excluir");
 		
-		JComboBox dropdownCategoria = new JComboBox(listaTeste); 
-		JTextField nome = new JTextField();
-		JTextField preco = new JTextField();
-		JTextField quantidade = new JTextField();
-		JTextField filial = new JTextField();
-		JTextArea descricao = new JTextArea();
-		JScrollPane areaTexto = new JScrollPane(descricao);
-		JButton salvarProduto = new JButton("Salvar");
-		JButton excluirProduto = new JButton("Excluir");
+	InterfaceCadastroProduto() {
 		
 		telaCadastroProduto.setBounds(0, 0,  600, 600); 
 		telaCadastroProduto.setLayout(null);

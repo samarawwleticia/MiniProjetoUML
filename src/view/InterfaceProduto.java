@@ -7,19 +7,19 @@ import java.awt.event.*;
 
 public class InterfaceProduto implements ActionListener{
 	
+	private JFrame telaInterfaceProduto = new JFrame("Produtos");
+	private JLabel label = new JLabel("Produtos");
+	private JTextField entradaPesquisa = new JTextField();
+	private JButton botaoPesquisar = new JButton("Pesquisar");
+	private String[] cabecalho = {"Produto", "Quantidade", "Filial"};
+	private String[][] listaProdutos = {
+			{"Melancia", "10", "Taguatinga"}, {"Blusa", "15", "Gama"}, {"Colher", "100", "Riacho Fundo"} };
+	private JTable tabelaProdutos = new JTable(listaProdutos, cabecalho);
+	private JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
+	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
+		
 		InterfaceProduto() {
-		
-		JFrame telaInterfaceProduto = new JFrame("Produtos");
-		JLabel label = new JLabel("Produtos");
-		JTextField entradaPesquisa = new JTextField();
-		JButton botaoPesquisar = new JButton("Pesquisar");
-		String[] cabecalho = {"Produto", "Quantidade", "Filial"};
-		String[][] listaProdutos = {
-				{"Melancia", "10", "Taguatinga"}, {"Blusa", "15", "Gama"}, {"Colher", "100", "Riacho Fundo"} };
-		JTable tabelaProdutos = new JTable(listaProdutos, cabecalho);
-		JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
-		JButton botaoCadastrar = new JButton("Cadastrar Produto");
-		
+				
 		telaInterfaceProduto.setBounds(0, 0,  600, 600); 
 		telaInterfaceProduto.setLayout(null);
 		telaInterfaceProduto.setVisible(true);
@@ -38,9 +38,16 @@ public class InterfaceProduto implements ActionListener{
 		telaInterfaceProduto.add(label);
 		telaInterfaceProduto.add(painelProdutos);
 		
-		}//Fim do método main (Não esquecer de apagar o método)
+		botaoCadastrar.addActionListener(this);
+		
+		}
 		
 		public void actionPerformed(ActionEvent evento) {
+			Object elemento = evento.getSource();
+			
+			if (elemento == botaoCadastrar) {
+				new InterfaceCadastroProduto();
+			}
 			
 		}
 		
