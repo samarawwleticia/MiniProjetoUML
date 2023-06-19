@@ -12,7 +12,7 @@ public class InterfaceCadastroProduto {
 	String[] listaTeste = {"Escolha uma opção", "Alimentação", "Utilidades Domésticas", "Vestuário"};
 		
 	//--------------------------------------------------------------------
-	JFrame telaCadastroProduto = new JFrame("Cadastro de Produto");
+	JFrame frameCadastroProduto = new JFrame("Cadastro de Produto");
 	JLabel titulo = new JLabel("Cadastro de Produto");
 	JLabel labelCategoria = new JLabel("Categoria:");
 	JLabel labelNome = new JLabel("Nome:");
@@ -33,9 +33,9 @@ public class InterfaceCadastroProduto {
 		
 	InterfaceCadastroProduto() {
 		
-		telaCadastroProduto.setBounds(0, 0,  600, 600); 
-		telaCadastroProduto.setLayout(null);
-		telaCadastroProduto.setVisible(true);
+		frameCadastroProduto.setBounds(60, 60,  600, 600); 
+		frameCadastroProduto.setLayout(null);
+		frameCadastroProduto.setVisible(true);
 		titulo.setBounds(190, 10, 200, 80);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		labelCategoria.setBounds(150, 100, 70, 20);
@@ -55,21 +55,21 @@ public class InterfaceCadastroProduto {
 		excluirProduto.setBounds(310,425,120,80);
 		
 		
-		telaCadastroProduto.add(labelCategoria);
-		telaCadastroProduto.add(dropdownCategoria);
-		telaCadastroProduto.add(labelNome);
-		telaCadastroProduto.add(labelPreco);
-		telaCadastroProduto.add(labelQuantidade);
-		telaCadastroProduto.add(labelFilial);
-		telaCadastroProduto.add(labelDescricao);
-		telaCadastroProduto.add(nome);
-		telaCadastroProduto.add(preco);
-		telaCadastroProduto.add(quantidade);
-		telaCadastroProduto.add(filial);
-		telaCadastroProduto.add(areaTexto);
-		telaCadastroProduto.add(titulo);
-		telaCadastroProduto.add(excluirProduto);
-		telaCadastroProduto.add(salvarProduto);
+		frameCadastroProduto.add(labelCategoria);
+		frameCadastroProduto.add(dropdownCategoria);
+		frameCadastroProduto.add(labelNome);
+		frameCadastroProduto.add(labelPreco);
+		frameCadastroProduto.add(labelQuantidade);
+		frameCadastroProduto.add(labelFilial);
+		frameCadastroProduto.add(labelDescricao);
+		frameCadastroProduto.add(nome);
+		frameCadastroProduto.add(preco);
+		frameCadastroProduto.add(quantidade);
+		frameCadastroProduto.add(filial);
+		frameCadastroProduto.add(areaTexto);
+		frameCadastroProduto.add(titulo);
+		frameCadastroProduto.add(excluirProduto);
+		frameCadastroProduto.add(salvarProduto);
 		
 	}//Fim do método main
 }//Fim da classe InterfaceCadastroProduto

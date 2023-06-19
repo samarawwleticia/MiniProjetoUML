@@ -32,7 +32,24 @@ public class Principal {
 		e1.adcFilial(new Filial("lugar3", e1));
 		e1.adcFilial(new Filial("lugar2", e1));
 		
-		String[] string = e1.obterNomes();
+		e1.buscarFilial("lugar1").adcItem(new Vestuario("blusa", 60, 10, "preta basica", 7, "helicoptero" ));
+		e1.buscarFilial("lugar2").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
+		e1.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 1, "blablabla", 7, false));
+		e1.buscarFilial("lugar1").adcItem(new Vestuario("mouse", 60, 10, "preta basica", 7, "helicoptero" ));
+		e1.buscarFilial("lugar2").adcItem(new Vestuario("teclado", 100, 7,"sarja", 42, "unissex" ));
+		e1.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 5, 1, "blablabla", 7, false));
+
+		
+		
+		String[][] string = e1.obterCaracteristicasPrincipais();
+		for(int i = 0; i < string.length; i++) {
+			for(int c = 0; c < string[i].length; c++) {
+				System.out.print(string[i][c] + " ");
+			}
+			System.out.println();
+		}
+		/*
+		String[] string = e1.obterNomesCidades();
 		
 		for(String s: string) { // Imprime os valores, é só pra testar se o método de pegar os nomes deu certo.
 			//if(s == null){
@@ -41,6 +58,8 @@ public class Principal {
 				System.out.println(s);
 			//}
 		}
+		*/
+		
 		
 
 	}

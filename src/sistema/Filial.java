@@ -81,19 +81,22 @@ public class Filial {
 		return p;
 	}
 	
-	public String[] obterNomes() {
-		String[] nomes = new String[101];
+	public String[][] obterCaracteristicasPrincipais() {
+		String[][] caracteriticas = new String[101][4];
 		int i;
 		for(i = 0; i < produto.length; i++) {
 			if (produto[i] == null) {
 				break;
 			} else {
-				nomes[i] = produto[i].getNome();
+				caracteriticas[i][0] = produto[i].getNome();
+				caracteriticas[i][1] = String.valueOf(produto[i].getPreco());
+				caracteriticas[i][2] = String.valueOf(produto[i].getQuantidade());
+				caracteriticas[i][3] = nomeCidade;
 			}
 		}
-		String[] listaNomes = new String[i];
+		String[][] listaNomes = new String[i][4];
 		for(int c = 0; c < i; c++) {
-			listaNomes[c] = nomes[c];
+			listaNomes[c] = caracteriticas[c];
 		}
 		
 		return listaNomes;
@@ -111,7 +114,7 @@ public class Filial {
 	
 	@Override
 	public String toString() {
-		return "Localização: " + nomeCidade + ", Empresa: " + empresa.getsetRazaoSocial();
+		return "Localização: " + nomeCidade + ", Empresa: " + empresa.getRazaoSocial();
 	}
 	
 } // Fim da classe Filial

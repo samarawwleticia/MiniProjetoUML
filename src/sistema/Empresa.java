@@ -5,7 +5,8 @@ public class Empresa {
 	// Atributos
 	private String razaoSocial;
 	private String cnpj;
-	private Filial[] filial = new Filial[26];
+	private final int numMaxFiliais = 26;
+	private Filial[] filial = new Filial[numMaxFiliais];
 	
 	// Construtor
 	public Empresa(String razaoSocial, String cnpj){
@@ -14,7 +15,7 @@ public class Empresa {
 	}
 	
 	// Métodos
-	public String getsetRazaoSocial() {
+	public String getRazaoSocial() {
 		return this.razaoSocial;
 	}
 	
@@ -39,7 +40,7 @@ public class Empresa {
 	}
 	
 	public void adcFilial(Filial filial) {
-		for (int i = 0; i < this.filial.length - 1; i++) {
+		for (int i = 0; i < numMaxFiliais - 1; i++) {
 			if (this.filial[i] == null) {
 				this.filial[i] = filial;
 				break;
@@ -50,11 +51,11 @@ public class Empresa {
 	}
 	
 	public void excluirFilial(Filial fil) {
-		for (int i = 0; i < filial.length - 1; i++) { 
+		for (int i = 0; i < numMaxFiliais - 1; i++) { 
 			if(filial[i] == null) {
 				break;
 			} else if(filial[i].equals(fil)) {
-					for(int c = i; c < filial.length - 1; c++) {
+					for(int c = i; c < numMaxFiliais - 1; c++) {
 						if(filial[c] == null) {
 							break;
 						} else {
@@ -66,7 +67,7 @@ public class Empresa {
 	}
 	
 	public void listarItensGeral() {
-		for (int i = 0; i < filial.length; i++) {
+		for (int i = 0; i < numMaxFiliais; i++) {
 			if (filial[i] == null) {
 				break;
 			} else {
@@ -88,10 +89,10 @@ public class Empresa {
 		return fil;
 	}
 	
-	public Produto buscarItemGeral(String chave) { 
+	public Produto buscarItemGeral(String nomeProduto) { 
 		Produto p = null;
 		
-		for (int i = 0; i < filial.length; i++) {
+		for (int i = 0; i < numMaxFiliais; i++) {
 			
 			if(filial[i] == null) {
 				break;
@@ -102,7 +103,7 @@ public class Empresa {
 			for(int c = 0; i < filial[i].getProduto().length; c++) {
 				if(produto[c] == null) {
 					break;
-				} else if(produto[c].nome == chave) {
+				} else if(produto[c].nome == nomeProduto) {
 					p = produto[c];
 					break;
 				}
@@ -111,10 +112,10 @@ public class Empresa {
 		return p;
 	}
 	
-	public String[] obterNomes() {
+	public String[] obterNomesCidades() {
 		String[] nomes = new String[26];
 		int i;
-		for(i = 0; i < filial.length; i++) {
+		for(i = 0; i < numMaxFiliais; i++) {
 			if (filial[i] == null) {
 				break;
 			} else {
@@ -127,6 +128,29 @@ public class Empresa {
 		}
 		return listaNomes;
 	}
+
+	public String[][] obterCaracteristicasPrincipais() {
+	
+		int i;
+		int d;
+		int posicao = 0;
+		for(i = 0; i < numMaxFiliais; i++) {
+			if (filial[i] == null) {
+				break;
+			}
+		}
+		String [][] produtos = new String[(i-1)*100][4];
+		String [][] temporario;
+		for(int c = 0; c < (i-1); c++) {
+			temporario = filial[c].obterCaracteristicasPrincipais();
+			for(d = 0; d < temporario.length; d++) {
+				produtos[posicao] = temporario[d];
+			}
+			posicao += d;
+		}
+		
+		return produtos;
+	}//Fim do método
 	
 	@Override
 	public String toString() {
