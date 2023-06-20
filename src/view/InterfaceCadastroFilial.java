@@ -1,10 +1,18 @@
 package view;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class InterfaceCadastroFilial {
+public class InterfaceCadastroFilial implements ActionListener{
 	
-	public static void main(String[] args) {
+	JButton addProduto = new JButton("Novo Produto");
+	JButton salvar = new JButton("Salvar");
+	JButton deletar = new JButton("Deletar");
+	
+	
+	InterfaceCadastroFilial() {
 		
 		// criando jframe --------------------------------------------------------
 		JFrame telaCadastroFilial = new JFrame("Cadastro Filial");
@@ -63,21 +71,30 @@ public class InterfaceCadastroFilial {
 		painelProdutos.setBounds(150, 210, 300, 200);
 		
 		// botao para colocar mais um produto
-		
-		JButton addProduto = new JButton("Novo Produto");
-		
+			
 		telaCadastroFilial.add(addProduto);
 		addProduto.setBounds(200, 430, 200, 40);
+		addProduto.addActionListener(this);
 		
-		JButton salvar = new JButton("Salvar");
+		// botao para salvar um produto
 		
 		telaCadastroFilial.add(salvar);
 		salvar.setBounds(100, 480, 180, 40);
 		
-		JButton deletar = new JButton("Deletar");
+		
+		//botao para deletar um produto
 		
 		telaCadastroFilial.add(deletar);
 		deletar.setBounds(300, 480, 180, 40);
+		
+	}
+	
+	public void actionPerformed(ActionEvent evento) {
+		Object elemento = evento.getSource();
+		
+		if (elemento == addProduto) {
+			new InterfaceCadastroProduto();
+		}
 		
 	}
 
