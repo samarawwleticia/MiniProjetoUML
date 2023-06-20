@@ -41,7 +41,7 @@ public class InterfaceMenu implements ActionListener {
 	}//Fim do construtor
 	
 	public void actionPerformed(ActionEvent evento) {
-		if(evento.getActionCommand().equals("Filial")) {
+		if(evento.getActionCommand().equals("Filiais")) {
 			new InterfaceFilial();
 		} else if(evento.getActionCommand().equals("Produtos")){
 			new InterfaceProduto(ce);
