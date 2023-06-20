@@ -2,7 +2,6 @@ package sistema;
 
 public abstract class Produto {
 	
-	
 	protected String nome;
 	protected double preco;
 	protected int quantidade;

@@ -6,7 +6,21 @@ public class ControleEmpresa {
 	Empresa empresa = new Empresa("Nome da Empresa", "1234567-1234/78");
 	Filial[] filiais = empresa.getFilial();
 	
-	public String[][] obterCaracteristicasPrincipais() {
+	public ControleEmpresa(){
+		empresa.adcFilial(new Filial("lugar1", empresa));
+		empresa.adcFilial(new Filial("lugar3", empresa));
+		empresa.adcFilial(new Filial("lugar2", empresa));
+		
+		empresa.buscarFilial("lugar1").adcItem(new Vestuario("blusa", 60, 10, "preta basica", 7, "helicoptero" ));
+		empresa.buscarFilial("lugar2").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
+		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 1, "blablabla", 7, false));
+		empresa.buscarFilial("lugar1").adcItem(new Vestuario("mouse", 60, 10, "preta basica", 7, "helicoptero" ));
+		empresa.buscarFilial("lugar2").adcItem(new Vestuario("teclado", 100, 7,"sarja", 42, "unissex" ));
+		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 5, 1, "blablabla", 7, false));
+
+	}
+	
+	public String[][] getCaracteristicasPrincipais() {
 		
 		int i;
 		int d;

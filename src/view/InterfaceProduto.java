@@ -1,5 +1,5 @@
 package view;
-//import sistema.*;
+import controle.*;
 import javax.swing.*;
 
 import java.awt.*;
@@ -12,13 +12,15 @@ public class InterfaceProduto implements ActionListener{
 	private JTextField entradaPesquisa = new JTextField();
 	private JButton botaoPesquisar = new JButton("Pesquisar");
 	private String[] cabecalho = {"Produto", "Preço", "Quantidade", "Filial"};
-	private String[][] listaProdutos = {{"fefefe", "dewudheuwhd", "dheuhdue", "ufuerhf"},{"fefefe", "dewudheuwhd", "dheuhdue", "ufuerhf"}};
-	private JTable tabelaProdutos = new JTable(listaProdutos, cabecalho);
-	private JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
+	private String[][] listaProdutos;// = {{"fefefe", "dewudheuwhd", "dheuhdue", "ufuerhf"},{"fefefe", "dewudheuwhd", "dheuhdue", "ufuerhf"}};
+	private JTable tabelaProdutos;
+	private JScrollPane painelProdutos;
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
 		
-		InterfaceProduto() {
-		//listaProdutos = e1.obterCaracteristicasPrincipais();
+		public InterfaceProduto(ControleEmpresa ce) {
+		listaProdutos = ce.getCaracteristicasPrincipais();
+		tabelaProdutos = new JTable(listaProdutos, cabecalho);
+		painelProdutos = new JScrollPane(tabelaProdutos);
 		frameInterfaceProduto.setBounds(30, 30,  600, 600); 
 		frameInterfaceProduto.setLayout(null);
 		frameInterfaceProduto.setVisible(true);
