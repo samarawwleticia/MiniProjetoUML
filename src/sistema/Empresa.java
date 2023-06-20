@@ -39,6 +39,10 @@ public class Empresa {
 		this.filial = filial;
 	}
 	
+	public int getNumMaxFiliais() {
+		return numMaxFiliais;
+	}
+	
 	public void adcFilial(Filial filial) {
 		for (int i = 0; i < numMaxFiliais - 1; i++) {
 			if (this.filial[i] == null) {

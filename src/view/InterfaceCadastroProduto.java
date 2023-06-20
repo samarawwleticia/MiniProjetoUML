@@ -21,7 +21,7 @@ public class InterfaceCadastroProduto {
 	JLabel labelFilial = new JLabel("Filial:");
 	JLabel labelDescricao = new JLabel("Descrição:");
 	
-	JComboBox dropdownCategoria = new JComboBox(listaTeste); 
+	JComboBox<String> dropdownCategoria = new JComboBox<>(listaTeste); 
 	JTextField nome = new JTextField();
 	JTextField preco = new JTextField();
 	JTextField quantidade = new JTextField();

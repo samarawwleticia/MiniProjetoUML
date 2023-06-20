@@ -40,7 +40,7 @@ public class Principal {
 		e1.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 5, 1, "blablabla", 7, false));
 
 		
-		
+		/*
 		String[][] string = e1.obterCaracteristicasPrincipais();
 		for(int i = 0; i < string.length; i++) {
 			for(int c = 0; c < string[i].length; c++) {
@@ -48,7 +48,7 @@ public class Principal {
 			}
 			System.out.println();
 		}
-		/*
+		
 		String[] string = e1.obterNomesCidades();
 		
 		for(String s: string) { // Imprime os valores, é só pra testar se o método de pegar os nomes deu certo.

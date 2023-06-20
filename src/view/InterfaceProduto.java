@@ -12,7 +12,7 @@ public class InterfaceProduto implements ActionListener{
 	private JTextField entradaPesquisa = new JTextField();
 	private JButton botaoPesquisar = new JButton("Pesquisar");
 	private String[] cabecalho = {"Produto", "Preço", "Quantidade", "Filial"};
-	private String[][] listaProdutos;
+	private String[][] listaProdutos = {{"fefefe", "dewudheuwhd", "dheuhdue", "ufuerhf"},{"fefefe", "dewudheuwhd", "dheuhdue", "ufuerhf"}};
 	private JTable tabelaProdutos = new JTable(listaProdutos, cabecalho);
 	private JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
