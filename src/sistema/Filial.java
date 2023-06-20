@@ -98,7 +98,6 @@ public class Filial {
 		for(int c = 0; c < i; c++) {
 			listaNomes[c] = caracteriticas[c];
 		}
-		
 		return listaNomes;
 	}
 	
