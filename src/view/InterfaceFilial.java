@@ -1,16 +1,20 @@
 package view;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class InterfaceFilial {
-	public static void main(String[] args){
+public class InterfaceFilial implements ActionListener {
+	
 	
 		JFrame f = new JFrame();
 		JLabel titulo = new JLabel("Filiais");
 		JTextField barrapesquisa = new JTextField("");
 		JButton botaopesquisa = new JButton("pesquisar");
-		JButton cadastrarfilial = new JButton ("cadastrar filial");
+		JButton cadastrarFilial = new JButton ("cadastrar filial");
+		
+		InterfaceFilial() {
 		
 		String[] titulo2 = {"Cidade da Filial", "numero?"};
 		String[][] listaFiliais = {
@@ -35,8 +39,18 @@ public class InterfaceFilial {
 		f.add(painelFiliais);
 		painelFiliais.setBounds(100, 100, 400, 300);
 		
-		f.add(cadastrarfilial);
-		cadastrarfilial.setBounds(200, 425, 200, 40);
+		f.add(cadastrarFilial);
+		cadastrarFilial.setBounds(200, 425, 200, 40);
+		cadastrarFilial.addActionListener(this);
+		
+	}
+	
+	public void actionPerformed(ActionEvent evento) {
+		Object elemento = evento.getSource();
+		
+		if (elemento == cadastrarFilial) {
+			new InterfaceCadastroFilial();
+		}
 		
 	}
 	
