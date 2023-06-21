@@ -1,7 +1,8 @@
 package view;
+
 import controle.*;
 import javax.swing.*;
-
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -16,6 +17,7 @@ public class InterfaceProduto implements ActionListener{
 	private JTable tabelaProdutos;
 	private JScrollPane painelProdutos;
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
+	String[][] lista = {{"ffefede", "fefefefef", "wdwdwdwdw", "qwqwqwqwq"},{"ffefede", "fefefefef", "wdwdwdwdw", "qwqwqwqwq"}};
 		
 		public InterfaceProduto(ControleEmpresa ce) {
 		listaProdutos = ce.getCaracteristicasPrincipais();
@@ -29,7 +31,9 @@ public class InterfaceProduto implements ActionListener{
 		label.setFont(new Font("Arial", Font.BOLD, 20));
 		entradaPesquisa.setBounds(100, 70, 300, 20);
 		botaoPesquisar.setBounds(400, 70, 100, 20);
+		botaoPesquisar.addActionListener(this);
 		tabelaProdutos.setDefaultEditor(Object.class, null);
+		tabelaProdutos.getTableHeader().setReorderingAllowed(false);
 		painelProdutos.setBounds(100, 100, 400, 300);
 		botaoCadastrar.setBounds(200,425,200,80);
 		botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
@@ -49,7 +53,8 @@ public class InterfaceProduto implements ActionListener{
 			if (elemento == botaoCadastrar) {
 				new InterfaceCadastroProduto();
 			} else if (elemento == botaoPesquisar) {
-				
+				TableModel tabelaNova = new DefaultTableModel();
+				tabelaProdutos.setModel(tabelaNova);
 			}
 			
 		}
