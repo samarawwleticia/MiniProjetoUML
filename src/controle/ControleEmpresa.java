@@ -11,12 +11,12 @@ public class ControleEmpresa {
 		empresa.adcFilial(new Filial("lugar2", empresa));
 		empresa.adcFilial(new Filial("lugar3", empresa));
 		
-		empresa.buscarFilial("lugar1").adcItem(new Vestuario("mouse", 60, 10, "preta basica", 7, "helicoptero" ));
+		empresa.buscarFilial("lugar1").adcItem(new Vestuario("mouse", 100, 20, "preta basica", 7, "helicoptero" ));
 		empresa.buscarFilial("lugar1").adcItem(new Vestuario("blusa", 60, 10, "preta basica", 7, "helicoptero" ));
 		empresa.buscarFilial("lugar2").adcItem(new Vestuario("calça", 100, 7,"sarja", 42, "unissex" ));
-		empresa.buscarFilial("lugar2").adcItem(new Vestuario("teclado", 100, 7,"sarja", 42, "unissex" ));
-		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 1, "blablabla", 7, false));
-		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 5, 1, "blablabla", 7, false));
+		empresa.buscarFilial("lugar2").adcItem(new Vestuario("teclado", 120, 10,"sarja", 42, "unissex" ));
+		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 10, "blablabla", 7, false));
+		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 40, 13, "blablabla", 7, false));
 	}
 	
 	public String[][] getCaracteristicasPrincipais() {
@@ -44,5 +44,25 @@ public class ControleEmpresa {
 		}
 		return produtosInteiros;
 	}//Fim do método
+	
+	public String[][] buscaItemGeral(String nomeProduto){
+		int k = 0;
+		String[][] todosProdutos = this.getCaracteristicasPrincipais();
+		String[][] produtos = new String[empresa.getQtdFiliais()][4];
+		for(int i = 0; i < todosProdutos.length; i++) {
+			if(todosProdutos[i][0].equals(nomeProduto)) {
+				for(int j = 0; j < 4; j++) {
+					produtos[k][j] = todosProdutos[i][j];
+				}
+				k++;
+				
+			}
+		}
+		String[][] prod = new String[k][4];
+		for(int l = 0; l < k; l++) {
+			prod[l] = produtos[l];
+		}
+		return prod;
+	}
 	
 }

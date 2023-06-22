@@ -24,20 +24,19 @@ public class InterfaceMenu implements ActionListener {
 		frameMenu.add(botaoFiliais);
 		frameMenu.add(botaoProdutos);
 		frameMenu.add(labelMenu);
+		frameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		botaoFiliais.setBounds(200,100,200, 80);
 		botaoFiliais.setFont(new Font("Arial", Font.BOLD, 15));
+		botaoFiliais.addActionListener(this);
+		
 		botaoProdutos.setBounds(200,200,200,80);
 		botaoProdutos.setFont(new Font("Arial", Font.BOLD, 15));
-		labelMenu.setBounds(218,30,200,80);
-		labelMenu.setFont(new Font("Arial", Font.BOLD, 20));
-		
-		botaoFiliais.addActionListener(this);
 		botaoProdutos.addActionListener(this);
 		
-		frameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-			
+		labelMenu.setBounds(218,30,200,80);
+		labelMenu.setFont(new Font("Arial", Font.BOLD, 20));
+	
 	}//Fim do construtor
 	
 	public void actionPerformed(ActionEvent evento) {

@@ -5,6 +5,7 @@ public class Empresa {
 	// Atributos
 	private String razaoSocial;
 	private String cnpj;
+	private int qtdFiliais;
 	private final int numMaxFiliais = 26;
 	private Filial[] filial = new Filial[numMaxFiliais];
 	
@@ -39,6 +40,10 @@ public class Empresa {
 		this.filial = filial;
 	}
 	
+	public int getQtdFiliais() {
+		return qtdFiliais;
+	}
+	
 	public int getNumMaxFiliais() {
 		return numMaxFiliais;
 	}
@@ -47,6 +52,7 @@ public class Empresa {
 		for (int i = 0; i < numMaxFiliais - 1; i++) {
 			if (this.filial[i] == null) {
 				this.filial[i] = filial;
+				qtdFiliais++;
 				break;
 			} else if (this.filial[i].equals(filial)) {
 					break;
@@ -104,10 +110,10 @@ public class Empresa {
 			
 			Produto[] produto = filial[i].getProduto();
 			
-			for(int c = 0; i < filial[i].getProduto().length; c++) {
+			for(int c = 0; i < produto.length; c++) {
 				if(produto[c] == null) {
 					break;
-				} else if(produto[c].nome == nomeProduto) {
+				} else if(produto[c].nome.equals(nomeProduto)) {
 					p = produto[c];
 					break;
 				}

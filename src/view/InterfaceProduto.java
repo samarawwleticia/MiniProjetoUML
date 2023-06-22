@@ -17,34 +17,38 @@ public class InterfaceProduto implements ActionListener{
 	private JTable tabelaProdutos;
 	private JScrollPane painelProdutos;
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
-	String[][] lista = {{"ffefede", "fefefefef", "wdwdwdwdw", "qwqwqwqwq"},{"ffefede", "fefefefef", "wdwdwdwdw", "qwqwqwqwq"}};
-		
+	private ControleEmpresa ce = new ControleEmpresa();
+	
 		public InterfaceProduto(ControleEmpresa ce) {
-		listaProdutos = ce.getCaracteristicasPrincipais();
-		tabelaProdutos = new JTable(listaProdutos, cabecalho);
-		painelProdutos = new JScrollPane(tabelaProdutos);
-		frameInterfaceProduto.setBounds(30, 30,  600, 600); 
-		frameInterfaceProduto.setLayout(null);
-		frameInterfaceProduto.setVisible(true);
 		
 		label.setBounds(250, 10, 200, 80);
 		label.setFont(new Font("Arial", Font.BOLD, 20));
+		
 		entradaPesquisa.setBounds(100, 70, 300, 20);
+		
 		botaoPesquisar.setBounds(400, 70, 100, 20);
 		botaoPesquisar.addActionListener(this);
-		tabelaProdutos.setDefaultEditor(Object.class, null);
-		tabelaProdutos.getTableHeader().setReorderingAllowed(false);
-		painelProdutos.setBounds(100, 100, 400, 300);
+		
 		botaoCadastrar.setBounds(200,425,200,80);
 		botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
 		botaoCadastrar.addActionListener(this);
 		
+		listaProdutos = ce.getCaracteristicasPrincipais();
+		
+		tabelaProdutos = new JTable(listaProdutos, cabecalho);
+		tabelaProdutos.setDefaultEditor(Object.class, null);
+		tabelaProdutos.getTableHeader().setReorderingAllowed(false);
+		painelProdutos = new JScrollPane(tabelaProdutos);
+		painelProdutos.setBounds(100, 100, 400, 300);
+		
+		frameInterfaceProduto.setBounds(30, 30,  600, 600); 
+		frameInterfaceProduto.setLayout(null);
+		frameInterfaceProduto.setVisible(true);
 		frameInterfaceProduto.add(botaoPesquisar);
 		frameInterfaceProduto.add(botaoCadastrar);
 		frameInterfaceProduto.add(entradaPesquisa);
 		frameInterfaceProduto.add(label);
 		frameInterfaceProduto.add(painelProdutos);
-		
 		}
 		
 		public void actionPerformed(ActionEvent evento) {
@@ -52,11 +56,13 @@ public class InterfaceProduto implements ActionListener{
 			
 			if (elemento == botaoCadastrar) {
 				new InterfaceCadastroProduto();
-			} else if (elemento == botaoPesquisar) {
-				TableModel tabelaNova = new DefaultTableModel();
-				tabelaProdutos.setModel(tabelaNova);
+			} else if(elemento == botaoPesquisar) {
+				if(entradaPesquisa.getText().equals("")) {
+					tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
+				} else {
+					tabelaProdutos.setModel(new JTable(ce.buscaItemGeral(entradaPesquisa.getText()), cabecalho).getModel());
+				}
 			}
-			
 		}
 		
-}//Fim da classe InterfaceProdut
+}//Fim da classe InterfaceProduto
