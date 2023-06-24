@@ -3,7 +3,7 @@ package sistema;
 public class Principal {
 
 	public static void main(String[] args) {
-		Empresa e1 = new Empresa("Comercio geral ltda", "12.345.678/0001-23");
+		//Empresa e1 = new Empresa("Comercio geral ltda", "12.345.678/0001-23");
 		
 		/*Filial f1 = e1.gerarFilial("Taguatinga");
 		
@@ -26,7 +26,7 @@ public class Principal {
 		
 		e1.buscarFilial("Riacho Fundo").listarItens();
 		e1.listarItensGeral();	
-		*/
+		
 		
 		e1.adcFilial(new Filial("lugar1", e1));
 		e1.adcFilial(new Filial("lugar3", e1));
@@ -40,7 +40,7 @@ public class Principal {
 		e1.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 5, 1, "blablabla", 7, false));
 
 		
-		/*
+		
 		String[][] string = e1.obterCaracteristicasPrincipais();
 		for(int i = 0; i < string.length; i++) {
 			for(int c = 0; c < string[i].length; c++) {

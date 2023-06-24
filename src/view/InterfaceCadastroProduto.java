@@ -1,10 +1,12 @@
 package view;
 
 import java.awt.Font;
+
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import controle.*;
 
 public class InterfaceCadastroProduto {
 	
@@ -21,17 +23,42 @@ public class InterfaceCadastroProduto {
 	JLabel labelFilial = new JLabel("Filial:");
 	JLabel labelDescricao = new JLabel("Descrição:");
 	
-	JComboBox<String> dropdownCategoria = new JComboBox<>(listaTeste); 
-	JTextField nome = new JTextField();
-	JTextField preco = new JTextField();
-	JTextField quantidade = new JTextField();
-	JTextField filial = new JTextField();
-	JTextArea descricao = new JTextArea();
-	JScrollPane areaTexto = new JScrollPane(descricao);
+	JComboBox<String> dropdownCategoria;// = new JComboBox<>(listaTeste); 
+	JTextField nome;// = new JTextField();
+	JTextField preco;// = new JTextField();
+	JTextField quantidade;// = new JTextField();
+	JTextField filial;// = new JTextField();
+	JTextArea descricao;// = new JTextArea();
+	JScrollPane areaTexto;// = new JScrollPane(descricao);
 	JButton salvarProduto = new JButton("Salvar");
 	JButton excluirProduto = new JButton("Excluir");
+	ControleEmpresa ce;
 		
-	InterfaceCadastroProduto() {
+	InterfaceCadastroProduto(ControleEmpresa ce, int op, String[] x) {
+		this.ce = ce;
+		
+		if(op == 1) {
+			
+			String[] produto = ce.buscarItem(x[0], x[1]);
+			
+			dropdownCategoria = new JComboBox<>(listaTeste);
+			nome = new JTextField(produto[0]);
+			preco = new JTextField(produto[1]);
+			quantidade = new JTextField(produto[2]);
+			filial = new JTextField(produto[3]);
+			descricao = new JTextArea(produto[4]);
+			areaTexto = new JScrollPane(descricao);
+			}
+			
+			if(op == 2) {
+				dropdownCategoria = new JComboBox<>(listaTeste);
+				nome = new JTextField();
+				preco = new JTextField();
+				quantidade = new JTextField();
+				filial = new JTextField();
+				descricao = new JTextArea();
+				areaTexto = new JScrollPane();
+			}
 		
 		frameCadastroProduto.setBounds(60, 60,  600, 600); 
 		frameCadastroProduto.setLayout(null);
@@ -71,5 +98,11 @@ public class InterfaceCadastroProduto {
 		frameCadastroProduto.add(excluirProduto);
 		frameCadastroProduto.add(salvarProduto);
 		
-	}//Fim do método main
+	}
+	
+	public void preencherDados(String[] x, int op) {
+		
+		
+		
+	}
 }//Fim da classe InterfaceCadastroProduto

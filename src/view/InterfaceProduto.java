@@ -1,6 +1,7 @@
 package view;
 
 import controle.*;
+import javax.swing.event.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public class InterfaceProduto implements ActionListener{
 	private String[][] listaProdutos;
 	private JTable tabelaProdutos;
 	private JScrollPane painelProdutos;
+	private JButton botaoEditar = new JButton("Editar Produto");
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
 	private ControleEmpresa ce = new ControleEmpresa();
 	
@@ -29,15 +31,20 @@ public class InterfaceProduto implements ActionListener{
 		botaoPesquisar.setBounds(400, 70, 100, 20);
 		botaoPesquisar.addActionListener(this);
 		
-		botaoCadastrar.setBounds(200,425,200,80);
+		botaoCadastrar.setBounds(305,425,194,80);
 		botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
 		botaoCadastrar.addActionListener(this);
+		botaoEditar.setBounds(100,425,195,80);
+		botaoEditar.setFont(new Font("Arial", Font.BOLD, 15));
+		botaoEditar.addActionListener(this);
 		
 		listaProdutos = ce.getCaracteristicasPrincipais();
 		
 		tabelaProdutos = new JTable(listaProdutos, cabecalho);
 		tabelaProdutos.setDefaultEditor(Object.class, null);
 		tabelaProdutos.getTableHeader().setReorderingAllowed(false);
+		//tabelaProdutos.addMouseListener(this);
+		
 		painelProdutos = new JScrollPane(tabelaProdutos);
 		painelProdutos.setBounds(100, 100, 400, 300);
 		
@@ -46,6 +53,7 @@ public class InterfaceProduto implements ActionListener{
 		frameInterfaceProduto.setVisible(true);
 		frameInterfaceProduto.add(botaoPesquisar);
 		frameInterfaceProduto.add(botaoCadastrar);
+		frameInterfaceProduto.add(botaoEditar);
 		frameInterfaceProduto.add(entradaPesquisa);
 		frameInterfaceProduto.add(label);
 		frameInterfaceProduto.add(painelProdutos);
@@ -55,7 +63,14 @@ public class InterfaceProduto implements ActionListener{
 			Object elemento = evento.getSource();
 			
 			if (elemento == botaoCadastrar) {
-				new InterfaceCadastroProduto();
+				new InterfaceCadastroProduto(ce, 2, new String[0]);
+			
+			} else if(elemento == botaoEditar) {
+				//TODO: fazer algo para verificar se um elemento da lista foi verificado;
+				String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
+						(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
+				new InterfaceCadastroProduto(ce, 1, x);
+			
 			} else if(elemento == botaoPesquisar) {
 				if(entradaPesquisa.getText().equals("")) {
 					tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
@@ -65,4 +80,14 @@ public class InterfaceProduto implements ActionListener{
 			}
 		}
 		
+		public void mouseClicked(MouseEvent e) {
+			/*	
+			String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
+					(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
+			new InterfaceCadastroProduto(ce, 1, x);
+			//System.out.print(tabelaProdutos.getSelectedRow()+ " " );
+			//System.out.println(tabelaProdutos.getEditingColumn());
+			 */
+		}
+
 }//Fim da classe InterfaceProduto

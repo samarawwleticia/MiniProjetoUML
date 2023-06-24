@@ -7,11 +7,12 @@ public class UtilidadesDomesticas extends Produto {
 	private String caracteristicas;
 	
 	
-	public UtilidadesDomesticas(String nome, double preco, int qtd,
+	public UtilidadesDomesticas(String nome, double preco, int qtd, Filial filial,
 			String descricao,String material, String marca, String caracteristicas){
 		setNome(nome);
 		setPreco(preco);
 		setQuantidade(qtd);
+		setFilial(filial);
 		setDescricao(descricao);
 		setMaterial(material);
 		setMarca(marca);

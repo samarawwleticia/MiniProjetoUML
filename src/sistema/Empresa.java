@@ -99,29 +99,6 @@ public class Empresa {
 		return fil;
 	}
 	
-	public Produto buscarItemGeral(String nomeProduto) { 
-		Produto p = null;
-		
-		for (int i = 0; i < numMaxFiliais; i++) {
-			
-			if(filial[i] == null) {
-				break;
-			}
-			
-			Produto[] produto = filial[i].getProduto();
-			
-			for(int c = 0; i < produto.length; c++) {
-				if(produto[c] == null) {
-					break;
-				} else if(produto[c].nome.equals(nomeProduto)) {
-					p = produto[c];
-					break;
-				}
-			}
-		}
-		return p;
-	}
-	
 	public String[] obterNomesCidades() {
 		String[] nomes = new String[26];
 		int i;

@@ -1,6 +1,8 @@
 package controle;
 //import sistema.*;
-
-public class ControleProdutos {
-	
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class ControleProdutos{
+	 
 }
