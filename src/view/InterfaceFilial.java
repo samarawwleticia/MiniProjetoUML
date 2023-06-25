@@ -1,57 +1,58 @@
 package view;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+import controle.*;
 
 
-public class InterfaceFilial implements ActionListener {
+public class InterfaceFilial implements ActionListener{
+	private JFrame janela;
+	private JLabel titulo;
+	private JButton cadastroFilial;
 	
+	private static ControleEmpresa empresa;
+	private JList<String> listaFiliais;
+	private String[] listaNomes = new String[50];
 	
-		JFrame f = new JFrame();
-		JLabel titulo = new JLabel("Filiais");
-		JTextField barrapesquisa = new JTextField("");
-		JButton botaopesquisa = new JButton("pesquisar");
-		JButton cadastrarFilial = new JButton ("cadastrar filial");
+	public InterfaceFilial( ) {
 		
-		InterfaceFilial() {
+		listaNomes = new ControleEmpresa().empresa.getNomesFiliais();
+		listaFiliais = new JList<String>(listaNomes);
 		
-		String[] titulo2 = {"Cidade da Filial", "numero?"};
-		String[][] listaFiliais = {
-				{"Gama", "01"},{"Recanto das Emas", "02"},{"Taguatinga", "03"}
-		};
-		JTable tabelaFiliais = new JTable(listaFiliais, titulo2);
-		JScrollPane painelFiliais = new JScrollPane(tabelaFiliais);
+		janela = new JFrame("Filiais");
+		titulo = new JLabel("Filiais Cadastradas");
+		cadastroFilial = new JButton("Cadastrar Filial");
 		
-		f.setBounds(0, 0, 600, 600);
-		f.setLayout(null);
-		f.setVisible(true);
-		f.add(titulo);
-		titulo.setBounds(250,10, 200, 80);
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		titulo.setBounds(90, 10, 250, 30);
+		listaFiliais.setBounds(20, 50, 350, 120);
+		listaFiliais.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		listaFiliais.setVisibleRowCount(10);
 		
-		f.add(barrapesquisa);
-		barrapesquisa.setBounds(100, 70, 300, 20);
+		cadastroFilial.setBounds(70, 177, 100, 30);
 		
-		f.add(botaopesquisa);
-		botaopesquisa.setBounds(400,70,100,20);
+		janela.setLayout(null);
 		
-		f.add(painelFiliais);
-		painelFiliais.setBounds(100, 100, 400, 300);
+		janela.add(titulo);
+		janela.add(listaFiliais);
+		janela.add(cadastroFilial);
 		
-		f.add(cadastrarFilial);
-		cadastrarFilial.setBounds(200, 425, 200, 40);
-		cadastrarFilial.addActionListener(this);
+		janela.setSize(400, 250);
+		janela.setVisible(true);
+		
+		cadastroFilial.addActionListener(this);
+		
+		
 		
 	}
-	
-	public void actionPerformed(ActionEvent evento) {
-		Object elemento = evento.getSource();
-		
-		if (elemento == cadastrarFilial) {
-			new InterfaceCadastroFilial();
-		}
-		
+
+	@Override
+	public void actionPerformed(ActionEvent ev) {
+			Object src	= ev.getSource();
+			
+			if(src == cadastroFilial)
+				new InterfaceCadastroFilial();
 	}
 	
 }
