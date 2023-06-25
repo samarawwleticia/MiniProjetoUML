@@ -36,7 +36,14 @@ public class ControleEmpresa {
 	public String[] getNomesFiliais( ) {
 		String[] nomesFiliais = new String[filiais.length];
 		for (int i = 0; i < filiais.length; i++) {
+			
+			if(filiais[i] == null) {
+				break;
+			} else {
+				
 			nomesFiliais[i] = filiais[i].getNomeCidade();
+			
+			}
 		}
 		return nomesFiliais;
 		

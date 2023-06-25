@@ -41,7 +41,7 @@ public class InterfaceMenu implements ActionListener {
 	
 	public void actionPerformed(ActionEvent evento) {
 		if(evento.getActionCommand().equals("Filiais")) {
-			new InterfaceFilial();
+			new InterfaceFilial(ce);
 		} else if(evento.getActionCommand().equals("Produtos")){
 			new InterfaceProduto(ce);
 		}

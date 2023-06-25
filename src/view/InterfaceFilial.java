@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import controle.*;
+import controle.ControleEmpresa;
 
 
 public class InterfaceFilial implements ActionListener{
@@ -15,9 +16,11 @@ public class InterfaceFilial implements ActionListener{
 	private JList<String> listaFiliais;
 	private String[] listaNomes = new String[50];
 	
-	public InterfaceFilial( ) {
+	public InterfaceFilial(ControleEmpresa ce ) {
 		
-		listaNomes = new ControleEmpresa().empresa.getNomesFiliais();
+		empresa = ce;
+		
+		listaNomes = new ControleEmpresa().getNomesFiliais();
 		listaFiliais = new JList<String>(listaNomes);
 		
 		janela = new JFrame("Filiais");
