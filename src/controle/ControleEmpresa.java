@@ -1,9 +1,11 @@
 package controle;
 import sistema.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 public class ControleEmpresa {
 	
-	Empresa empresa = new Empresa("Nome da Empresa", "1234567-1234/78");
+	public Empresa empresa = new Empresa("Nome da Empresa", "1234567-1234/78");
 	Filial[] filiais = empresa.getFilial();
 	
 	public ControleEmpresa(){
@@ -18,6 +20,31 @@ public class ControleEmpresa {
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 10,  empresa.buscarFilial("lugar3"),"blablabla", 7, false));
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 40, 13, empresa.buscarFilial("lugar3"), "blablabla", 7, false));
 	}
+	
+
+	
+	//public DefaultListModel<String> getNomesFiliais() {
+    //    DefaultListModel<String> model = new DefaultListModel<>();
+        
+    //    for (Filial filial : filiais) {
+    //        model.addElement(filial.getNomeCidade());
+     //   }
+        
+  //      return model;
+  //  }
+	
+	public String[] getNomesFiliais( ) {
+		String[] nomesFiliais = new String[filiais.length];
+		for (int i = 0; i < filiais.length; i++) {
+			nomesFiliais[i] = filiais[i].getNomeCidade();
+		}
+		return nomesFiliais;
+		
+}
+	
+	
+	
+	
 	
 	public String[][] getCaracteristicasPrincipais() {
 		
