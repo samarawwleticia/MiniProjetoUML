@@ -63,14 +63,16 @@ public class InterfaceProduto implements ActionListener{
 			Object elemento = evento.getSource();
 			
 			if (elemento == botaoCadastrar) {
-				new InterfaceCadastroProduto(ce, 2, new String[0]);
+				new InterfaceCadastroProduto(2, null, null);
 			
 			} else if(elemento == botaoEditar) {
-				//TODO: fazer algo para verificar se um elemento da lista foi verificado;
+				if(tabelaProdutos.getSelectionModel().isSelectionEmpty()) {
+					JOptionPane.showMessageDialog(null, "Você não selecionou o produto que quer editar/excluir!", "Erro: selecione algum produto", 0);
+				}else {
 				String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
 						(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
-				new InterfaceCadastroProduto(ce, 1, x);
-			
+				new InterfaceCadastroProduto(1,ce, x);
+				}
 			} else if(elemento == botaoPesquisar) {
 				if(entradaPesquisa.getText().equals("")) {
 					tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
@@ -78,16 +80,6 @@ public class InterfaceProduto implements ActionListener{
 					tabelaProdutos.setModel(new JTable(ce.buscaItemGeral(entradaPesquisa.getText()), cabecalho).getModel());
 				}
 			}
-		}
-		
-		public void mouseClicked(MouseEvent e) {
-			/*	
-			String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
-					(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
-			new InterfaceCadastroProduto(ce, 1, x);
-			//System.out.print(tabelaProdutos.getSelectedRow()+ " " );
-			//System.out.println(tabelaProdutos.getEditingColumn());
-			 */
 		}
 
 }//Fim da classe InterfaceProduto

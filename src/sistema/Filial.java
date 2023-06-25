@@ -82,7 +82,7 @@ public class Filial {
 	}
 	
 	public String[][] obterCaracteristicasPrincipais() {
-		String[][] caracteriticas = new String[101][4];
+		String[][] caracteriticas = new String[101][5];
 		int i;
 		for(i = 0; i < produto.length; i++) {
 			if (produto[i] == null) {
@@ -92,6 +92,7 @@ public class Filial {
 				caracteriticas[i][1] = String.valueOf(produto[i].getPreco());
 				caracteriticas[i][2] = String.valueOf(produto[i].getQuantidade());
 				caracteriticas[i][3] = nomeCidade;
+				caracteriticas[i][4] = String.valueOf(produto[i].getClass());
 			}
 		}
 		String[][] listaNomes = new String[i][4];

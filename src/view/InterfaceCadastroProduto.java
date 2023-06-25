@@ -11,7 +11,7 @@ import controle.*;
 public class InterfaceCadastroProduto {
 	
 	//--------------------------------------------------------------------
-	String[] listaTeste = {"Escolha uma opção", "Alimentação", "Utilidades Domésticas", "Vestuário"};
+	String[] listaTeste = {"Escolha uma opção", "Alimentação", "Vestuario", "Utilidades Domésticas"};
 		
 	//--------------------------------------------------------------------
 	JFrame frameCadastroProduto = new JFrame("Cadastro de Produto");
@@ -33,19 +33,33 @@ public class InterfaceCadastroProduto {
 	JButton salvarProduto = new JButton("Salvar");
 	JButton excluirProduto = new JButton("Excluir");
 	ControleEmpresa ce;
-		
-	InterfaceCadastroProduto(ControleEmpresa ce, int op, String[] x) {
+	
+	/* Construtor da interface para cadastrar/editar um produto.
+	 * Recebe uma "opção" para decidir se edita um produto (1) ou cadastra um produto (2);
+	 * Recebe um ControleEmpresa para editar ou recebe null para cadastrar um novo produto;
+	 * Recebe um vetor de Strings que é o nome do produto e o nome da cidade da sua filial 
+	 * para editar um produto ou recebe null para cadastrar um novo produto.
+	 */
+	InterfaceCadastroProduto(int op, ControleEmpresa ce, String[] x) {
 		this.ce = ce;
-		
+		dropdownCategoria = new JComboBox<>(listaTeste);
 		if(op == 1) {
 			
 			String[] produto = ce.buscarItem(x[0], x[1]);
 			
-			dropdownCategoria = new JComboBox<>(listaTeste);
+			switch(produto[5]) {
+			case "class sistema.Alimentacao":dropdownCategoria.setSelectedIndex(1); break;
+			case "class sistema.Vestuario": dropdownCategoria.setSelectedIndex(2); break;
+			case "class sistema.UtilidadesDomesticas": dropdownCategoria.setSelectedIndex(3); break;
+			default: JOptionPane.showMessageDialog(null, "Não existe a opção: " + produto[5]);
+			}
+			dropdownCategoria.setEnabled(false);
 			nome = new JTextField(produto[0]);
 			preco = new JTextField(produto[1]);
 			quantidade = new JTextField(produto[2]);
 			filial = new JTextField(produto[3]);
+			filial.setEditable(false);
+			//filial.setEnabled(false);
 			descricao = new JTextArea(produto[4]);
 			areaTexto = new JScrollPane(descricao);
 			}
