@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.Font;
-
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,8 +30,8 @@ public class InterfaceCadastroProduto {
 	JTextField filial;// = new JTextField();
 	JTextArea descricao;// = new JTextArea();
 	JScrollPane areaTexto;// = new JScrollPane(descricao);
-	JButton salvarProduto = new JButton("Salvar");
-	JButton excluirProduto = new JButton("Excluir");
+	JButton botaoSalvar = new JButton("Salvar");
+	JButton botaoExcluir= new JButton("Excluir");
 	ControleEmpresa ce;
 	
 	/* Construtor da interface para cadastrar/editar um produto.
@@ -92,8 +92,8 @@ public class InterfaceCadastroProduto {
 		labelDescricao.setBounds(150, 250, 70, 20);
 		areaTexto.setBounds(230, 250, 220, 80);
 		descricao.setLineWrap(true);
-		salvarProduto.setBounds(170,425,120,80);
-		excluirProduto.setBounds(310,425,120,80);
+		botaoSalvar.setBounds(170,425,120,80);
+		botaoExcluir.setBounds(310,425,120,80);
 		
 		
 		frameCadastroProduto.add(labelCategoria);
@@ -109,14 +109,24 @@ public class InterfaceCadastroProduto {
 		frameCadastroProduto.add(filial);
 		frameCadastroProduto.add(areaTexto);
 		frameCadastroProduto.add(titulo);
-		frameCadastroProduto.add(excluirProduto);
-		frameCadastroProduto.add(salvarProduto);
+		frameCadastroProduto.add(botaoSalvar);
+		frameCadastroProduto.add(botaoExcluir);
 		
 	}
 	
-	public void preencherDados(String[] x, int op) {
+	public void actionPerformed(ActionEvent e){
 		
+		Object elemento = e.getSource();
 		
+		if (elemento == botaoSalvar) {
+			
+			
+			
+		}else if (elemento == botaoExcluir) {
+			
+			
+			
+		}
 		
 	}
 }//Fim da classe InterfaceCadastroProduto

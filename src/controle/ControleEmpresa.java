@@ -9,25 +9,18 @@ public class ControleEmpresa {
 	Filial[] filiais = empresa.getFilial();
 	
 	public ControleEmpresa(){		
-		
 		empresa.adcFilial(new Filial("lugar1", empresa));
 		empresa.adcFilial(new Filial("lugar2", empresa));
 		empresa.adcFilial(new Filial("lugar3", empresa));
 		
-		empresa.buscarFilial("lugar1").adcItem(new Vestuario("mouse", 100, 20, empresa.buscarFilial("lugar1"), "preta basica", 7, "helicoptero" ));
+		empresa.buscarFilial("lugar1").adcItem(new UtilidadesDomesticas("mouse", 100, 20, empresa.buscarFilial("lugar1"), "Ele é wireless!", "Plastico duro", "Corsair", "Meu mouse."));
 		empresa.buscarFilial("lugar1").adcItem(new Vestuario("blusa", 60, 10, empresa.buscarFilial("lugar1"), "preta basica", 7, "helicoptero" ));
 		empresa.buscarFilial("lugar2").adcItem(new Vestuario("calça", 100, 7,  empresa.buscarFilial("lugar2"),"sarja", 42, "unissex" ));
-		empresa.buscarFilial("lugar2").adcItem(new Vestuario("teclado", 120, 10,  empresa.buscarFilial("lugar2"),"sarja", 42, "unissex" ));
+		empresa.buscarFilial("lugar2").adcItem(new UtilidadesDomesticas("teclado", 120, 10,  empresa.buscarFilial("lugar2"),"sarja", "42", "unissex", "Aperta e faz barulho." ));
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 10,  empresa.buscarFilial("lugar3"),"blablabla", 7, false));
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 40, 13, empresa.buscarFilial("lugar3"), "blablabla", 7, false));
-		
-		
-		
-	
 	}
-	
 
-	
 	//public DefaultListModel<String> getNomesFiliais() {
     //    DefaultListModel<String> model = new DefaultListModel<>();
         
@@ -53,11 +46,7 @@ public class ControleEmpresa {
 		return nomesFiliais;
 		
 }
-	
-	
-	
-	
-	
+
 	public String[][] getCaracteristicasPrincipais() {
 		
 		int i;
@@ -87,11 +76,11 @@ public class ControleEmpresa {
 	public String[][] buscaItemGeral(String nomeProduto){
 		int k = 0;
 		String[][] todosProdutos = this.getCaracteristicasPrincipais();
-		String[][] produtos = new String[empresa.getQtdFiliais()][4];
+		String[][] produtos = new String[empresa.getQtdFiliais()][];
 		for(int i = 0; i < todosProdutos.length; i++) {
 			if(todosProdutos[i][0].equals(nomeProduto)) {
-				for(int j = 0; j < 4; j++) {
-					produtos[k][j] = todosProdutos[i][j];
+				for(int j = 0; j < 5; j++) {
+					produtos[k] = todosProdutos[i];
 				}
 				k++;
 			}
@@ -119,12 +108,13 @@ public class ControleEmpresa {
 					break;
 				} else if(produto[c].getNome().equals(nomeProduto) && 
 						produto[c].getFilial().getNomeCidade().equals(nomeFilial)) {
-					p = new String[5];
+					p = new String[6];
 					p[0] = produto[c].getNome();
 					p[1] = String.valueOf(produto[c].getPreco());
 					p[2] = String.valueOf(produto[c].getQuantidade());
 					p[3] = produto[c].getFilial().getNomeCidade();
 					p[4] = produto[c].getDescricao();
+					p[5] = String.valueOf(produto[c].getClass());
 					break;
 				}
 			}
