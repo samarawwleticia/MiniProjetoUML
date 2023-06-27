@@ -49,9 +49,6 @@ public class InterfaceCadastroProduto implements ActionListener {
 	JTextArea descricao = new JTextArea();
 	JTextArea caracteristica = new JTextArea();
 	
-	//JScrollPane areaDescricao = new JScrollPane(descricao);
-	//JScrollPane areaCaracteristica = new JScrollPane(caracteristica);
-	
 	ControleEmpresa ce;
 
 	/*
@@ -101,6 +98,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 		frameCadastroProduto.setLayout(null);
 		frameCadastroProduto.setVisible(true);
 		descricao.setLineWrap(true);
+		dropdownCategoria.addActionListener(this);
 		botaoSalvar.addActionListener(this);
 		botaoExcluir.addActionListener(this);
 		
@@ -121,8 +119,11 @@ public class InterfaceCadastroProduto implements ActionListener {
 			
 				case "class sistema.Alimentacao":
 					dropdownCategoria.setSelectedIndex(1);
+					peso.setText(produto[6]);
+					if(produto[7].equals("true")) {
+						vegetariano.setSelectedIndex(1); }
 					labelDescricao.setBounds(150, 310, 70, 20);
-					descricao.setBounds(230, 310, 220, 35);
+					descricao.setBounds(230, 310, 220, 60);
 					frameCadastroProduto.add(labelVegetariano);
 					frameCadastroProduto.add(labelPeso);
 					frameCadastroProduto.add(vegetariano);
@@ -131,8 +132,10 @@ public class InterfaceCadastroProduto implements ActionListener {
 					
 				case "class sistema.Vestuario":
 					dropdownCategoria.setSelectedIndex(2);
+					tamanho.setText(produto[6]);
+					genero.setText(produto[7]);
 					labelDescricao.setBounds(150, 310, 70, 20);
-					descricao.setBounds(230, 310, 220, 35);
+					descricao.setBounds(230, 310, 220, 60);
 					frameCadastroProduto.add(labelTamanho);
 					frameCadastroProduto.add(labelGenero);
 					frameCadastroProduto.add(tamanho);
@@ -141,8 +144,11 @@ public class InterfaceCadastroProduto implements ActionListener {
 					
 				case "class sistema.UtilidadesDomesticas":
 					dropdownCategoria.setSelectedIndex(3);
+					material.setText(produto[6]);
+					marca.setText(produto[7]);
+					caracteristica.setText(produto[8]);
 					labelDescricao.setBounds(150, 340, 70, 20);
-					descricao.setBounds(230, 340, 220, 35);
+					descricao.setBounds(230, 340, 220, 60);
 					frameCadastroProduto.add(labelMaterial);
 					frameCadastroProduto.add(labelMarca);
 					frameCadastroProduto.add(labelCaracteristica);
@@ -199,9 +205,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 			case ("Alimentação"):
 				labelDescricao.setBounds(150, 310, 70, 20);
-				descricao.setBounds(230, 310, 220, 35);
-				peso.setBounds(230, 250, 70, 20);
-				vegetariano.setBounds(230, 280, 70, 20);
+				descricao.setBounds(230, 310, 220, 60);
 				frameCadastroProduto.remove(labelTamanho);
 				frameCadastroProduto.remove(labelGenero);
 				frameCadastroProduto.remove(labelMaterial);
@@ -220,7 +224,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 			case ("Utilidades Domésticas"):
 				labelDescricao.setBounds(150, 340, 70, 20);
-				descricao.setBounds(230, 340, 220, 35);
+				descricao.setBounds(230, 340, 220, 60);
 				frameCadastroProduto.remove(labelTamanho);
 				frameCadastroProduto.remove(labelGenero);
 				frameCadastroProduto.add(labelMaterial);
@@ -239,7 +243,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 			case ("Vestuário"):
 				labelDescricao.setBounds(150, 310, 70, 20);
-				descricao.setBounds(230, 310, 220, 35);
+				descricao.setBounds(230, 310, 220, 60);
 				frameCadastroProduto.add(labelTamanho);
 				frameCadastroProduto.add(labelGenero);
 				frameCadastroProduto.remove(labelMaterial);
@@ -257,7 +261,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				break;
 			default:
 				labelDescricao.setBounds(150, 250, 70, 20);
-				descricao.setBounds(230, 250, 220, 35);
+				descricao.setBounds(230, 250, 220, 60);
 				frameCadastroProduto.remove(labelTamanho);
 				frameCadastroProduto.remove(labelGenero);
 				frameCadastroProduto.remove(labelMaterial);
@@ -276,8 +280,28 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 			frameCadastroProduto.repaint();
 
-		} else if (elemento == botaoExcluir) {
+		} else if (elemento == botaoSalvar) {
+			
+			switch(dropdownCategoria.getSelectedItem().toString()) {
+			case ("Alimentação"):
+				//ce.cadastrarProduto(null, null, 0, 0, null, 0, false, 0, null, null, null, null);
+				break;
 
+			case ("Utilidades Domésticas"):
+				
+				break;
+
+			case ("Vestuário"):
+				
+				break;
+			
+			default:
+				
+				
+			}		
+
+		}else if (elemento == botaoExcluir) {
+			
 		}
 
 	}

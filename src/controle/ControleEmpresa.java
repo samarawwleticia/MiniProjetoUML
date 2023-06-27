@@ -13,24 +13,16 @@ public class ControleEmpresa {
 		empresa.adcFilial(new Filial("lugar2", empresa));
 		empresa.adcFilial(new Filial("lugar3", empresa));
 		
-		empresa.buscarFilial("lugar1").adcItem(new UtilidadesDomesticas("mouse", 100, 20, empresa.buscarFilial("lugar1"), "Ele é wireless!", "Plastico duro", "Corsair", "Meu mouse."));
-		empresa.buscarFilial("lugar1").adcItem(new Vestuario("blusa", 60, 10, empresa.buscarFilial("lugar1"), "preta basica", 7, "helicoptero" ));
-		empresa.buscarFilial("lugar2").adcItem(new Vestuario("calça", 100, 7,  empresa.buscarFilial("lugar2"),"sarja", 42, "unissex" ));
-		empresa.buscarFilial("lugar2").adcItem(new UtilidadesDomesticas("teclado", 120, 10,  empresa.buscarFilial("lugar2"),"sarja", "42", "unissex", "Aperta e faz barulho." ));
+		empresa.buscarFilial("lugar1").adcItem(new UtilidadesDomesticas("Mouse", 100, 20, empresa.buscarFilial("lugar1"), "Um produto feito pra "
+				+ "espetar a ponta do cabo no computador e ficar mechendo uma setinha no monitor.", "Plastico duro", "Corsair", "Ele pisca!"));
+		empresa.buscarFilial("lugar1").adcItem(new Vestuario("Blusa", 60, 10, empresa.buscarFilial("lugar1"), "preta basica", 7, "helicoptero" ));
+		empresa.buscarFilial("lugar2").adcItem(new Vestuario("Calça", 100, 7,  empresa.buscarFilial("lugar2"),"sarja", 42, "unissex" ));
+		empresa.buscarFilial("lugar2").adcItem(new UtilidadesDomesticas("Teclado", 120, 10,  empresa.buscarFilial("lugar2"),"Teclado brabo "
+				+ "pra vc virar o maior digitador de todos os tempos!", "Plastico", "HyperX", "Aperta e faz barulho." ));
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 10,  empresa.buscarFilial("lugar3"),"blablabla", 7, false));
-		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("caderno", 40, 13, empresa.buscarFilial("lugar3"), "blablabla", 7, false));
+		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Soja", 40, 13, empresa.buscarFilial("lugar3"), "blablabla", 7, true));
 	}
 
-	//public DefaultListModel<String> getNomesFiliais() {
-    //    DefaultListModel<String> model = new DefaultListModel<>();
-        
-    //    for (Filial filial : filiais) {
-    //        model.addElement(filial.getNomeCidade());
-     //   }
-        
-  //      return model;
-  //  }
-	
 	public String[] getNomesFiliais( ) {
 		String[] nomesFiliais = new String[filiais.length];
 		for (int i = 0; i < filiais.length; i++) {
@@ -78,7 +70,7 @@ public class ControleEmpresa {
 		String[][] todosProdutos = this.getCaracteristicasPrincipais();
 		String[][] produtos = new String[empresa.getQtdFiliais()][];
 		for(int i = 0; i < todosProdutos.length; i++) {
-			if(todosProdutos[i][0].equals(nomeProduto)) {
+			if(todosProdutos[i][0].equalsIgnoreCase(nomeProduto)) {
 				for(int j = 0; j < 5; j++) {
 					produtos[k] = todosProdutos[i];
 				}
@@ -95,26 +87,46 @@ public class ControleEmpresa {
 	public String[] buscarItem(String nomeProduto, String nomeFilial) { 
 		String[] p = null;
 		
-		for (int i = 0; i < filiais.length; i++) {
-			
-			if(filiais[i] == null) {
-				break;
-			}
+		for (int i = 0; i < empresa.getQtdFiliais(); i++) {
 			
 			Produto[] produto = filiais[i].getProduto();
 			
-			for(int c = 0; i < produto.length; c++) {
+			for(int c = 0; i < empresa.getQtdFiliais(); c++) {
 				if(produto[c] == null) {
 					break;
+					
 				} else if(produto[c].getNome().equals(nomeProduto) && 
 						produto[c].getFilial().getNomeCidade().equals(nomeFilial)) {
-					p = new String[6];
+					
+					p = new String[9];
+					
+					if(produto[c] instanceof Alimentacao) {
+						
+						Alimentacao a = (Alimentacao)produto[c];
+						p[6] = String.valueOf(a.getPeso());
+						p[7] = String.valueOf(a.getVegetariano());
+						
+					} else if(produto[c] instanceof Vestuario) {
+						
+						Vestuario a = (Vestuario)produto[c];
+						p[6] = String.valueOf(a.getTamanho());
+						p[7] = a.getGenero();
+						
+					} else if(produto[c] instanceof UtilidadesDomesticas) {
+						
+						UtilidadesDomesticas a = (UtilidadesDomesticas)produto[c];
+						p[6] = a.getMaterial();
+						p[7] = a.getMarca();
+						p[8] = a.getCaracteristicas();
+					}
+					
 					p[0] = produto[c].getNome();
 					p[1] = String.valueOf(produto[c].getPreco());
 					p[2] = String.valueOf(produto[c].getQuantidade());
 					p[3] = produto[c].getFilial().getNomeCidade();
 					p[4] = produto[c].getDescricao();
 					p[5] = String.valueOf(produto[c].getClass());
+
 					break;
 				}
 			}

@@ -71,6 +71,7 @@ public class Empresa {
 						} else {
 							filial[c] = filial[c+1]; 
 						}
+					qtdFiliais--;
 					}
 			}
 		}

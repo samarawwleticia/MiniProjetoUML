@@ -6,6 +6,7 @@ public class Filial {
 	private String nomeCidade;
 	private Empresa empresa;
 	private Produto[] produto = new Produto[101];
+	private int qtdProdutos = 0;
 	
 	// Construtor
 	public Filial(String nomeCidade, Empresa empresa){
@@ -38,11 +39,16 @@ public class Filial {
 		this.produto = produto;
 	}
 	
+	public int getQtdProdutos() {
+		return qtdProdutos;
+	}
+	
 	public void adcItem(Produto produto) {
 		for (int i = 0; i < this.produto.length - 1; i++) {
 			// 1 - Verificar se o produto já existe:
 			if (this.produto[i] == null) {
 				this.produto[i] = produto;//Produto não existe, cria o produto
+				qtdProdutos++;
 				break;
 			} else if (this.produto[i].equals(produto)) {//Produto existe, acrescenta sua quantidade
 					this.produto[i].quantidade += produto.quantidade;
@@ -64,6 +70,7 @@ public class Filial {
 							produto[c] = produto[c+1]; 
 						}
 					}
+					qtdProdutos--;
 			}
 		}
 	}
