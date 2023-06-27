@@ -122,4 +122,15 @@ public class ControleEmpresa {
 		return p;
 	}
 	
-}
+	public void cadastrarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
+			boolean vegetariano, int tamanho, String genero, String material, String marca, String caracteristica) {
+		//TODO: Terminar de adicionar os metodos para cadastrar produtos e 
+		//fazer uma estrutura de decisão para ver qual construtor de produto usar
+		
+		 {
+			empresa.buscarFilial(nomeFilial).adcItem(new UtilidadesDomesticas(nomeProduto, preco, qtd, empresa.buscarFilial(nomeFilial), 
+				descricao, material, marca, caracteristica));
+		}
+	}
+	
+}//Fim da classe ControleEmpresa
