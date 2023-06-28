@@ -68,6 +68,7 @@ public class Filial {
 
 		for(int i = indice; i < (qtdProdutos); i++) {
 			produto[i] = produto[i+1];
+			qtdProdutos--;
 		}
 		
 	}
