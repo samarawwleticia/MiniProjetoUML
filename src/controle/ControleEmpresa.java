@@ -1,7 +1,5 @@
 package controle;
 import sistema.*;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 
 public class ControleEmpresa {
 	
@@ -22,7 +20,12 @@ public class ControleEmpresa {
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Leite", 5, 10,  empresa.buscarFilial("lugar3"),"blablabla", 7, false));
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Soja", 40, 13, empresa.buscarFilial("lugar3"), "blablabla", 7, true));
 	}
-
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	
+	
 	public String[] getNomesFiliais( ) {
 		String[] nomesFiliais = new String[filiais.length];
 		for (int i = 0; i < filiais.length; i++) {
@@ -35,40 +38,55 @@ public class ControleEmpresa {
 			
 			}
 		}
-		return nomesFiliais;
-		
+		return nomesFiliais;	
 }
-
+	
+	/**
+	 * Esse método busca dentro da empresa as características 
+	 * mais importantes dos produtos.
+	 * 
+	 * @return Um vetor de duas dimensões de  Strings
+	 * de tamanho [quantidade de produtos cadastrados][4] contendo essas características,
+	 * que são utilizadas na JTable da InterfaceProduto. As características são:
+	 * [0]Nome, [1]Preço, [2]Quantidade e [3]Filial.
+	 * 
+	 */
 	public String[][] getCaracteristicasPrincipais() {
 		
-		int i;
-		int d;
-		int posicao = 0;
-		for(i = 0; i <= empresa.getNumMaxFiliais(); i++) {
-			if (filiais[i] == null) {
-				break;
+		int indice = 0;
+		int qtdProdutosCadastrados = 0;
+		String[][] caracteristicas;
+		//Se eu criar um var int em empresas com um getter para 
+		//acessar o valor dessa var, posso tirar o primeiro for loop.
+		for (int i = 0; i < empresa.getQtdFiliais(); i++){
+		
+			qtdProdutosCadastrados += filiais[i].getQtdProdutos();
+		}
+		
+		caracteristicas = new String[qtdProdutosCadastrados][4];
+		
+		for (int i = 0; i < empresa.getQtdFiliais(); i++){
+			
+			for(int j = 0; j < filiais[i].getQtdProdutos(); j++) {
+				
+				caracteristicas[indice] = filiais[i].obterCaracteristicasPrincipais()[j];
+				indice++;
 			}
 		}
-		String [][] produtos = new String[(i-1)*100][4];
-		String [][] temporario;
-		for(int c = 0; c <= (i-1); c++) {
-			temporario = filiais[c].obterCaracteristicasPrincipais();
-			for(d = 0; d < temporario.length; d++) {
-				produtos[posicao] = temporario[d];
-				posicao += 1;
-			}
-		}
-		String [][] produtosInteiros = new String[posicao][4];
-		for(int j = 0; j < posicao; j++) {
-			produtosInteiros[j] = produtos[j];
-		}
-		return produtosInteiros;
-	}//Fim do método
-	
-	public String[][] buscaItemGeral(String nomeProduto){
+		return caracteristicas;
+	}
+	/**
+	 * 
+	 * @param nomeProduto é a chave de busca para encontrar as características
+	 * de um produto desejado. 
+	 * @return Um vetor de duas dimensões contendo as características 
+	 * de produtos cujos nomes são iguais as chave de pesquisa.
+	 */
+	public String[][] pesquisaItens(String nomeProduto){
 		int k = 0;
 		String[][] todosProdutos = this.getCaracteristicasPrincipais();
 		String[][] produtos = new String[empresa.getQtdFiliais()][];
+		String[][] prod;
 		for(int i = 0; i < todosProdutos.length; i++) {
 			if(todosProdutos[i][0].equalsIgnoreCase(nomeProduto)) {
 				for(int j = 0; j < 5; j++) {
@@ -77,14 +95,21 @@ public class ControleEmpresa {
 				k++;
 			}
 		}
-		String[][] prod = new String[k][4];
+		prod = new String[k][4];
 		for(int l = 0; l < k; l++) {
 			prod[l] = produtos[l];
 		}
 		return prod;
 	}
-	
+	/**
+	 * Esse método busca as características do único produto cujo 
+	 * nome e filial se igualam aos parametros dados.
+	 * @param nomeProduto Primeira chave de pesquisa.
+	 * @param nomeFilial Segunda chave de pesquisa.
+	 * @return Um vetor com as características do produto.
+	 */
 	public String[] buscarItem(String nomeProduto, String nomeFilial) { 
+		
 		String[] p = null;
 		
 		for (int i = 0; i < empresa.getQtdFiliais(); i++) {
@@ -133,48 +158,5 @@ public class ControleEmpresa {
 		}
 		return p;
 	}
-	
-	public void cadastrarEditarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
-			boolean vegetariano, int tamanho, String genero, String material, String marca, String caracteristica, int op, int indice) {
-		
-			Filial filial = empresa.buscarFilial(nomeFilial);
-		
-			if (genero == null && material == null) {
-				
-				if (op == 2) {
-					filial.adcItem(new Alimentacao(nomeProduto, preco, 
-						qtd, filial, descricao, peso, vegetariano));
-				} else {
-					filial.editarItem(new Alimentacao(nomeProduto, preco, 
-							qtd, filial, descricao, peso, vegetariano), indice);
-				}
-				
-			} else if(peso == 0 && genero == null) {
-				
-				if (op == 2) {
-					filial.adcItem(new UtilidadesDomesticas(nomeProduto, preco, 
-						qtd,filial, descricao, material, marca, caracteristica));
-				} else {
-					filial.editarItem(new UtilidadesDomesticas(nomeProduto, preco, 
-							qtd, filial, descricao, material, marca, caracteristica), indice);
-				}	
-				
-			} else if (peso == 0 && material == null) {
-				
-				if (op == 2) {
-					filial.adcItem(new Vestuario(nomeProduto, preco, 
-						qtd, filial, descricao, tamanho, genero));
-				} else {
-					filial.editarItem(new Vestuario(nomeProduto, preco, 
-							qtd,filial, descricao, tamanho, genero), indice);
-				}
-				
-			}
-	}
-	
-	public void excluirProduto(String nomeFilial, int indice) {
-		empresa.buscarFilial(nomeFilial).excluirItem(indice);
-	}
-	
 	
 }//Fim da classe ControleEmpresa
