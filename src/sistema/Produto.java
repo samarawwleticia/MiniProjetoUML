@@ -7,6 +7,7 @@ public abstract class Produto {
 	protected int quantidade;
 	protected Filial filial;
 	protected String descricao;
+	protected int indice;
 	
 		
 	public String getNome() {
@@ -53,6 +54,14 @@ public abstract class Produto {
 		this.descricao = descricao;
 	}
 	
+	public int getIndice() {
+		return indice;
+	}
+	
+	public void setIndice(int indice) {
+		this.indice = indice;
+	}
+	
 	public void editarCaracteristica(String nome, String descricao, int quantidade, Filial filial, double preco) {
 		
 		setNome(nome);
@@ -77,17 +86,18 @@ public abstract class Produto {
 	}
 	
 	public boolean equals(Produto produto) {
-		if (nome == produto.nome && filial == produto.filial) {
+		if (nome.equalsIgnoreCase(produto.nome) && 
+				filial.getNomeCidade().equalsIgnoreCase(produto.filial.getNomeCidade())) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+	/*
 	@Override
 	public String toString() {
 		return "Nome: " + nome + ", Quantidade: " 
 		+ quantidade + ", Preço: R$" + preco + "; \n";
 	}
-	
+	*/
 } // Fim da classe Produto

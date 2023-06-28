@@ -48,31 +48,28 @@ public class Filial {
 			// 1 - Verificar se o produto já existe:
 			if (this.produto[i] == null) {
 				this.produto[i] = produto;//Produto não existe, cria o produto
+				this.produto[i].setIndice(i);
 				qtdProdutos++;
 				break;
 			} else if (this.produto[i].equals(produto)) {//Produto existe, acrescenta sua quantidade
+					this.produto[i].preco += produto.preco;
+					this.produto[i].descricao+= produto.descricao;
 					this.produto[i].quantidade += produto.quantidade;
 					break;
 			}
 		}
 	}
 	
-	public void excluirItem(Produto prod) {
+	public void editarItem(Produto produto, int indice) {
+		this.produto[indice] = produto;
+	}
+	
+	public void excluirItem(int indice) {
 
-		for (int i = 0; i < produto.length - 1; i++) { 
-			if(produto[i] == null) {
-				break;
-			} else if(produto[i].equals(prod)) {
-					for(int c = i; c < produto.length - 1; c++) {
-						if(produto[c] == null) {
-							break;
-						} else {
-							produto[c] = produto[c+1]; 
-						}
-					}
-					qtdProdutos--;
-			}
+		for(int i = indice; i < (qtdProdutos); i++) {
+			produto[i] = produto[i+1];
 		}
+		
 	}
 	
 	public Produto buscarItem(String chave) {

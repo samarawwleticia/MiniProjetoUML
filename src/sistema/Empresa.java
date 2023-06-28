@@ -92,7 +92,7 @@ public class Empresa {
 		for(Filial f: filial) {
 			if (f == null) {
 				break;
-			} else if (f.getNomeCidade() == nomeFilial) {
+			} else if (f.getNomeCidade().equalsIgnoreCase(nomeFilial)) {
 				fil = f;
 				break;
 			}

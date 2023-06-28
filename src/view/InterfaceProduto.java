@@ -19,7 +19,8 @@ public class InterfaceProduto implements ActionListener{
 	private JScrollPane painelProdutos;
 	private JButton botaoEditar = new JButton("Editar Produto");
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
-	private ControleEmpresa ce = new ControleEmpresa();
+	private JButton botaoAtualizar = new JButton("Listar Produtos/Atualizar Lista");
+	private ControleEmpresa ce1 = new ControleEmpresa();
 	
 		public InterfaceProduto(ControleEmpresa ce) {
 		
@@ -31,14 +32,18 @@ public class InterfaceProduto implements ActionListener{
 		botaoPesquisar.setBounds(400, 70, 100, 20);
 		botaoPesquisar.addActionListener(this);
 		
-		botaoCadastrar.setBounds(305,425,194,80);
+		botaoCadastrar.setBounds(305,410,194,50);
 		botaoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
 		botaoCadastrar.addActionListener(this);
-		botaoEditar.setBounds(100,425,195,80);
+		botaoEditar.setBounds(100,410,195,50);
 		botaoEditar.setFont(new Font("Arial", Font.BOLD, 15));
 		botaoEditar.addActionListener(this);
 		
-		listaProdutos = ce.getCaracteristicasPrincipais();
+		botaoAtualizar.setBounds(100,470,398,50);
+		botaoAtualizar.setFont(new Font("Arial", Font.BOLD, 15));
+		botaoAtualizar.addActionListener(this);
+
+		listaProdutos = ce1.getCaracteristicasPrincipais();
 		
 		tabelaProdutos = new JTable(listaProdutos, cabecalho);
 		tabelaProdutos.setDefaultEditor(Object.class, null);
@@ -54,6 +59,7 @@ public class InterfaceProduto implements ActionListener{
 		frameInterfaceProduto.add(botaoPesquisar);
 		frameInterfaceProduto.add(botaoCadastrar);
 		frameInterfaceProduto.add(botaoEditar);
+		frameInterfaceProduto.add(botaoAtualizar);
 		frameInterfaceProduto.add(entradaPesquisa);
 		frameInterfaceProduto.add(label);
 		frameInterfaceProduto.add(painelProdutos);
@@ -63,7 +69,7 @@ public class InterfaceProduto implements ActionListener{
 			Object elemento = evento.getSource();
 			
 			if (elemento == botaoCadastrar) {
-				new InterfaceCadastroProduto(2, null, null);
+				new InterfaceCadastroProduto(2, ce1, null);
 			
 			} else if(elemento == botaoEditar) {
 				if(tabelaProdutos.getSelectionModel().isSelectionEmpty()) {
@@ -71,14 +77,18 @@ public class InterfaceProduto implements ActionListener{
 				}else {
 				String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
 						(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
-				new InterfaceCadastroProduto(1,ce, x);
+				new InterfaceCadastroProduto(1,ce1, x);
 				}
 			} else if(elemento == botaoPesquisar) {
 				if(entradaPesquisa.getText().equals("")) {
-					tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
+					JOptionPane.showMessageDialog(null, "Digite algum nome!");
+					//tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
 				} else {
-					tabelaProdutos.setModel(new JTable(ce.buscaItemGeral(entradaPesquisa.getText()), cabecalho).getModel());
+					tabelaProdutos.setModel(new JTable(ce1.buscaItemGeral(entradaPesquisa.getText()), cabecalho).getModel());
 				}
+			} else if(elemento == botaoAtualizar) {
+				listaProdutos = ce1.getCaracteristicasPrincipais();
+				tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
 			}
 		}
 

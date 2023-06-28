@@ -34,7 +34,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 	String[] listaOpcoesCategoria = { "Escolha uma opção", "Alimentação", "Vestuário", "Utilidades Domésticas" };
 	String[] listaValoresBinarios = {"Não", "Sim"};
 	JComboBox<String> dropdownCategoria = new JComboBox<>(listaOpcoesCategoria);
-	JComboBox<String> vegetariano = new JComboBox<>(listaValoresBinarios);
+	JComboBox<String> dropdownVegetariano = new JComboBox<>(listaValoresBinarios);
 	
 	JTextField nome = new JTextField();
 	JTextField preco = new JTextField();
@@ -49,7 +49,9 @@ public class InterfaceCadastroProduto implements ActionListener {
 	JTextArea descricao = new JTextArea();
 	JTextArea caracteristica = new JTextArea();
 	
-	ControleEmpresa ce;
+	int op;
+	int indiceProduto;
+	ControleEmpresa ce2;
 
 	/*
 	 * Construtor da interface para cadastrar/editar um produto. Recebe uma "opção"
@@ -59,6 +61,9 @@ public class InterfaceCadastroProduto implements ActionListener {
 	 * filial para editar um produto ou recebe null para cadastrar um novo produto.
 	 */
 	InterfaceCadastroProduto(int op, ControleEmpresa ce, String[] x) {
+		
+		this.ce2 = ce;
+		this.op = op;
 		
 		frameCadastroProduto.setBounds(60, 60, 600, 600);
 		
@@ -83,7 +88,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 		quantidade.setBounds(230, 190, 220, 20);
 		filial.setBounds(230, 220, 220, 20);
 		peso.setBounds(230, 250, 220, 20);
-		vegetariano.setBounds(230, 280, 220, 20);
+		dropdownVegetariano.setBounds(230, 280, 220, 20);
 		marca.setBounds(230, 250, 220, 20);
 		material.setBounds(230, 280, 220, 20);
 		caracteristica.setBounds(230, 310, 220, 20);
@@ -105,8 +110,6 @@ public class InterfaceCadastroProduto implements ActionListener {
 		
 		if (op == 1) {
 			
-			this.ce = ce;
-			
 			String[] produto = ce.buscarItem(x[0], x[1]);
 			
 			nome.setText(produto[0]);
@@ -114,6 +117,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 			quantidade.setText(produto[2]);
 			filial.setText(produto[3]);
 			descricao.setText(produto[4]);
+			indiceProduto = Integer.parseInt(produto[9]);
 			
 			switch (produto[5]) {
 			
@@ -121,12 +125,12 @@ public class InterfaceCadastroProduto implements ActionListener {
 					dropdownCategoria.setSelectedIndex(1);
 					peso.setText(produto[6]);
 					if(produto[7].equals("true")) {
-						vegetariano.setSelectedIndex(1); }
+						dropdownVegetariano.setSelectedIndex(1); }
 					labelDescricao.setBounds(150, 310, 70, 20);
 					descricao.setBounds(230, 310, 220, 60);
 					frameCadastroProduto.add(labelVegetariano);
 					frameCadastroProduto.add(labelPeso);
-					frameCadastroProduto.add(vegetariano);
+					frameCadastroProduto.add(dropdownVegetariano);
 					frameCadastroProduto.add(peso);
 					break;
 					
@@ -213,7 +217,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				frameCadastroProduto.remove(labelCaracteristica);
 				frameCadastroProduto.add(labelVegetariano);
 				frameCadastroProduto.add(labelPeso);
-				frameCadastroProduto.add(vegetariano);
+				frameCadastroProduto.add(dropdownVegetariano);
 				frameCadastroProduto.add(peso);
 				frameCadastroProduto.remove(tamanho);
 				frameCadastroProduto.remove(genero);
@@ -237,7 +241,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				frameCadastroProduto.add(caracteristica);
 				frameCadastroProduto.remove(tamanho);
 				frameCadastroProduto.remove(genero);
-				frameCadastroProduto.remove(vegetariano);
+				frameCadastroProduto.remove(dropdownVegetariano);
 				frameCadastroProduto.remove(peso);
 				break;
 
@@ -256,7 +260,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				frameCadastroProduto.remove(material);
 				frameCadastroProduto.remove(marca);
 				frameCadastroProduto.remove(caracteristica);
-				frameCadastroProduto.remove(vegetariano);
+				frameCadastroProduto.remove(dropdownVegetariano);
 				frameCadastroProduto.remove(peso);
 				break;
 			default:
@@ -274,7 +278,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				frameCadastroProduto.remove(material);
 				frameCadastroProduto.remove(marca);
 				frameCadastroProduto.remove(caracteristica);
-				frameCadastroProduto.remove(vegetariano);
+				frameCadastroProduto.remove(dropdownVegetariano);
 				frameCadastroProduto.remove(peso);
 			}
 
@@ -282,27 +286,65 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 		} else if (elemento == botaoSalvar) {
 			
-			switch(dropdownCategoria.getSelectedItem().toString()) {
-			case ("Alimentação"):
-				//ce.cadastrarProduto(null, null, 0, 0, null, 0, false, 0, null, null, null, null);
-				break;
-
-			case ("Utilidades Domésticas"):
-				
-				break;
-
-			case ("Vestuário"):
-				
-				break;
+			try {
+				boolean b;
+				if(dropdownVegetariano.getSelectedItem().equals("Sim")) {
+					b = true;
+				} else {
+					b = false;
+				}
 			
-			default:
+				switch(dropdownCategoria.getSelectedItem().toString()) {
 				
+				case ("Alimentação"):
 				
-			}		
+					ce2.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+						Integer.parseInt(quantidade.getText()), descricao.getText(), 
+						Double.parseDouble(peso.getText()), b, 0, null, null, null, null, op, indiceProduto);
+						mensagemSucesso();
+						break;
+						
+				case ("Utilidades Domésticas"):
+					
+					ce2.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+						Integer.parseInt(quantidade.getText()), descricao.getText(), 0, false, 0, null, 
+						material.getText(), marca.getText(), caracteristica.getText(), op, indiceProduto);
+						mensagemSucesso();
+							
+						break;
+
+				case ("Vestuário"):
+					
+					ce2.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+						Integer.parseInt(quantidade.getText()), descricao.getText(), 
+						0, false, Integer.parseInt(tamanho.getText()), genero.getText(), null, null, null, op, indiceProduto);
+						mensagemSucesso();
+						break;
+			
+				default:
+					JOptionPane.showMessageDialog(null, "Selecione uma categoria para o produto.");
+				
+				}		
+			} catch(NullPointerException npe) {
+				mensagemErro();
+			} catch(NumberFormatException nfe) {
+			mensagemErro();
+			}
 
 		}else if (elemento == botaoExcluir) {
 			
+			ce2.excluirProduto(filial.getText(), indiceProduto);
+			mensagemSucesso();
 		}
 
 	}
+	
+	public void mensagemErro() {
+		JOptionPane.showMessageDialog(null, "Erro");
+	}
+	public void mensagemSucesso() {
+		JOptionPane.showMessageDialog(null, "Meus parabéns, agora vai se foder!");
+		frameCadastroProduto.dispose();
+	}
+	
 }// Fim da classe InterfaceCadastroProduto

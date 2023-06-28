@@ -98,7 +98,7 @@ public class ControleEmpresa {
 				} else if(produto[c].getNome().equals(nomeProduto) && 
 						produto[c].getFilial().getNomeCidade().equals(nomeFilial)) {
 					
-					p = new String[9];
+					p = new String[10];
 					
 					if(produto[c] instanceof Alimentacao) {
 						
@@ -126,7 +126,7 @@ public class ControleEmpresa {
 					p[3] = produto[c].getFilial().getNomeCidade();
 					p[4] = produto[c].getDescricao();
 					p[5] = String.valueOf(produto[c].getClass());
-
+					p[9] = String.valueOf(produto[c].getIndice());
 					break;
 				}
 			}
@@ -134,15 +134,47 @@ public class ControleEmpresa {
 		return p;
 	}
 	
-	public void cadastrarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
-			boolean vegetariano, int tamanho, String genero, String material, String marca, String caracteristica) {
-		//TODO: Terminar de adicionar os metodos para cadastrar produtos e 
-		//fazer uma estrutura de decisão para ver qual construtor de produto usar
+	public void cadastrarEditarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
+			boolean vegetariano, int tamanho, String genero, String material, String marca, String caracteristica, int op, int indice) {
 		
-		 {
-			empresa.buscarFilial(nomeFilial).adcItem(new UtilidadesDomesticas(nomeProduto, preco, qtd, empresa.buscarFilial(nomeFilial), 
-				descricao, material, marca, caracteristica));
-		}
+			Filial filial = empresa.buscarFilial(nomeFilial);
+		
+			if (genero == null && material == null) {
+				
+				if (op == 2) {
+					filial.adcItem(new Alimentacao(nomeProduto, preco, 
+						qtd, filial, descricao, peso, vegetariano));
+				} else {
+					filial.editarItem(new Alimentacao(nomeProduto, preco, 
+							qtd, filial, descricao, peso, vegetariano), indice);
+				}
+				
+			} else if(peso == 0 && genero == null) {
+				
+				if (op == 2) {
+					filial.adcItem(new UtilidadesDomesticas(nomeProduto, preco, 
+						qtd,filial, descricao, material, marca, caracteristica));
+				} else {
+					filial.editarItem(new UtilidadesDomesticas(nomeProduto, preco, 
+							qtd, filial, descricao, material, marca, caracteristica), indice);
+				}	
+				
+			} else if (peso == 0 && material == null) {
+				
+				if (op == 2) {
+					filial.adcItem(new Vestuario(nomeProduto, preco, 
+						qtd, filial, descricao, tamanho, genero));
+				} else {
+					filial.editarItem(new Vestuario(nomeProduto, preco, 
+							qtd,filial, descricao, tamanho, genero), indice);
+				}
+				
+			}
 	}
+	
+	public void excluirProduto(String nomeFilial, int indice) {
+		empresa.buscarFilial(nomeFilial).excluirItem(indice);
+	}
+	
 	
 }//Fim da classe ControleEmpresa
