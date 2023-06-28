@@ -51,7 +51,8 @@ public class InterfaceCadastroProduto implements ActionListener {
 	
 	int op;
 	int indiceProduto;
-	ControleEmpresa ce2;
+	ControleEmpresa ce;
+	ControleProdutos cp;
 
 	/*
 	 * Construtor da interface para cadastrar/editar um produto. Recebe uma "opção"
@@ -62,8 +63,9 @@ public class InterfaceCadastroProduto implements ActionListener {
 	 */
 	InterfaceCadastroProduto(int op, ControleEmpresa ce, String[] x) {
 		
-		this.ce2 = ce;
+		this.ce = ce;
 		this.op = op;
+		cp = new ControleProdutos(this.ce);
 		
 		frameCadastroProduto.setBounds(60, 60, 600, 600);
 		
@@ -298,7 +300,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				
 				case ("Alimentação"):
 				
-					ce2.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+					cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
 						Integer.parseInt(quantidade.getText()), descricao.getText(), 
 						Double.parseDouble(peso.getText()), b, 0, null, null, null, null, op, indiceProduto);
 						mensagemSucesso();
@@ -306,7 +308,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 						
 				case ("Utilidades Domésticas"):
 					
-					ce2.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+					cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
 						Integer.parseInt(quantidade.getText()), descricao.getText(), 0, false, 0, null, 
 						material.getText(), marca.getText(), caracteristica.getText(), op, indiceProduto);
 						mensagemSucesso();
@@ -315,7 +317,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 				case ("Vestuário"):
 					
-					ce2.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+					cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
 						Integer.parseInt(quantidade.getText()), descricao.getText(), 
 						0, false, Integer.parseInt(tamanho.getText()), genero.getText(), null, null, null, op, indiceProduto);
 						mensagemSucesso();
@@ -333,7 +335,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 		}else if (elemento == botaoExcluir) {
 			
-			ce2.excluirProduto(filial.getText(), indiceProduto);
+			cp.excluirProduto(filial.getText(), indiceProduto);
 			mensagemSucesso();
 		}
 

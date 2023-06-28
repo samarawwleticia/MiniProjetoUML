@@ -1,29 +1,37 @@
 package view;
 
 import controle.*;
-import javax.swing.event.*;
 import javax.swing.*;
-import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.*;
+
+/**
+ * Essa classe gera uma interface gráfica para apresentar todos os produtos cadastrados, 
+ * bem como as opções para cadastrar e editar produtos, pesquisar um produto e atualizar 
+ * a lista de produtos.
+ *  
+ * @author João Pedro. 
+ */
 
 public class InterfaceProduto implements ActionListener{
 	
 	private JFrame frameInterfaceProduto = new JFrame("Produtos");
 	private JLabel label = new JLabel("Produtos");
-	private JTextField entradaPesquisa = new JTextField();
-	private JButton botaoPesquisar = new JButton("Pesquisar");
-	private String[] cabecalho = {"Produto", "Preço", "Quantidade", "Filial"};
-	private String[][] listaProdutos;
-	private JTable tabelaProdutos;
-	private JScrollPane painelProdutos;
 	private JButton botaoEditar = new JButton("Editar Produto");
 	private JButton botaoCadastrar = new JButton("Cadastrar Produto");	
 	private JButton botaoAtualizar = new JButton("Listar Produtos/Atualizar Lista");
-	private ControleEmpresa ce1 = new ControleEmpresa();
+	private JButton botaoPesquisar = new JButton("Pesquisar");
+	private JTextField entradaPesquisa = new JTextField();
+	private JTable tabelaProdutos;
+	private JScrollPane painelProdutos;
+	private String[] cabecalho = {"Produto", "Preço", "Quantidade", "Filial"};
+	private String[][] listaProdutos;
+	private ControleEmpresa ce;
 	
 		public InterfaceProduto(ControleEmpresa ce) {
 		
+		this.ce = ce;
+			
 		label.setBounds(250, 10, 200, 80);
 		label.setFont(new Font("Arial", Font.BOLD, 20));
 		
@@ -43,12 +51,11 @@ public class InterfaceProduto implements ActionListener{
 		botaoAtualizar.setFont(new Font("Arial", Font.BOLD, 15));
 		botaoAtualizar.addActionListener(this);
 
-		listaProdutos = ce1.getCaracteristicasPrincipais();
+		listaProdutos = ce.getCaracteristicasPrincipais();
 		
 		tabelaProdutos = new JTable(listaProdutos, cabecalho);
 		tabelaProdutos.setDefaultEditor(Object.class, null);
 		tabelaProdutos.getTableHeader().setReorderingAllowed(false);
-		//tabelaProdutos.addMouseListener(this);
 		
 		painelProdutos = new JScrollPane(tabelaProdutos);
 		painelProdutos.setBounds(100, 100, 400, 300);
@@ -68,26 +75,31 @@ public class InterfaceProduto implements ActionListener{
 		public void actionPerformed(ActionEvent evento) {
 			Object elemento = evento.getSource();
 			
-			if (elemento == botaoCadastrar) {
-				new InterfaceCadastroProduto(2, ce1, null);
-			
-			} else if(elemento == botaoEditar) {
-				if(tabelaProdutos.getSelectionModel().isSelectionEmpty()) {
-					JOptionPane.showMessageDialog(null, "Você não selecionou o produto que quer editar/excluir!", "Erro: selecione algum produto", 0);
-				}else {
-				String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
-						(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
-				new InterfaceCadastroProduto(1,ce1, x);
-				}
-			} else if(elemento == botaoPesquisar) {
+			if(elemento == botaoPesquisar) {
+				
 				if(entradaPesquisa.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Digite algum nome!");
-					//tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
 				} else {
-					tabelaProdutos.setModel(new JTable(ce1.buscaItemGeral(entradaPesquisa.getText()), cabecalho).getModel());
+					tabelaProdutos.setModel(new JTable(ce.pesquisaItens(entradaPesquisa.getText()), 
+							cabecalho).getModel());
 				}
+				
+			} else if (elemento == botaoCadastrar) {
+				new InterfaceCadastroProduto(2, ce, null);
+			
+			} else if(elemento == botaoEditar) {
+				
+				if(tabelaProdutos.getSelectionModel().isSelectionEmpty()) {
+					JOptionPane.showMessageDialog(null, "Você não selecionou o produto que quer editar/excluir!", "Erro: selecione algum produto", 0);
+				}else {					
+				String[] x = {(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0),
+						(String)tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3) };
+				new InterfaceCadastroProduto(1,ce, x);
+				}
+				
 			} else if(elemento == botaoAtualizar) {
-				listaProdutos = ce1.getCaracteristicasPrincipais();
+				
+				listaProdutos = ce.getCaracteristicasPrincipais();
 				tabelaProdutos.setModel(new JTable(listaProdutos, cabecalho).getModel());
 			}
 		}
