@@ -62,13 +62,14 @@ public abstract class Produto {
 		this.indice = indice;
 	}
 	
-	public void editarCaracteristica(String nome, String descricao, int quantidade, Filial filial, double preco) {
+	public void editarCaracteristica(String nome, double preco, int quantidade,String descricao, Filial filial) {
 		
 		setNome(nome);
-		setDescricao(descricao);
-		setQuantidade(quantidade);
-		setFilial(filial);
 		setPreco(preco); 
+		setQuantidade(quantidade);
+		setDescricao(descricao);
+		setFilial(filial);
+		
 	}
 	
 	public void setEntrada(int quantidade) {
@@ -93,11 +94,10 @@ public abstract class Produto {
 			return false;
 		}
 	}
-	/*
+	
 	@Override
 	public String toString() {
 		return "Nome: " + nome + ", Quantidade: " 
 		+ quantidade + ", Preço: R$" + preco + "; \n";
 	}
-	*/
 } // Fim da classe Produto

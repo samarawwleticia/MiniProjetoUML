@@ -1,22 +1,48 @@
 package controle;
 
-//import sistema.Alimentacao;
-//import sistema.Filial;
 import sistema.*;
-//import sistema.UtilidadesDomesticas;
-//import sistema.Vestuario;
+
+/**
+ * @author João Pedro
+ * Essa classe é responsável por fazer alterações totalmente relacionadas aos produtos. 
+ */
+
 public class ControleProdutos{
 	
-	ControleEmpresa ce;
-	Empresa empresa;
-	Filial filiais[];
+	private Empresa empresa;
+	
+	/**
+	 * O construtor serve apenas para receber o ControleEmpresa para obter a Empresa.
+	 * @param ce
+	 */
 	
 	public ControleProdutos(ControleEmpresa ce){
 		
-		this.ce = ce;
 		this.empresa = ce.getEmpresa();
-		this.filiais = empresa.getFilial();
 	}
+	
+	/**
+	 * Esse método serve tanto para cadastrar quanto editar um produto, a 
+	 * depender do valor de op. O método recebe todos os valores de todas as classes 
+	 * filhas de Produto, porém utiliza apenas os necessárioa para cada classe filha 
+	 * a depender de quais valores são realmente entregues.
+	 * 
+	 * @param nomeFilial
+	 * @param nomeProduto
+	 * @param preco
+	 * @param qtd
+	 * @param descricao
+	 * @param peso
+	 * @param vegetariano
+	 * @param tamanho
+	 * @param genero
+	 * @param material
+	 * @param marca
+	 * @param caracteristica
+	 * @param op Decide se o produto está apenas sendo editado ou se está sendo cadastrado. 
+	 * Se 2, cadastra o produto. Se 1, edita o produto.  
+	 * @param indice É o índice do produto dentro de uma filial, serve para facilitar o acesso a um produto.
+	 */
 	
 	public void cadastrarEditarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
 			boolean vegetariano, int tamanho, String genero, String material, String marca, String caracteristica, int op, int indice) {
@@ -55,41 +81,13 @@ public class ControleProdutos{
 				
 		}
 	}
-	
+	/**
+	 * Exclui o produto a partir do seu índice. :P
+	 * @param nomeFilial
+	 * @param indice
+	 */
 	public void excluirProduto(String nomeFilial, int indice) {
 		empresa.buscarFilial(nomeFilial).excluirItem(indice);
 	}
-	
-	
-	/*Codigo a prova de erros externos:
-	public String[][] getCaracteristicasPrincipais() {
-		int i;
-		int d;
-		int posicao = 0;
-		String [][] produtos;
-		String [][] temporario;
-		String [][] produtosInteiros;
-		
-		for(i = 0; i <= empresa.getNumMaxFiliais(); i++) {
-			if (filiais[i] == null) {
-				break;
-			}
-		}
-		produtos = new String[(i-1)*100][4];
-		
-		for(int c = 0; c <= (i-1); c++) {
-			temporario = filiais[c].obterCaracteristicasPrincipais();
-			for(d = 0; d < temporario.length; d++) {
-				produtos[posicao] = temporario[d];
-				posicao += 1;
-			}
-		}
-		produtosInteiros = new String[posicao][4];
-		for(int j = 0; j < posicao; j++) {
-			produtosInteiros[j] = produtos[j];
-		}
-		return produtosInteiros;
-	}
-	*/
 	
 } // Fim da classe.

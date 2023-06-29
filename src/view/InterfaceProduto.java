@@ -72,6 +72,9 @@ public class InterfaceProduto implements ActionListener{
 		frameInterfaceProduto.add(painelProdutos);
 		}
 		
+		/**
+		 * Método para detectar interações nos componentes do JFrame.
+		 */
 		public void actionPerformed(ActionEvent evento) {
 			Object elemento = evento.getSource();
 			

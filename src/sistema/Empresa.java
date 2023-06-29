@@ -48,6 +48,12 @@ public class Empresa {
 		return numMaxFiliais;
 	}
 	
+	/**
+	 * Procura um item igual, se houver, o cadastro da filial 
+	 * é interompido. Se não encontra uma filial igual, 
+	 * adiciona a filial na primeira posição vazia. 
+	 * @param filial
+	 */
 	public void adcFilial(Filial filial) {
 		for (int i = 0; i < numMaxFiliais - 1; i++) {
 			if (this.filial[i] == null) {
@@ -60,6 +66,12 @@ public class Empresa {
 		}
 	}
 	
+	/**
+	 * Procura uma filial igual á do parametro, se encontra, a filial
+	 * é substituida pela filial na posição seguinte, até que a ultima 
+	 * filial recebe o valor nulo.
+	 * @param fil
+	 */
 	public void excluirFilial(Filial fil) {
 		for (int i = 0; i < numMaxFiliais - 1; i++) { 
 			if(filial[i] == null) {
@@ -77,16 +89,11 @@ public class Empresa {
 		}
 	}
 	
-	public void listarItensGeral() {
-		for (int i = 0; i < numMaxFiliais; i++) {
-			if (filial[i] == null) {
-				break;
-			} else {
-				filial[i].listarItens();
-			}
-		}
-	}
-	
+	/**
+	 * Busca a filial cujo nome seja igual ao parametro.
+	 * @param nomeFilial
+	 * @return Filial
+	 */
 	public Filial buscarFilial(String nomeFilial) {
 		Filial fil = null;
 		for(Filial f: filial) {
@@ -98,23 +105,6 @@ public class Empresa {
 			}
 		}
 		return fil;
-	}
-	
-	public String[] obterNomesCidades() {
-		String[] nomes = new String[26];
-		int i;
-		for(i = 0; i < numMaxFiliais; i++) {
-			if (filial[i] == null) {
-				break;
-			} else {
-				nomes[i] = filial[i].getNomeCidade();
-			}
-		}
-		String[] listaNomes = new String[i];
-		for(int c = 0; c < i; c++) {
-			listaNomes[c] = nomes[c];
-		}
-		return listaNomes;
 	}
 	
 	@Override

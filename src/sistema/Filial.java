@@ -107,16 +107,6 @@ public class Filial {
 		return listaNomes;
 	}
 	
-	public void listarItens() {
-		for(Produto n: produto) {
-			if (n == null) {
-				break;
-			} else {
-				System.out.println(n);
-			}
-		}
-	}
-	
 	@Override
 	public String toString() {
 		return "Localização: " + nomeCidade + ", Empresa: " + empresa.getRazaoSocial();

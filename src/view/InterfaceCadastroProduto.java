@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import controle.*;
-import sistema.Empresa.*;
 
 public class InterfaceCadastroProduto implements ActionListener {
 
@@ -60,6 +58,9 @@ public class InterfaceCadastroProduto implements ActionListener {
 	 * ControleEmpresa para editar ou recebe null para cadastrar um novo produto;
 	 * Recebe um vetor de Strings que é o nome do produto e o nome da cidade da sua
 	 * filial para editar um produto ou recebe null para cadastrar um novo produto.
+	 * As posições fixas e instâncias de cada componente na interface gráfica já ficam prontos e
+	 * na hora de mudar o que há ou não na tela baseado no tipo de produto, basta colocar ou 
+	 * remover esses compoonentes do JFrame.
 	 */
 	InterfaceCadastroProduto(int op, ControleEmpresa ce, String[] x) {
 		
@@ -200,7 +201,15 @@ public class InterfaceCadastroProduto implements ActionListener {
 		frameCadastroProduto.add(botaoSalvar);
 		frameCadastroProduto.add(botaoExcluir);
 	}
-
+	
+	/**
+	 * Método para detectar interações nos componentes do JFrame.
+	 * A cada alteração no JComboBox, a tela é modificada para se adequal a classe selecionada.
+	 * Pressionar o botão de salvar detecta se o campo de nome do produto está vazio, se não,
+	 * tenta fazer o cadastro transfornmando os Strings nos campos de texto em numeros. Caso o
+	 * cadastro seja bem sucedido, aparecerá uma mensagem de sucesso, se não, aparece uma mensagem de eroo.
+	 */
+	
 	public void actionPerformed(ActionEvent e) {
 
 		Object elemento = e.getSource();
@@ -288,64 +297,119 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 		} else if (elemento == botaoSalvar) {
 			
-			try {
-				boolean b;
-				if(dropdownVegetariano.getSelectedItem().equals("Sim")) {
-					b = true;
-				} else {
-					b = false;
-				}
+			if(nome.getText().equals("")) {
+				mensagemErroNome();
+			} else {
 			
-				switch(dropdownCategoria.getSelectedItem().toString()) {
+				try {
+					boolean b;
+					if(dropdownVegetariano.getSelectedItem().equals("Sim")) {
+						b = true;
+					} else {
+						b = false;
+					}
+			
+					switch(dropdownCategoria.getSelectedItem().toString()) {
 				
-				case ("Alimentação"):
+					case ("Alimentação"):
 				
-					cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
-						Integer.parseInt(quantidade.getText()), descricao.getText(), 
-						Double.parseDouble(peso.getText()), b, 0, null, null, null, null, op, indiceProduto);
-						mensagemSucesso();
-						break;
+						cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+							Integer.parseInt(quantidade.getText()), descricao.getText(), 
+							Double.parseDouble(peso.getText()), b, 0, null, null, null, null, op, indiceProduto);
 						
-				case ("Utilidades Domésticas"):
-					
-					cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
-						Integer.parseInt(quantidade.getText()), descricao.getText(), 0, false, 0, null, 
-						material.getText(), marca.getText(), caracteristica.getText(), op, indiceProduto);
-						mensagemSucesso();
-							
-						break;
+						if(op == 1) {
+							mensagemEdicaoSucesso();
+						}else {
+							mensagemCadastroSucesso();
+						}
 
-				case ("Vestuário"):
+							break;
+						
+					case ("Utilidades Domésticas"):
 					
-					cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
-						Integer.parseInt(quantidade.getText()), descricao.getText(), 
-						0, false, Integer.parseInt(tamanho.getText()), genero.getText(), null, null, null, op, indiceProduto);
-						mensagemSucesso();
-						break;
+						cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+							Integer.parseInt(quantidade.getText()), descricao.getText(), 0, false, 0, null, 
+							material.getText(), marca.getText(), caracteristica.getText(), op, indiceProduto);
+							
+						if(op == 1) {
+							mensagemEdicaoSucesso();
+						}else {
+							mensagemCadastroSucesso();
+						}
+							break;
+
+					case ("Vestuário"):
+					
+						cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+							Integer.parseInt(quantidade.getText()), descricao.getText(), 
+							0, false, Integer.parseInt(tamanho.getText()), genero.getText(), null, null, null, op, indiceProduto);
+						if(op == 1) {
+							mensagemEdicaoSucesso();
+						}else {
+							mensagemCadastroSucesso();
+						}
+							break;
 			
-				default:
-					JOptionPane.showMessageDialog(null, "Selecione uma categoria para o produto.");
+					default:
+						JOptionPane.showMessageDialog(null, "Selecione uma categoria para o produto.");
 				
-				}		
-			} catch(NullPointerException npe) {
-				mensagemErro();
-			} catch(NumberFormatException nfe) {
-			mensagemErro();
+					}		
+				} catch(NullPointerException npe) {
+					
+					if(op == 1) {
+						mensagemEdicaoErro();
+					}else {
+						mensagemCadastroErro();
+					}
+					
+				} catch(NumberFormatException nfe) {
+					
+					if(op == 1) {
+						mensagemEdicaoErro();
+					}else {
+						mensagemCadastroErro();
+					}
+				}
 			}
 
 		}else if (elemento == botaoExcluir) {
 			
 			cp.excluirProduto(filial.getText(), indiceProduto);
-			mensagemSucesso();
+			mensagemExclusaoSucesso();
 		}
 
 	}
-	
-	public void mensagemErro() {
-		JOptionPane.showMessageDialog(null, "Erro");
+	/*
+	 * Métodos para enviar mensagens de erro e de sucesso a depender do que ocorrer ao tentar cadastrar um produto. 
+	 */
+	public void mensagemCadastroErro() {
+		JOptionPane.showMessageDialog(null, "O cadastro do produto não foi concluído."
+				+ "Verifique se o nome da filial está correto e se os campos numéricos "
+				+ "como preço, quantidade, peso e/ou tamanho foram digitados corretamente.");
 	}
-	public void mensagemSucesso() {
-		JOptionPane.showMessageDialog(null, "Meus parabéns, agora vai se foder!");
+	public void mensagemErroNome() {
+		JOptionPane.showMessageDialog(null, "O nome do produto não pode ser vazio.");
+	}
+	public void mensagemEdicaoErro() {
+		JOptionPane.showMessageDialog(null, "A edição do produto não foi concluída."
+				+ "Verifique se o nome da filial está correto e se os campos numéricos"
+				+ "como preço, quantidade, peso e/ou tamanho foram digitados corretamente.");
+	}
+	public void mensagemCadastroSucesso() {
+		JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso, "
+				+ "atualize a lista para ver seu novo produto cadastrado.");
+		frameCadastroProduto.dispose();
+	}
+	
+	public void mensagemEdicaoSucesso() {
+		JOptionPane.showMessageDialog(null, "Produto editado com sucesso, "
+				+ "atualize a lista para ver a modificação.");
+		frameCadastroProduto.dispose();
+	}
+	
+	public void mensagemExclusaoSucesso() {
+		JOptionPane.showMessageDialog(null, "Produto excluído com sucesso, "
+				+ "atualize a lista.");
 		frameCadastroProduto.dispose();
 	}
 	
