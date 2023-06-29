@@ -6,13 +6,13 @@ public class ControleFilial {
 	
 	private Filial[] f;
 	private int qtdFiliais;
-	private static ControleEmpresa ce;
+	private static ControleEmpresa empresa;
 	
-	public ControleFilial() {
+	public ControleFilial(ControleEmpresa ce) {
 		
+		empresa = ce;
 		this.f = ce.empresa.getFilial();
 		this.qtdFiliais = ce.empresa.getQtdFiliais();
-		this.ce = ce;
 	}
 	
 	public String[] getNomeFilial() {
@@ -42,9 +42,9 @@ public class ControleFilial {
 	
 	public boolean excluirFilial(int i) {
 		
-		Filial lugar = ce.empresa.getFilial()[i];
+		Filial lugar = empresa.empresa.getFilial()[i];
 		
-		ce.empresa.excluirFilial(lugar);
+		empresa.empresa.excluirFilial(lugar);
 		
 		return true;
 		
