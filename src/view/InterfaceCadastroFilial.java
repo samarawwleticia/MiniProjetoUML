@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import controle.*;
-import sistema.*;
 
 public class InterfaceCadastroFilial implements ActionListener {
 	
@@ -21,7 +20,6 @@ public class InterfaceCadastroFilial implements ActionListener {
 	private JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
 	private static ControleEmpresa empresa;
 	private static ControleFilial fili;
-	private String[][] listaProdutos;
 	private int posicao;
 	private int opcao;
 	private String s;
@@ -31,12 +29,12 @@ public class InterfaceCadastroFilial implements ActionListener {
 	//descobrindo como criar um filtro.
 	
 	public void inserirEditar(int op, ControleEmpresa ce,  
-			InterfaceFilial f, int pos) {
+			 int pos) {
 		
 		opcao = op;
 		posicao = pos;
 		empresa = ce;
-			
+		fili = new ControleFilial(ce);
 		
 		if (op == 1) s = "Cadastro de Filial";
 		if (op == 2) s = "Detalhes da Filial";
@@ -47,16 +45,12 @@ public class InterfaceCadastroFilial implements ActionListener {
 		if (op == 2) {
 			
 			textoCidade    = new JTextField(String.valueOf(empresa.getNomesFiliais()[pos].toString()));
-			
-			//colocar a posicao
+			//ah
+			//eu coloquei mais pq no da prof temm tb
 			String[] cabecalho = {
 					"Nome", "Preço", "Quantidade", "Filial"
 			};
-			
-			
-			
-			listaProdutos = ce.getCaracteristicasPrincipais();	
-					
+								
 			tabelaProdutos = new JTable(ce.getEmpresa().getFilial()[pos].obterCaracteristicasPrincipais(), cabecalho);
 			
 			painelProdutos = new JScrollPane(tabelaProdutos);
@@ -146,15 +140,19 @@ public class InterfaceCadastroFilial implements ActionListener {
 	
 				res = fili.excluirFilial(posicao);
 				if(res) mensagemSucessoExclusao();
-				
-				
-			}
+				else mensagemErroExclusao();
+			} 
 	}
 		
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Filial excluída com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		telaCadastroFilial.dispose();
+	}
+	
+	public void mensagemErroExclusao() {
+		JOptionPane.showMessageDialog(null, "Não deu!", null,
+				JOptionPane.ERROR_MESSAGE);
 	}
 
 }

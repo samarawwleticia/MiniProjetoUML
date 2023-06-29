@@ -5,7 +5,6 @@ import javax.swing.*;
 import javax.swing.event.*;
 import controle.ControleEmpresa;
 
-
 public class InterfaceFilial implements ActionListener, ListSelectionListener {
 	private JFrame janela;
 	private JLabel titulo;
@@ -18,6 +17,7 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 	
 	public InterfaceFilial(ControleEmpresa ce ) {
 		empresa = ce;
+		
 		
 		listaNomes = new ControleEmpresa().getNomesFiliais();
 		listaFiliais = new JList<String>(listaNomes);
@@ -59,7 +59,7 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 			Object src	= ev.getSource();
 			
 			if(src == cadastroFilial) {
-				new InterfaceCadastroFilial().inserirEditar(1, empresa, this, 0);
+				new InterfaceCadastroFilial().inserirEditar(1, empresa, 0);
 			}
 	}
 	
@@ -68,7 +68,7 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 		
 		if(e.getValueIsAdjusting() && src == listaFiliais) {
 			new InterfaceCadastroFilial().inserirEditar(2, empresa,
-					this, listaFiliais.getSelectedIndex());
+					 listaFiliais.getSelectedIndex());
 			
 		}
 		
