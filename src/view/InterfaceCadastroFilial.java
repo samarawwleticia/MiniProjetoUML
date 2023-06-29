@@ -2,13 +2,11 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
+
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 import controle.*;
+import sistema.*;
 
 public class InterfaceCadastroFilial {
 	
@@ -22,14 +20,16 @@ public class InterfaceCadastroFilial {
 	private JTable tabelaProdutos = new JTable();
 	private JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
 	private static ControleEmpresa empresa;
+	private String[][] listaProdutos;
 	private int posicao;
 	private int opcao;
 	private String s;
 	
 	//private JButton addProduto = new JButton("Novo Produto");
 	
+	//descobrindo como criar um filtro.
 	
-	public void inserirEditar(int op, ControleEmpresa ce,
+	public void inserirEditar(int op, ControleEmpresa ce,  
 			InterfaceFilial f, int pos) {
 		
 		opcao = op;
@@ -45,20 +45,26 @@ public class InterfaceCadastroFilial {
 		
 		if (op == 2) {
 			
-			//colocar a posicao
-			String[] cabecalho = {
-					"Nome", "Quantidade", "Tipo", "Preço"
-			};
-			String[][] coisas = {
-					{"vou", "mudas", "pros", "produtos"}
-			};
-			tabelaProdutos = new JTable(coisas, cabecalho);
-			painelProdutos = new JScrollPane(tabelaProdutos);
 			textoCidade    = new JTextField(String.valueOf(empresa.getNomesFiliais()[pos].toString()));
 			
-
+			//colocar a posicao
+			String[] cabecalho = {
+					"Nome", "Preço", "Quantidade", "Filial"
+			};
 			
-		} else { //Não preenche com dados
+			
+			
+			listaProdutos = ce.getCaracteristicasPrincipais();	
+					
+			tabelaProdutos = new JTable(ce.getEmpresa().getFilial()[pos].obterCaracteristicasPrincipais(), cabecalho);
+			
+			painelProdutos = new JScrollPane(tabelaProdutos);
+			
+			
+						
+		
+		
+		} else { //No preenche com dados
 			
 			String[] cabecalho = {
 					"Nome", "Quantidade", "Tipo", "Preço"
@@ -107,6 +113,7 @@ public class InterfaceCadastroFilial {
 		this.telaCadastroFilial.add(deletar);
 		
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
+		
 		
 		
 		// espaço para colocar o CNPJ da empresa - talvez eu tire
