@@ -8,7 +8,7 @@ import javax.swing.*;
 import controle.*;
 import sistema.*;
 
-public class InterfaceCadastroFilial {
+public class InterfaceCadastroFilial implements ActionListener {
 	
 	private JFrame telaCadastroFilial;
 	private JLabel cidade = new JLabel("Filial:");
@@ -20,6 +20,7 @@ public class InterfaceCadastroFilial {
 	private JTable tabelaProdutos = new JTable();
 	private JScrollPane painelProdutos = new JScrollPane(tabelaProdutos);
 	private static ControleEmpresa empresa;
+	private static ControleFilial fili;
 	private String[][] listaProdutos;
 	private int posicao;
 	private int opcao;
@@ -86,6 +87,10 @@ public class InterfaceCadastroFilial {
 			this.telaCadastroFilial.add(deletar);
 
 			
+		} else {
+			
+			salvar.setBounds(100, 480, 180, 40);
+			this.telaCadastroFilial.add(salvar);
 		}
 		
 		
@@ -110,11 +115,11 @@ public class InterfaceCadastroFilial {
 		this.telaCadastroFilial.add(produtosCadastradosFilial);
 		this.telaCadastroFilial.add(painelProdutos);
 		this.telaCadastroFilial.add(salvar);
-		this.telaCadastroFilial.add(deletar);
 		
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		
-		
+		salvar.addActionListener(this);
+		deletar.addActionListener(this);
 		
 		// espaço para colocar o CNPJ da empresa - talvez eu tire
 		//JLabel CNPJ = new JLabel("CNPJ");
@@ -130,8 +135,26 @@ public class InterfaceCadastroFilial {
 		//addProduto.addActionListener(this);
 				
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+			boolean res;
+			Object src = e.getSource();
+			if(src == deletar) {
+				res = false;
+			} if (opcao == 2) {
+	
+				res = fili.excluirFilial(posicao);
+				if(res) mensagemSucessoExclusao();
+				
+				
+			}
+	}
 		
-	
-	
+	public void mensagemSucessoExclusao() {
+		JOptionPane.showMessageDialog(null, "Filial excluída com sucesso!", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		telaCadastroFilial.dispose();
+	}
 
 }
