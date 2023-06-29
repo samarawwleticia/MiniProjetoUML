@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import controle.ControleEmpresa;
+import controle.*;
 
 public class InterfaceFilial implements ActionListener, ListSelectionListener {
 	private JFrame janela;
@@ -48,6 +48,7 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 		janela.setVisible(true);
 		
 		cadastroFilial.addActionListener(this);
+		refreshFilial.addActionListener(this);
 		listaFiliais.addListSelectionListener(this);
 		
 		
@@ -60,6 +61,9 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 			
 			if(src == cadastroFilial) {
 				new InterfaceCadastroFilial().inserirEditar(1, empresa, 0);
+			} if (src == refreshFilial) {
+				listaFiliais.setListData(new ControleFilial(empresa).getNomeFilial());
+				listaFiliais.updateUI();
 			}
 	}
 	
