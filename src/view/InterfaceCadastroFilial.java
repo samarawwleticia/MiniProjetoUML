@@ -7,6 +7,13 @@ import javax.swing.*;
 
 import controle.*;
 
+/**
+ * Essa classe é uma Interface Gráfica que permite o cadastro de uma nova filial
+ * assim como  editar ou deletar uma filial existente.
+ * @author Samara Leticia
+ *
+ */
+
 public class InterfaceCadastroFilial implements ActionListener {
 	
 	private JFrame telaCadastroFilial;
@@ -24,10 +31,16 @@ public class InterfaceCadastroFilial implements ActionListener {
 	private int opcao;
 	private String s;
 	
-	//private JButton addProduto = new JButton("Novo Produto");
-	
-	//descobrindo como criar um filtro.
-	
+	/**
+	 * Esse método funciona para a criação da JFrame, caso op seja = 1, será criada uma Interface
+	 * com o objetivo de Cadastrar uma nova Filial. Caso op seja = 2, será criada uma Interface
+	 * com o objetivo de Editar ou Excluir uma filial existente. Além disso, o parametro posicao irá indicar
+	 * qual filial foi selecionada na InterfaceFilial.
+	 * 
+	 * @param op
+	 * @param ce
+	 * @param pos
+	 */
 	public void inserirEditar(int op, ControleEmpresa ce,  
 			 int pos) {
 		
@@ -58,7 +71,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 						
 		
 		
-		} else { //No preenche com dados
+		} else { //Não preenche com dados
 			
 			String[] cabecalho = {
 					"Nome", "Quantidade", "Tipo", "Preço"
@@ -99,7 +112,6 @@ public class InterfaceCadastroFilial implements ActionListener {
 		painelProdutos.setBounds(150, 210, 300, 200);
 		salvar.setBounds(100, 480, 180, 40);
 		deletar.setBounds(300, 480, 180, 40);
-		//addProduto.setBounds(200, 430, 200, 40);
 
 		
 		this.telaCadastroFilial.add(titulo);
@@ -114,20 +126,14 @@ public class InterfaceCadastroFilial implements ActionListener {
 		salvar.addActionListener(this);
 		deletar.addActionListener(this);
 		
-		// espaço para colocar o CNPJ da empresa - talvez eu tire
-		//JLabel CNPJ = new JLabel("CNPJ");
-		//telaCadastroFilial.add(CNPJ);
-		//CNPJ.setBounds(150, 160, 100, 20);
-		//JTextField textoCNPJ = new JTextField("");
-		//telaCadastroFilial.add(textoCNPJ);
-		//textoCNPJ.setBounds(250, 160, 120, 20);
-	
-		
-		// botao para colocar mais um produto
-		//telaCadastroFilial.add(addProduto);
-		//addProduto.addActionListener(this);
 				
 	}
+	/**
+	 * Nesse void há o sinal para excluir uma filial de acordo com sua posição através de um método
+	 * localizado no pacote sistema na classe Empresa.
+	 * Em seguida, há o sinal para cadastrar e editar respectivamente uma filial já existente, de acordo 
+	 * com sua posição novamente.
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -156,7 +162,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 				
 				} else {
 					
-					fili.cadastrarFilial(textoCidade.getText());
+					fili.cadastrarFilial(textoCidade.getText()); //EDITAR
 					mensagemSucessoCadastro();
 				}
 				
@@ -169,6 +175,10 @@ public class InterfaceCadastroFilial implements ActionListener {
 		}		
 			
 	}
+	
+	/*
+	 * Mensagens que indicam o resultado da operação realizada no action event.
+	 */
 		
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Filial excluída com sucesso!", null, 
@@ -177,28 +187,28 @@ public class InterfaceCadastroFilial implements ActionListener {
 	}
 	
 	public void mensagemErroExclusao() {
-		JOptionPane.showMessageDialog(null, "Não deu!", null,
+		JOptionPane.showMessageDialog(null, "Os dados não puderam ser excluídos!", null,
 				JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public void mensagemSucessoCadastro() {
-		JOptionPane.showMessageDialog(null,"Parabens!",null,
+		JOptionPane.showMessageDialog(null,"Os dados foram salvos com sucesso!",null,
 				JOptionPane.INFORMATION_MESSAGE);
 		telaCadastroFilial.dispose();
 	}
 	
 	public void mensagemErroCadastro() {
-		JOptionPane.showMessageDialog(null, "Deu ruim!", null,
+		JOptionPane.showMessageDialog(null, "Os dados não puderam ser salvos!", null,
 				JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public void mensagemErro1() {
-		JOptionPane.showMessageDialog(null, "teste 1!", null,
+		JOptionPane.showMessageDialog(null, "Erro Null Exception!", null,
 				JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public void mensagemErro2() {
-		JOptionPane.showMessageDialog(null, "teste 2!", null,
+		JOptionPane.showMessageDialog(null, "Erro Number Format!", null,
 				JOptionPane.ERROR_MESSAGE);
 	}
 
