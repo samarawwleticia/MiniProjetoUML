@@ -1,4 +1,4 @@
-package controle;
+  package controle;
 
 import sistema.*;
 
@@ -7,6 +7,7 @@ public class ControleFilial {
 	private Filial[] f;
 	private int qtdFiliais;
 	private static ControleEmpresa empresa;
+	private Empresa sisEmpresa;
 	
 	public ControleFilial(ControleEmpresa ce) {
 		
@@ -14,6 +15,9 @@ public class ControleFilial {
 		this.f = ce.empresa.getFilial();
 		this.qtdFiliais = ce.empresa.getQtdFiliais();
 	}
+	
+	
+	
 	
 	public String[] getNomeFilial() {
 		
@@ -50,5 +54,10 @@ public class ControleFilial {
 		
 	}
 
+	public void cadastrarFilial(String nomeFilial) {		
+		
+	empresa.getEmpresa().adcFilial(new Filial(nomeFilial, sisEmpresa));
+		
+	}
 	
 }
