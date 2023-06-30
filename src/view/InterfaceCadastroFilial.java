@@ -136,12 +136,16 @@ public class InterfaceCadastroFilial implements ActionListener {
 			Object src = e.getSource();
 			if(src == deletar) {
 				res = false;
-			} if (opcao == 2) {
+			 if (opcao == 2) {
 	
 				res = fili.excluirFilial(posicao);
 				if(res) mensagemSucessoExclusao();
 				else mensagemErroExclusao();
 			} 
+			 
+		}
+			
+			
 	}
 		
 	public void mensagemSucessoExclusao() {
@@ -153,6 +157,12 @@ public class InterfaceCadastroFilial implements ActionListener {
 	public void mensagemErroExclusao() {
 		JOptionPane.showMessageDialog(null, "Não deu!", null,
 				JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void mensagemSucessoCadastro() {
+		JOptionPane.showMessageDialog(null,"Parabens!",null,
+				JOptionPane.ERROR_MESSAGE);
+		telaCadastroFilial.dispose();
 	}
 
 }
