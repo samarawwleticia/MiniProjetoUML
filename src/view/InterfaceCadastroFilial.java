@@ -45,8 +45,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 		if (op == 2) {
 			
 			textoCidade    = new JTextField(String.valueOf(empresa.getNomesFiliais()[pos].toString()));
-			//ah
-			//eu coloquei mais pq no da prof temm tb
+			
 			String[] cabecalho = {
 					"Nome", "Preço", "Quantidade", "Filial"
 			};
@@ -143,8 +142,31 @@ public class InterfaceCadastroFilial implements ActionListener {
 				else mensagemErroExclusao();
 			} 
 			 
-		}
+		}	if(src == salvar) {
 			
+			if(textoCidade.getText().equals("")) {
+				mensagemErroCadastro();
+			}
+			
+			try {
+				
+				if(opcao == 2) {
+				empresa.getEmpresa().getFilial()[posicao].setNomeCidade(textoCidade.getText());//CADASTRAR
+				mensagemSucessoCadastro();
+				
+				} else {
+					
+					fili.cadastrarFilial(textoCidade.getText());
+					mensagemSucessoCadastro();
+				}
+				
+			} catch (NullPointerException exc1) {
+				mensagemErro1();
+			} catch (NumberFormatException exc2) {
+				mensagemErro2();
+			}
+			
+		}		
 			
 	}
 		
@@ -161,8 +183,24 @@ public class InterfaceCadastroFilial implements ActionListener {
 	
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null,"Parabens!",null,
-				JOptionPane.ERROR_MESSAGE);
+				JOptionPane.INFORMATION_MESSAGE);
 		telaCadastroFilial.dispose();
+	}
+	
+	public void mensagemErroCadastro() {
+		JOptionPane.showMessageDialog(null, "Deu ruim!", null,
+				JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void mensagemErro1() {
+		JOptionPane.showMessageDialog(null, "teste 1!", null,
+				JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void mensagemErro2() {
+		JOptionPane.showMessageDialog(null, "teste 2!", null,
+				JOptionPane.ERROR_MESSAGE);
 	}
 
 }
+
