@@ -24,7 +24,15 @@ public class ControleEmpresa {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	
+	/**
+	 * Esse método busca as filiais dentro da empresa.
+	 * 
+	 * 	 * @return Um vetor de Strings de tamanho [quantidade de filiais
+	 * 		cadastradas] contendo o nome das filiais dentro da empresa.
+	 * 		Esse método foi utilizado para exibir as filiais cadastradas na
+	 * 		classe InterfaceFilial.
+	 * 		@see InterfaceFilial(ControleEmpresa ce)
+	 */
 	
 	public String[] getNomesFiliais( ) {
 		String[] nomesFiliais = new String[filiais.length];

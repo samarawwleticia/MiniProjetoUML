@@ -2,12 +2,27 @@
 
 import sistema.*;
 
+/**
+ * Classe ControleFilial controla as filiais dentro da Empresa, com métodos para adicionar
+ * excluir ou alterar Filiais.
+ * @author Samara Leticia
+ * @since 2023
+ */
+
 public class ControleFilial {
 	
 	private Filial[] f;
 	private int qtdFiliais;
 	private static ControleEmpresa empresa;
 	private Empresa sisEmpresa;
+	
+	/**
+	 * Construtor para receber a classe ControleEmpresa, também possuí o método
+	 * getFilial que está na classe Empresa e o método qtdFilials.
+	 * Ambos os métodos são usados para buscar uma Filial específica e também
+	 * para obter a quantidade de filiais na empresa.
+	 * @param ce
+	 */
 	
 	public ControleFilial(ControleEmpresa ce) {
 		
@@ -17,7 +32,12 @@ public class ControleFilial {
 	}
 	
 	
-	
+	/**
+	 * Método que busca o nome de uma Filial. Esse método é utilizado no botão
+	 * que atualiza a lista de Filiais cadastradas.
+	 * 
+	 * @return String s
+	 */
 	
 	public String[] getNomeFilial() {
 		
@@ -35,15 +55,23 @@ public class ControleFilial {
 	public void setQtd(int qtd) {
 		this.qtdFiliais = qtd;
 	}
+	
+	/**
+	 * Esse método busca o nome de uma filial em específico. 
+	 * @param i
+	 * @return
+	 */
 
 	public String getNome(int i) {
 		return f[i].getNomeCidade();
 	}
 	
-	public boolean inserirEditarFilial(String[] filiais) {
-		return true; //so por enquanto
-	}
-	
+	/**
+	 * Esse método busca o local em que a Filial está armazenada e passa ela pelo método que
+	 * exclui a filial, localizado no pacote Sistema na classe Empresa.
+	 * @param i
+	 * @return true
+	 */
 	public boolean excluirFilial(int i) {
 		
 		Filial lugar = empresa.empresa.getFilial()[i];
@@ -53,6 +81,13 @@ public class ControleFilial {
 		return true;
 		
 	}
+	
+	/**
+	 * Recebe uma String que contém o nome da Filial a ser cadastrada e em seguida
+	 * cria uma filial através do método adcFilial que está localizada na classe 
+	 * Empresa no pacote Filial.
+	 * @param nomeFilial
+	 */
 
 	public void cadastrarFilial(String nomeFilial) {		
 		
