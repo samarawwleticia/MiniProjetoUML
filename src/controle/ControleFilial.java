@@ -3,12 +3,12 @@
 import sistema.*;
 
 /**
- * Classe ControleFilial controla as filiais dentro da Empresa, com métodos para adicionar
+ * Controla as filiais dentro da Empresa, com metodos para adicionar
  * excluir ou alterar Filiais.
- * @author Samara Leticia
+ * @author João Pedro e Samara
  * @since 2023
+ * @version 1.1
  */
-
 public class ControleFilial {
 	
 	private Filial[] f;
@@ -33,7 +33,7 @@ public class ControleFilial {
 	
 	
 	/**
-	 * Método que busca o nome de uma Filial. Esse método é utilizado no botão
+	 * Metodo que busca o nome de uma Filial. Esse metodo é utilizado no botão
 	 * que atualiza a lista de Filiais cadastradas.
 	 * 
 	 * @return String s
@@ -57,7 +57,7 @@ public class ControleFilial {
 	}
 	
 	/**
-	 * Esse método busca o nome de uma filial em específico. 
+	 * Esse metodo busca o nome de uma filial em específico. 
 	 * @param i
 	 * @return
 	 */
@@ -67,7 +67,7 @@ public class ControleFilial {
 	}
 	
 	/**
-	 * Esse método busca o local em que a Filial está armazenada e passa ela pelo método que
+	 * Esse metodo busca o local em que a Filial está armazenada e passa ela pelo método que
 	 * exclui a filial, localizado no pacote Sistema na classe Empresa.
 	 * @param i
 	 * @return true
@@ -83,8 +83,8 @@ public class ControleFilial {
 	}
 	
 	/**
-	 * Recebe uma String que contém o nome da Filial a ser cadastrada e em seguida
-	 * cria uma filial através do método adcFilial que está localizada na classe 
+	 * Recebe uma String que contem o nome da Filial a ser cadastrada e em seguida
+	 * cria uma filial através do metodo adcFilial que esta localizada na classe 
 	 * Empresa no pacote Filial.
 	 * @param nomeFilial
 	 */

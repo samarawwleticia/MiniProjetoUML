@@ -1,6 +1,12 @@
 package controle;
 import sistema.*;
-
+/**
+ * Classe onde ficam os objetos que estao registrados na empresa (produtos e filiais)
+ * e alguns metodos de pesquisa e busca desses objetos
+ * @author João Pedro e Samara
+ * @since 2023
+ * @version 1.1
+ */
 public class ControleEmpresa {
 	
 	public Empresa empresa = new Empresa("Nome da Empresa", "1234567-1234/78");
@@ -21,15 +27,20 @@ public class ControleEmpresa {
 		empresa.buscarFilial("lugar3").adcItem(new Alimentacao("Soja", 40, 13, empresa.buscarFilial("lugar3"), "blablabla", 7, true));
 	}
 	
+	/**
+	 * 
+	 * @return objeto empresa que armazena as filiais e os objetos.
+	 */
+	
 	public Empresa getEmpresa() {
 		return empresa;
 	}
 	/**
-	 * Esse método busca as filiais dentro da empresa.
+	 * Esse metodo busca as filiais dentro da empresa.
 	 * 
 	 * 	 * @return Um vetor de Strings de tamanho [quantidade de filiais
 	 * 		cadastradas] contendo o nome das filiais dentro da empresa.
-	 * 		Esse método foi utilizado para exibir as filiais cadastradas na
+	 * 		Esse metodo foi utilizado para exibir as filiais cadastradas na
 	 * 		classe InterfaceFilial.
 	 * 		@see InterfaceFilial(ControleEmpresa ce)
 	 */
@@ -50,12 +61,12 @@ public class ControleEmpresa {
 }
 	
 	/**
-	 * Esse método busca dentro da empresa as características 
+	 * Esse metodo busca dentro da empresa as características 
 	 * mais importantes dos produtos.
 	 * 
-	 * @return Um vetor de duas dimensões de  Strings
-	 * de tamanho [quantidade de produtos cadastrados][4] contendo essas características,
-	 * que são utilizadas na JTable da InterfaceProduto. As características são:
+	 * @return Um vetor de duas dimensoes de  Strings
+	 * de tamanho [quantidade de produtos cadastrados][4] contendo essas caracteristicas,
+	 * que sao utilizadas na JTable da InterfaceProduto. As caracteristicas sao:
 	 * [0]Nome, [1]Preço, [2]Quantidade e [3]Filial.
 	 * 
 	 */
@@ -84,11 +95,11 @@ public class ControleEmpresa {
 		return caracteristicas;
 	}
 	/**
-	 * 
+	 * Esse metodo pesquisa itens de acordo com a String nomeProduto.
 	 * @param nomeProduto é a chave de busca para encontrar as características
 	 * de um produto desejado. 
-	 * @return Um vetor de duas dimensões contendo as características 
-	 * de produtos cujos nomes são iguais as chave de pesquisa.
+	 * @return Um vetor de duas dimensoes contendo as caracteristicas 
+	 * de produtos cujos nomes sao iguais as chave de pesquisa.
 	 */
 	public String[][] pesquisaItens(String nomeProduto){
 		int k = 0;
@@ -110,7 +121,7 @@ public class ControleEmpresa {
 		return prod;
 	}
 	/**
-	 * Esse método busca as características do único produto cujo 
+	 * Esse metodo busca as caracteristicas do único produto cujo 
 	 * nome e filial se igualam aos parametros dados.
 	 * @param nomeProduto Primeira chave de pesquisa.
 	 * @param nomeFilial Segunda chave de pesquisa.

@@ -1,5 +1,11 @@
 package sistema;
 
+/**
+ * Simula uma filial que tem sua determinada empresa e pode receber, deletar e editar produtos.
+ * @author João Pedro e Samara
+ * @since 2023
+ * @version 1.1
+ */
 public class Filial {
 	
 	// Atributos
@@ -9,6 +15,12 @@ public class Filial {
 	private int qtdProdutos = 0;
 	
 	// Construtor
+	/**
+	 * Construtor de filial que tem o nome do lugar onde a filial esta
+	 * localizada e sua empresa.
+	 * @param nomeCidade nome da Filial
+	 * @param empresa
+	 */
 	public Filial(String nomeCidade, Empresa empresa){
 		this.nomeCidade = nomeCidade;
 		this.empresa = empresa;
@@ -43,6 +55,10 @@ public class Filial {
 		return qtdProdutos;
 	}
 	
+	/**
+	 * Adiciona um novo item na filial.
+	 * @param produto
+	 */
 	public void adcItem(Produto produto) {
 		for (int i = 0; i < this.produto.length - 1; i++) {
 			// 1 - Verificar se o produto já existe:
@@ -59,11 +75,20 @@ public class Filial {
 			}
 		}
 	}
-	
+	/**
+	 * Edita as caracteristicas de um produto.
+	 * @param produto
+	 * @param indice
+	 */
 	public void editarItem(Produto produto, int indice) {
 		this.produto[indice] = produto;
 	}
 	
+	/**
+	 * Deleta um item da Filial. O parametro indice do produto dentro de uma filial
+	 * serve para facilitar o acesso a um produto.
+	 * @param indice
+	 */
 	public void excluirItem(int indice) {
 
 		for(int i = indice; i < (qtdProdutos); i++) {
@@ -73,6 +98,11 @@ public class Filial {
 		
 	}
 	
+	/**
+	 * Busca um produto dentro da filial.
+	 * @param chave
+	 * @return produto
+	 */
 	public Produto buscarItem(String chave) {
 		Produto p = null;
 		for(Produto item: produto) {
@@ -86,6 +116,12 @@ public class Filial {
 		return p;
 	}
 	
+	/**
+	 * 
+	 * @return Um vetor de duas dimensoes de Strings com
+	 * as caracteristicas principais de um produto dentro da filial.
+	 * Nome do produto, valor, quantidade e a filial a qual ele pertence.
+	 */
 	public String[][] obterCaracteristicasPrincipais() {
 		String[][] caracteriticas = new String[101][5];
 		int i;
@@ -107,6 +143,9 @@ public class Filial {
 		return listaNomes;
 	}
 	
+	/**
+	 * Constroi uma String contendo todos os valores de uma Filial.
+	 */
 	@Override
 	public String toString() {
 		return "Localização: " + nomeCidade + ", Empresa: " + empresa.getRazaoSocial();

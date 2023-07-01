@@ -7,7 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import controle.*;
-
+/**
+ * Tela que permite o cadastro ou edição de um produto no sistema.
+ * @author João Pedro e Samara
+ * @since 2023
+ * @version 1.1
+ *
+ */
 public class InterfaceCadastroProduto implements ActionListener {
 
 	JFrame frameCadastroProduto = new JFrame("Cadastro de Produto");
@@ -52,7 +58,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 	ControleEmpresa ce;
 	ControleProdutos cp;
 
-	/*
+	/**
 	 * Construtor da interface para cadastrar/editar um produto. Recebe uma "opção"
 	 * para decidir se edita um produto (1) ou cadastra um produto (2); Recebe um
 	 * ControleEmpresa para editar ou recebe null para cadastrar um novo produto;
@@ -379,7 +385,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 		}
 
 	}
-	/*
+	/**
 	 * Métodos para enviar mensagens de erro e de sucesso a depender do que ocorrer ao tentar cadastrar um produto. 
 	 */
 	public void mensagemCadastroErro() {

@@ -8,10 +8,9 @@ import controle.*;
 /** Essa classe exibe uma interface gráfica que mostra todas as filiais cadastradas no sistema
  * e que também permite a edição de uma filial existente e o cadastro de uma nova filial.
  * 
- * @author Samara Leticia
+ * @author João Pedro e Samara 
  *
  */
-
 public class InterfaceFilial implements ActionListener, ListSelectionListener {
 	private JFrame janela;
 	private JLabel titulo;

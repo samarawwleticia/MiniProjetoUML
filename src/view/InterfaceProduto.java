@@ -6,13 +6,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Essa classe gera uma interface gráfica para apresentar todos os produtos cadastrados, 
+ * Essa classe gera uma interface grafica para apresentar todos os produtos cadastrados, 
  * bem como as opções para cadastrar e editar produtos, pesquisar um produto e atualizar 
  * a lista de produtos.
  *  
- * @author João Pedro. 
+ * @author João Pedro e Samara. 
+ * @since 2023
+ * @version 1.1
  */
-
 public class InterfaceProduto implements ActionListener{
 	
 	private JFrame frameInterfaceProduto = new JFrame("Produtos");

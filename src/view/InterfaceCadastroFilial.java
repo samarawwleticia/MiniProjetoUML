@@ -8,12 +8,11 @@ import javax.swing.*;
 import controle.*;
 
 /**
- * Essa classe é uma Interface Gráfica que permite o cadastro de uma nova filial
+ * Essa classe é uma Interface Grafica que permite o cadastro de uma nova filial
  * assim como  editar ou deletar uma filial existente.
- * @author Samara Leticia
+ * @author João Pedro e Samara
  *
  */
-
 public class InterfaceCadastroFilial implements ActionListener {
 	
 	private JFrame telaCadastroFilial;
@@ -37,9 +36,9 @@ public class InterfaceCadastroFilial implements ActionListener {
 	 * com o objetivo de Editar ou Excluir uma filial existente. Além disso, o parametro posicao irá indicar
 	 * qual filial foi selecionada na InterfaceFilial.
 	 * 
-	 * @param op
-	 * @param ce
-	 * @param pos
+	 * @param op se 1, cadastra uma filial, se 2, visualiza os detalhes e permite a modificacao de uma filial existente
+	 * @param ce traz a classe ControleEmpresa
+	 * @param pos para localizar a filial
 	 */
 	public void inserirEditar(int op, ControleEmpresa ce,  
 			 int pos) {
@@ -57,13 +56,13 @@ public class InterfaceCadastroFilial implements ActionListener {
 		
 		if (op == 2) {
 			
-			textoCidade    = new JTextField(String.valueOf(empresa.getNomesFiliais()[pos].toString()));
+			textoCidade    = new JTextField(String.valueOf(empresa.getNomesFiliais()[pos].toString())); //traz o nome da filial
 			
 			String[] cabecalho = {
 					"Nome", "Preço", "Quantidade", "Filial"
 			};
 								
-			tabelaProdutos = new JTable(ce.getEmpresa().getFilial()[pos].obterCaracteristicasPrincipais(), cabecalho);
+			tabelaProdutos = new JTable(ce.getEmpresa().getFilial()[pos].obterCaracteristicasPrincipais(), cabecalho); //traz os produtos dessa determinada filial
 			
 			painelProdutos = new JScrollPane(tabelaProdutos);
 			
@@ -86,7 +85,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 			
 		}
 		
-		if (op == 2) {
+		if (op == 2) {// Cadastro de Filial
 			
 			salvar.setBounds(100, 480, 180, 40);
 			deletar.setBounds(245, 480, 180, 40);
@@ -141,7 +140,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 			Object src = e.getSource();
 			if(src == deletar) {
 				res = false;
-			 if (opcao == 2) {
+			 if (opcao == 2) {//caso o usuario queira deletar uma filial existente
 	
 				res = fili.excluirFilial(posicao);
 				if(res) mensagemSucessoExclusao();
@@ -156,13 +155,13 @@ public class InterfaceCadastroFilial implements ActionListener {
 			
 			try {
 				
-				if(opcao == 2) {
-				empresa.getEmpresa().getFilial()[posicao].setNomeCidade(textoCidade.getText());//CADASTRAR
+				if(opcao == 2) {//caso o usuario queira cadastrar uma filial
+				empresa.getEmpresa().getFilial()[posicao].setNomeCidade(textoCidade.getText());
 				mensagemSucessoCadastro();
 				
 				} else {
 					
-					fili.cadastrarFilial(textoCidade.getText()); //EDITAR
+					fili.cadastrarFilial(textoCidade.getText()); //caso o usuario queira editar uma filial
 					mensagemSucessoCadastro();
 				}
 				
@@ -176,7 +175,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 			
 	}
 	
-	/*
+	/**
 	 * Mensagens que indicam o resultado da operação realizada no action event.
 	 */
 		

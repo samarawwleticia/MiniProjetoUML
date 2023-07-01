@@ -3,7 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import controle.*;
-
+/**
+ * Interface Grafica que serve como menu para que o usuario
+ * visualize as filiais e produtos disponiveis no sistema
+ * assim como permite que ele crie esses objetos.
+ * @author João Pedro e Samara
+ *
+ */
 public class InterfaceMenu implements ActionListener {
 
 	JLabel labelMenu = new JLabel("MENU PRINCIPAL");
@@ -12,11 +18,11 @@ public class InterfaceMenu implements ActionListener {
 	JButton botaoProdutos = new JButton("Produtos"); 
 	ControleEmpresa ce = new ControleEmpresa();
 	
+	/**
+	 * Constrói a interface menu
+	 */
 	InterfaceMenu() {
 		
-		//private static JLabel titulo = new JLabel("Menu Principal");
-		//Vou agrupar os elementos parecidos 
-		//N sei pq mas estou começando a ficar com medo desse código, tenho a impressão de que ele ainda vai me apunhalar pelas costas
 		
 		frameMenu.setBounds(0, 0,  600, 600); 
 		frameMenu.setLayout(null);
@@ -39,6 +45,9 @@ public class InterfaceMenu implements ActionListener {
 	
 	}//Fim do construtor
 	
+	/**
+	 * busca movimentos na tela menu e redireciona para a InterfaceFilial ou InterfaceProduto
+	 */
 	public void actionPerformed(ActionEvent evento) {
 		if(evento.getActionCommand().equals("Filiais")) {
 			new InterfaceFilial(ce);
@@ -46,7 +55,11 @@ public class InterfaceMenu implements ActionListener {
 			new InterfaceProduto(ce);
 		}
 	}
-
+	
+	/**.
+	 * Método main que ativa a InterfaceMenu
+	 * @param args
+	 */
 	public static void main(String[]args) {
 		
 		new InterfaceMenu();

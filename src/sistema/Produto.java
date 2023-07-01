@@ -1,5 +1,12 @@
 package sistema;
 
+/**
+ * Classe abstrata que simula um produto dentro da filial.
+ * @author João Pedro e Samara
+ * @since 2023
+ * @version 1.1
+ *
+ */
 public abstract class Produto {
 	
 	protected String nome;
@@ -61,7 +68,15 @@ public abstract class Produto {
 	public void setIndice(int indice) {
 		this.indice = indice;
 	}
-	
+	/**
+	 * Esse metodo é usado para editar as caracteristicas de um produto
+	 * que ja existe dentro de uma determinada filial.
+	 * @param nome
+	 * @param preco
+	 * @param quantidade
+	 * @param descricao
+	 * @param filial
+	 */
 	public void editarCaracteristica(String nome, double preco, int quantidade,String descricao, Filial filial) {
 		
 		setNome(nome);
@@ -86,6 +101,12 @@ public abstract class Produto {
 		}
 	}
 	
+	/**
+	 * É uma sobrescrita de um metodo padrão do Java. Verifica se um objeto
+	 * é igual ao objeto que foi passado como parametro.
+	 * @param produto
+	 * @return true se e igual, false se não for.
+	 */
 	public boolean equals(Produto produto) {
 		if (nome.equalsIgnoreCase(produto.nome) && 
 				filial.getNomeCidade().equalsIgnoreCase(produto.filial.getNomeCidade())) {
@@ -94,7 +115,9 @@ public abstract class Produto {
 			return false;
 		}
 	}
-	
+	/**
+	 * Constroi uma String com os valores principais de um Produto.
+	 */
 	@Override
 	public String toString() {
 		return "Nome: " + nome + ", Quantidade: " 

@@ -3,13 +3,15 @@ package controle;
 import sistema.*;
 
 /**
- * @author João Pedro
- * Essa classe é responsável por fazer alterações totalmente relacionadas aos produtos. 
+ * Responsavel por fazer alteraçoes totalmente relacionadas aos produtos. 
+ * @author João Pedro e Samara
+ * @since 2023
+ * @version 1.1
  */
-
 public class ControleProdutos{
 	
 	private Empresa empresa;
+
 	
 	/**
 	 * O construtor serve apenas para receber o ControleEmpresa para obter a Empresa.
@@ -22,9 +24,9 @@ public class ControleProdutos{
 	}
 	
 	/**
-	 * Esse método serve tanto para cadastrar quanto editar um produto, a 
-	 * depender do valor de op. O método recebe todos os valores de todas as classes 
-	 * filhas de Produto, porém utiliza apenas os necessárioa para cada classe filha 
+	 * Esse metodo serve tanto para cadastrar quanto editar um produto, a 
+	 * depender do valor de op. O metodo recebe todos os valores de todas as classes 
+	 * filhas de Produto, porém utiliza apenas os necessarias para cada classe filha 
 	 * a depender de quais valores são realmente entregues.
 	 * 
 	 * @param nomeFilial
@@ -82,7 +84,7 @@ public class ControleProdutos{
 		}
 	}
 	/**
-	 * Exclui o produto a partir do seu índice. :P
+	 * Exclui o produto a partir do seu índice.
 	 * @param nomeFilial
 	 * @param indice
 	 */

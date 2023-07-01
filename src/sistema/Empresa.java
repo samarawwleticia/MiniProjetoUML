@@ -1,5 +1,12 @@
 package sistema;
 
+/**
+ * Simula a empresa do sistema que recebe nome ou razão social, cnpj 
+ * e suas determinadas filiais
+ * @author João Pedro e Samara
+ * @since 2023
+ * @version 1.1
+ */
 public class Empresa {
 	
 	// Atributos
@@ -10,6 +17,11 @@ public class Empresa {
 	private Filial[] filial = new Filial[numMaxFiliais];
 	
 	// Construtor
+	/**
+	 * Construtor da empresa do sistema.
+	 * @param razaoSocial
+	 * @param cnpj
+	 */
 	public Empresa(String razaoSocial, String cnpj){
 		this.razaoSocial = razaoSocial;
 		this.cnpj = cnpj;
