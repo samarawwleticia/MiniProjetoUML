@@ -39,14 +39,14 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 		janela = new JFrame("Filiais");
 		titulo = new JLabel("Filiais Cadastradas");
 		cadastroFilial = new JButton("Cadastrar Filial");
-		refreshFilial = new JButton("refresh");
+		refreshFilial = new JButton("Atualizar Lista");
 		
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		
-		titulo.setBounds(90, 10, 250, 30);
-		cadastroFilial.setBounds(70, 177, 100, 30);
-		refreshFilial.setBounds(200, 177, 100, 30);
-		listaFiliais.setBounds(20, 50, 350, 120);
+		titulo.setBounds(250, 10, 200, 80);
+		cadastroFilial.setBounds(305,410,194,50);
+		refreshFilial.setBounds(100,410,195,50);
+		listaFiliais.setBounds(100, 100, 400, 300);
 		
 		listaFiliais.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listaFiliais.setVisibleRowCount(10);
@@ -58,7 +58,7 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 		janela.add(cadastroFilial);
 		janela.add(refreshFilial);
 		
-		janela.setSize(400, 250);
+		janela.setBounds(30,30,600,600);
 		janela.setVisible(true);
 		
 		cadastroFilial.addActionListener(this);
