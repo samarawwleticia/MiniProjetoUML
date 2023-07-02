@@ -138,7 +138,7 @@ public class InterfaceCadastroFilial implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 			if (textoCidade.getText().isBlank() || textoCidade.getText().isEmpty()) {
-				JOptionPane.showMessageDialog(null,"Os devem ser preenchidos!",null,
+				JOptionPane.showMessageDialog(null,"O nome da filial é obrigatório!",null,
 						JOptionPane.INFORMATION_MESSAGE);
 			} else {
 			boolean res;
