@@ -91,5 +91,18 @@ public class ControleProdutos{
 	public void excluirProduto(String nomeFilial, int indice) {
 		empresa.buscarFilial(nomeFilial).excluirItem(indice);
 	}
-	
+	/*
+	public static boolean adcProdutosEmMassa(int n) {
+		
+		try {
+			for(int i = 0; i < n; i++) {
+				cadastrarEditarProduto("lugar1", "Produto" + i, i+0.5, i, "descricao" + i, i/2 + 0.3 , 
+						(i%2 == 0) ? true: false, i*2, null, null, null, null, 2, 0)
+			}
+		} catch() {
+			
+		}
+		return true;
+	}
+	*/
 } // Fim da classe.
