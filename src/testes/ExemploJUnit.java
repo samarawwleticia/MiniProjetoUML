@@ -1,0 +1,7 @@
+package testes;
+
+ class ExemploJUnit {
+	 
+	 
+	 
+}
