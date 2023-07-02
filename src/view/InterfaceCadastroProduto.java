@@ -303,7 +303,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 		} else if (elemento == botaoSalvar) {
 			
-			if(nome.getText().equals("")) {
+			if(nome.getText().isBlank()||filial.getText().isBlank()) {
 				mensagemErroNome();
 			} else {
 			
@@ -394,7 +394,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				+ "como preço, quantidade, peso e/ou tamanho foram digitados corretamente.");
 	}
 	public void mensagemErroNome() {
-		JOptionPane.showMessageDialog(null, "O nome do produto não pode ser vazio.");
+		JOptionPane.showMessageDialog(null, "O nome do produto ou da filial não pode ser vazio.");
 	}
 	public void mensagemEdicaoErro() {
 		JOptionPane.showMessageDialog(null, "A edição do produto não foi concluída."
