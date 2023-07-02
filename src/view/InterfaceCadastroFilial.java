@@ -140,7 +140,11 @@ public class InterfaceCadastroFilial implements ActionListener {
 			if (textoCidade.getText().isBlank() || textoCidade.getText().isEmpty()) {
 				JOptionPane.showMessageDialog(null,"O nome da filial é obrigatório!",null,
 						JOptionPane.INFORMATION_MESSAGE);
-			} else {
+			} else
+			if(textoCidade.getText().matches("[0-9]+")){
+				JOptionPane.showMessageDialog(null,"O nome da filial não recebe apenas números!",null,
+						JOptionPane.INFORMATION_MESSAGE);
+			} else { {
 			boolean res;
 			Object src = e.getSource();
 			if(src == deletar) {
@@ -178,6 +182,8 @@ public class InterfaceCadastroFilial implements ActionListener {
 			
 		}	
 		
+			}
+			
 			}
 			
 	}
