@@ -136,20 +136,11 @@ public class InterfaceCadastroFilial implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-			if (textoCidade.getText().isBlank() || textoCidade.getText().isEmpty()) {
-				JOptionPane.showMessageDialog(null,"O nome da filial é obrigatório!",null,
-						JOptionPane.INFORMATION_MESSAGE);
-			} else
-			if(textoCidade.getText().matches("[0-9]+")){
-				JOptionPane.showMessageDialog(null,"O nome da filial não recebe apenas números!",null,
-						JOptionPane.INFORMATION_MESSAGE);
-			} else
-			if (textoCidade.getText().length() <= 2){
-				JOptionPane.showMessageDialog(null,"O nome da cidade deve ter mais de 3 letras!",null,
-						JOptionPane.INFORMATION_MESSAGE);
-			}
-			else { {
+		if(ControleFilial.checkNome(textoCidade.getText()) == false) {
+			JOptionPane.showMessageDialog(null, "Verifique se o nome da Filial possui pelo menos 3 letras!", null, 
+					JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			
 			boolean res;
 			Object src = e.getSource();
 			if(src == deletar) {
@@ -189,9 +180,8 @@ public class InterfaceCadastroFilial implements ActionListener {
 		
 			}
 			
-			}
-			
 	}
+	
 	
 	/**
 	 * Mensagens que indicam o resultado da operação realizada no action event.

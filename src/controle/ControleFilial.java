@@ -1,5 +1,6 @@
   package controle;
 
+
 import sistema.*;
 
 /**
@@ -94,5 +95,22 @@ public class ControleFilial {
 	empresa.getEmpresa().adcFilial(new Filial(nomeFilial, sisEmpresa));
 		
 	}
+	
+	/**
+	 * Verifica se o nome da filial está vazia, está apenas com espaços em brancos,
+	 * contém apenas números ou se tem menos que 2 caracteres.
+	 * @param nomeFilial
+	 * @return falso se um dos if's forem verdadeiros e true se não forem.
+	 */
+	public static boolean checkNome(String nomeFilial) {
+		
+		if (nomeFilial.isBlank() || nomeFilial.isEmpty() || nomeFilial.matches("[0-9]+")
+				|| nomeFilial.length() <= 2) {
+			return false;
+		} else {
+		return true;
+		}	
+	}
+	
 	
 }

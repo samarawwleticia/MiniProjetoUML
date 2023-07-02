@@ -33,7 +33,7 @@ public class InterfaceFilial implements ActionListener, ListSelectionListener {
 		
 		
 		
-		listaNomes = new ControleEmpresa().getNomesFiliais();
+		listaNomes = ce.getNomesFiliais();
 		listaFiliais = new JList<String>(listaNomes);
 		
 		janela = new JFrame("Filiais");
