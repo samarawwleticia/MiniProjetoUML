@@ -144,7 +144,12 @@ public class InterfaceCadastroFilial implements ActionListener {
 			if(textoCidade.getText().matches("[0-9]+")){
 				JOptionPane.showMessageDialog(null,"O nome da filial não recebe apenas números!",null,
 						JOptionPane.INFORMATION_MESSAGE);
-			} else { {
+			} else
+			if (textoCidade.getText().length() <= 2){
+				JOptionPane.showMessageDialog(null,"O nome da cidade deve ter mais de 3 letras!",null,
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			else { {
 			boolean res;
 			Object src = e.getSource();
 			if(src == deletar) {
