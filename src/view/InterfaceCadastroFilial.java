@@ -136,6 +136,11 @@ public class InterfaceCadastroFilial implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+			if (textoCidade.getText().isBlank() || textoCidade.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null,"Os devem ser preenchidos!",null,
+						JOptionPane.INFORMATION_MESSAGE);
+			} else {
 			boolean res;
 			Object src = e.getSource();
 			if(src == deletar) {
@@ -171,7 +176,9 @@ public class InterfaceCadastroFilial implements ActionListener {
 				mensagemErro2();
 			}
 			
-		}		
+		}	
+		
+			}
 			
 	}
 	
