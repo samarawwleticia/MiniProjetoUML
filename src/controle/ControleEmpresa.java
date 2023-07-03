@@ -9,8 +9,8 @@ import sistema.*;
  */
 public class ControleEmpresa {
 	
-	public Empresa empresa = new Empresa("Nome da Empresa", "1234567-1234/78");
-	Filial[] filiais = empresa.getFilial();
+	private Empresa empresa = new Empresa("Nome da Empresa", "1234567-1234/78");
+	private Filial[] filiais = empresa.getFilial();
 	
 	public ControleEmpresa(){		
 		empresa.adcFilial(new Filial("lugar1", empresa));

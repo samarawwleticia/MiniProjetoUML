@@ -320,7 +320,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 				
 					case ("Alimentação"):
 				
-						cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+						ControleProdutos.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
 							Integer.parseInt(quantidade.getText()), descricao.getText(), 
 							Double.parseDouble(peso.getText()), b, 0, null, null, null, null, op, indiceProduto);
 						
@@ -334,7 +334,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 						
 					case ("Utilidades Domésticas"):
 					
-						cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+						ControleProdutos.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
 							Integer.parseInt(quantidade.getText()), descricao.getText(), 0, false, 0, null, 
 							material.getText(), marca.getText(), caracteristica.getText(), op, indiceProduto);
 							
@@ -347,7 +347,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 					case ("Vestuário"):
 					
-						cp.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
+						ControleProdutos.cadastrarEditarProduto(filial.getText(), nome.getText(), Double.parseDouble(preco.getText()), 
 							Integer.parseInt(quantidade.getText()), descricao.getText(), 
 							0, false, Integer.parseInt(tamanho.getText()), genero.getText(), null, null, null, op, indiceProduto);
 						if(op == 1) {
@@ -381,7 +381,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 
 		}else if (elemento == botaoExcluir) {
 			
-			cp.excluirProduto(filial.getText(), indiceProduto);
+			ControleProdutos.excluirProduto(filial.getText(), indiceProduto);
 			mensagemExclusaoSucesso();
 		}
 

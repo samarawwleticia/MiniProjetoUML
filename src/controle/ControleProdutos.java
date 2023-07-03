@@ -99,7 +99,7 @@ public class ControleProdutos{
 	}
 	
 	/**
-	 * 
+	 * Cadastra diversos produtos. 
 	 * @param n é o numero de produtos a serem adicionados.
 	 * @return boolean para verificar se o numero de produtos foram adicionados ou não.
 	 */
@@ -115,7 +115,11 @@ public class ControleProdutos{
 		
 			try {
 				Produto p = ControleProdutos.empresa.getFilial()[0].getProduto()[n];
-				return true;
+				if (p == null) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 			catch(ArrayIndexOutOfBoundsException aiobe) {
 				return false;
@@ -126,6 +130,12 @@ public class ControleProdutos{
 	}
 	
 	
+	/**
+	 * Deleta diversos produtos.
+	 * @param n é a quantidade de produtos a ser excluída.
+	 * @return boolean para verificar se todos os produtos foram excluidos ou não.
+	 */
+	
 	public static boolean deletarProduto(int n) {
 		
 		cadastrarProduto(100);
@@ -134,9 +144,18 @@ public class ControleProdutos{
 			excluirProduto("LugarIrrelevante", i);
 		}
 		
-		if(ControleProdutos.empresa.getFilial()[0].getProduto()[n] == null) {
-			return true;
-		} else {
+		try {
+			Produto p = ControleProdutos.empresa.getFilial()[0].getProduto()[n];
+			if (p == null) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		catch(ArrayIndexOutOfBoundsException aiobe) {
+			return false;
+		}
+		catch(NullPointerException npe) {
 			return false;
 		}
 		

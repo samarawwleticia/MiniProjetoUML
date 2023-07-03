@@ -28,8 +28,8 @@ public class ControleFilial {
 	public ControleFilial(ControleEmpresa ce) {
 		
 		empresa = ce;
-		this.f = ce.empresa.getFilial();
-		this.qtdFiliais = ce.empresa.getQtdFiliais();
+		this.f = ce.getEmpresa().getFilial();
+		this.qtdFiliais = ce.getEmpresa().getQtdFiliais();
 	}
 	
 	
@@ -75,9 +75,9 @@ public class ControleFilial {
 	 */
 	public boolean excluirFilial(int i) {
 		
-		Filial lugar = empresa.empresa.getFilial()[i];
+		Filial lugar = empresa.getEmpresa().getFilial()[i];
 		
-		empresa.empresa.excluirFilial(lugar);
+		empresa.getEmpresa().excluirFilial(lugar);
 		
 		return true;
 		

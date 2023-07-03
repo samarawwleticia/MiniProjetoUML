@@ -1,9 +1,6 @@
 /**
- * 
- */
-/**
- * @author João e Samara
  *
+ * @author João e Samara
  */
 module MiniProjetoUML {
 	requires java.desktop;
