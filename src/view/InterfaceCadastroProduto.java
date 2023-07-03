@@ -309,6 +309,7 @@ public class InterfaceCadastroProduto implements ActionListener {
 			
 				try {
 					boolean b;
+					
 					if(dropdownVegetariano.getSelectedItem().equals("Sim")) {
 						b = true;
 					} else {

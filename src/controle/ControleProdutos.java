@@ -1,5 +1,7 @@
 package controle;
 
+import javax.swing.JOptionPane;
+
 import sistema.*;
 
 /**
@@ -10,7 +12,7 @@ import sistema.*;
  */
 public class ControleProdutos{
 	
-	private Empresa empresa;
+	private static Empresa empresa;
 
 	
 	/**
@@ -20,7 +22,7 @@ public class ControleProdutos{
 	
 	public ControleProdutos(ControleEmpresa ce){
 		
-		this.empresa = ce.getEmpresa();
+		ControleProdutos.empresa = ce.getEmpresa();
 	}
 	
 	/**
@@ -46,41 +48,45 @@ public class ControleProdutos{
 	 * @param indice É o índice do produto dentro de uma filial, serve para facilitar o acesso a um produto.
 	 */
 	
-	public void cadastrarEditarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
+	public static void cadastrarEditarProduto(String nomeFilial, String nomeProduto, double preco , int qtd, String descricao, double peso, 
 			boolean vegetariano, int tamanho, String genero, String material, String marca, String caracteristica, int op, int indice) {
 		
 		Filial filial = empresa.buscarFilial(nomeFilial);
 		
-		if (genero == null && material == null) {
+		if (filial.getQtdProdutos() < 100 || op == 2) {
+		
+			if (genero == null && material == null) {
 				
-			if (op == 2) {
-				filial.adcItem(new Alimentacao(nomeProduto, preco, 
-					qtd, filial, descricao, peso, vegetariano));
-			} else {
-				filial.editarItem(new Alimentacao(nomeProduto, preco, 
+				if (op == 2) {
+					filial.adcItem(new Alimentacao(nomeProduto, preco, 
+						qtd, filial, descricao, peso, vegetariano));
+				} else {
+					filial.editarItem(new Alimentacao(nomeProduto, preco, 
 						qtd, filial, descricao, peso, vegetariano), indice);
-			}
+				}
 				
-		} else if(peso == 0 && genero == null) {
+			} else if(peso == 0 && genero == null) {
 				
-			if (op == 2) {
-				filial.adcItem(new UtilidadesDomesticas(nomeProduto, preco, 
-					qtd,filial, descricao, material, marca, caracteristica));
-			} else {
-				filial.editarItem(new UtilidadesDomesticas(nomeProduto, preco, 
+				if (op == 2) {
+					filial.adcItem(new UtilidadesDomesticas(nomeProduto, preco, 
+						qtd,filial, descricao, material, marca, caracteristica));
+				} else {
+					filial.editarItem(new UtilidadesDomesticas(nomeProduto, preco, 
 						qtd, filial, descricao, material, marca, caracteristica), indice);
-			}	
+				}	
 				
-		} else if (peso == 0 && material == null) {
+			} else if (peso == 0 && material == null) {
 				
-			if (op == 2) {
-				filial.adcItem(new Vestuario(nomeProduto, preco, 
-					qtd, filial, descricao, tamanho, genero));
-			} else {
-				filial.editarItem(new Vestuario(nomeProduto, preco, 
+				if (op == 2) {
+					filial.adcItem(new Vestuario(nomeProduto, preco, 
+						qtd, filial, descricao, tamanho, genero));
+				} else {
+					filial.editarItem(new Vestuario(nomeProduto, preco, 
 						qtd,filial, descricao, tamanho, genero), indice);
-			}
-				
+				}
+			}				
+		} else {
+			JOptionPane.showMessageDialog(null, "O limite do estoque dessa filial foi atingido.");
 		}
 	}
 	/**
@@ -88,21 +94,71 @@ public class ControleProdutos{
 	 * @param nomeFilial
 	 * @param indice
 	 */
-	public void excluirProduto(String nomeFilial, int indice) {
+	public static void excluirProduto(String nomeFilial, int indice) {
 		empresa.buscarFilial(nomeFilial).excluirItem(indice);
 	}
-	/*
-	public static boolean adcProdutosEmMassa(int n) {
+	
+	/**
+	 * 
+	 * @param n é o numero de produtos a serem adicionados.
+	 * @return boolean para verificar se o numero de produtos foram adicionados ou não.
+	 */
+	public static boolean cadastrarProduto(int n) {
 		
-		try {
+		ControleProdutos.empresa = new Empresa("", "");
+		ControleProdutos.empresa.adcFilial(new Filial("LugarIrrelevante", ControleProdutos.empresa));
+		
+		
 			for(int i = 0; i < n; i++) {
-				cadastrarEditarProduto("lugar1", "Produto" + i, i+0.5, i, "descricao" + i, i/2 + 0.3 , 
-						(i%2 == 0) ? true: false, i*2, null, null, null, null, 2, 0)
+				cadastrarEditarProduto("LugarIrrelevante", "Produto "+i, (i+i*0.4), i, "Descricao", i, (i%2==0)? true: false, 0, null, null, null, null, 2, 0);
 			}
-		} catch() {
-			
-		}
-		return true;
+		
+			try {
+				Produto p = ControleProdutos.empresa.getFilial()[0].getProduto()[n];
+				return true;
+			}
+			catch(ArrayIndexOutOfBoundsException aiobe) {
+				return false;
+			}
+			catch(NullPointerException npe) {
+				return false;
+			}	
 	}
-	*/
+	
+	
+	public static boolean deletarProduto(int n) {
+		
+		cadastrarProduto(100);
+		
+		for(int i = 100; i >= n; i--) {
+			excluirProduto("LugarIrrelevante", i);
+		}
+		
+		if(ControleProdutos.empresa.getFilial()[0].getProduto()[n] == null) {
+			return true;
+		} else {
+			return false;
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 } // Fim da classe.

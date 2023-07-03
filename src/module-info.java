@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Antonio
+ * @author João e Samara
  *
  */
 module MiniProjetoUML {

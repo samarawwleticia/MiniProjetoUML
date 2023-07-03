@@ -4,6 +4,8 @@ package testes;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import controle.ControleProdutos;
+
 
 /**
  * Espaço de testes do sistema.
@@ -15,51 +17,33 @@ import org.junit.jupiter.api.Test;
  class ExemploJUnit {
 	 
 	 /**
-	  * Verifica se o sistema permite cadastrar/editar uma filial com 2 caracteres.	 
+	  * Verifica se o sistema permite cadastrar/editar uma filial com 2 caracteres, 
+	  * espaços em branco e apenas números.	 
 	  */
 	 @Test
 	 void testCheckFilial() {
 		 
-		 
-		String nomeErradoFilial = "xx";
+		String nomeErradoFilial1 = "xx";
+		String nomeErradoFilial2 = "";
+		String nomeErradoFilial3 = " ";
+		String nomeErradoFilial4 = "000";
 		String nomeCertoFilial = "xxx";
 		assertTrue(controle.ControleFilial.checkNome(nomeCertoFilial));
-		assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial));
-	 }
-	 /**
-	  * Verifica se o sistema permite cadastrar/editar uma filial sem caracteres.
-	  */
-	 void testCheckFilial2() {
-		 
-		 String nomeErradoFilial = "";
-		 String nomeCertoFilial = "xxx";
-		 assertTrue(controle.ControleFilial.checkNome(nomeCertoFilial));
-		 assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial));
+		assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial1));
+		assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial2));
+		assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial3));
+		assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial4));
 	 }
 	 
-	 /**
-	  * Verifica se o sistema permite cadastrar/editar uma filial com espaço em branco como 
-	  * caractere.
-	  */
-	 void testCheckFilial3() {
+	 @Test
+	 void testeCadastroItem() {
+		 int produtosAdicionadosAceitaveis = 100;
+		 int produtosAdicionadosInaceitaveis = 101;
 		 
-		 String nomeErradoFilial = " ";
-		 String nomeCertoFilial = "xxx";
-		 
-		 assertTrue(controle.ControleFilial.checkNome(nomeCertoFilial));
-		 assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial));
-		 
+		assertTrue(ControleProdutos.cadastrarProduto(produtosAdicionadosAceitaveis));
+		assertFalse(ControleProdutos.cadastrarProduto(produtosAdicionadosInaceitaveis));
 	 }
-	 /**
-	  * Verifica se o sistema permite cadastrar/editar uma filial com apenas numeros
-	  * como caracteres.
-	  */
-	 void testCheckFilial4() {
-		 String nomeErradoFilial = "000";
-		 String nomeCertoFilial = "xx0";
-		 
-		 assertTrue(controle.ControleFilial.checkNome(nomeCertoFilial));
-		 assertFalse(controle.ControleFilial.checkNome(nomeErradoFilial));
-	 }
+	 
+	 
 	 
 }
